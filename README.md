@@ -150,6 +150,7 @@ python scripts/molecular/chemprop/train_chemprop.py
 
 > [!NOTE]
 > ChemProp baselines use its internal MPNN architecture and are trained using ChemProp's own trainer, not the JAX/Flax loop used by the GNN models. <!-- TODO: clarify whether ChemProp models also use the topological complex as input or operate on raw SMILES -->
+
 > [!WARNING]
 > XGBoost and ChemProp baselines are under active development and are not fully integrated in QT-Net yet.
 
