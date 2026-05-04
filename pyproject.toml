@@ -1,0 +1,61 @@
+[build-system]
+# Hatchling will build the wheel and source distribution for this project.
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "qtnet"
+version = "0.1.0"
+authors = [
+  { name = "Pablo Martínez Crespo", email = "pabloma@chalmers.se" },
+  { name = "Stefano Ribes", email = "ribes.stefano@gmail.com" },
+]
+description = "A a Python package for topological data analysis and machine learning on molecular systems."
+readme = "README.md"
+requires-python = ">=3.10"
+keywords = ["python", "packaging"]
+license = { text = "MIT" }
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+]
+
+dependencies = [
+    "chemprop>=1.7.1",
+    "flax>=0.10.7",
+    "jax>=0.6.2",
+    "networkx>=3.4.2",
+    "optuna>=4.7.0",
+    "pandas>=2.3.3",
+    "rdkit>=2025.9.5",
+    "requests>=2.28.0",
+    "scikit-learn>=1.7.2",
+    "skops>=0.13.0",
+    "xgboost>=3.2.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/pablomcrespo/QT-Net"
+
+[project.scripts]
+# This creates a command 'hello-world' that runs the 'main' function
+# inside 'src/qtnet/main.py'
+hello-world = "qtnet.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/qtnet"]
+
+# Dependencies for developers (install with: pip install -e ".[dev]")
+[dependency-groups]
+dev = [
+    "jupyterlab>=4.5.5",
+    "matplotlib>=3.10.8",
+    "notebook>=7.5.4",
+    "py3dmol>=2.5.4",
+    "pytest>=9.0.2",
+    "seaborn>=0.13.2",
+]
+
+# Tool-specific configurations can live here too
+[tool.pytest.ini_options]
+testpaths = ["tests"]
