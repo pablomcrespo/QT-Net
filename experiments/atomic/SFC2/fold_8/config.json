@@ -1,0 +1,34 @@
+{
+  "model_type": "SNF2",
+  "model_class": "SGNN_v2",
+  "model_kwargs": {
+    "num_node_scalars": 32,
+    "num_edge_scalars": 32,
+    "embedding_dim": 32,
+    "hidden_dim": 64,
+    "geometric_filter_dim": 32,
+    "num_layers": 7,
+    "distance_encoder": "gaussian"
+  },
+  "lr": 0.0026938830192854116,
+  "weight_decay": 0.00016051911333587616,
+  "fold": 8,
+  "seed": 50,
+  "epochs": 2000,
+  "batch_size": 256,
+  "n_params": 686081,
+  "cutoff": 5.25,
+  "max_neighbors": 5,
+  "fully_connected": true,
+  "rotate_every": 1,
+  "augmentation_key": [
+    0,
+    7827
+  ],
+  "element_weights": {
+    "H": 0.48512184341189835,
+    "C": 0.576304475701344,
+    "N": 1.6197964884098544,
+    "O": 1.318777192476903
+  }
+}

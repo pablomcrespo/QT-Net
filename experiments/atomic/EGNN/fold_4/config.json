@@ -1,0 +1,29 @@
+{
+  "model_type": "EGNN",
+  "model_class": "EquivariantGNN",
+  "model_kwargs": {
+    "num_node_scalars": 24,
+    "num_node_vectors": 12,
+    "num_node_tensors": 12,
+    "num_edge_scalars": 24,
+    "num_edge_vectors": 12,
+    "num_edge_tensors": 12,
+    "embedding_dim": 32,
+    "hidden_dim": 64,
+    "hidden_l1_channels": 12,
+    "hidden_l2_channels": 12,
+    "geometric_filter_dim": 32,
+    "geo_basis_dim": 16,
+    "num_layers": 4
+  },
+  "lr": 0.0038322168504927897,
+  "weight_decay": 0.00011423254155608379,
+  "fold": 4,
+  "seed": 46,
+  "epochs": 3000,
+  "batch_size": 512,
+  "n_params": 615090,
+  "cutoff": 5.25,
+  "max_neighbors": 5,
+  "fully_connected": false
+}

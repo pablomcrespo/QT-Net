@@ -1,8 +1,13 @@
 <h1><p align="center">QT-Net</p></h1>
 
-QT-Net (pronounced *cutie-net* — we didn't choose the name, but we're not complaining) is a Python package for topological data analysis (TDA) and machine learning on molecular systems. It bridges the gap between classical cheminformatics and modern geometric deep learning by representing molecules as *topological cell complexes* — 0-cells for atoms, 1-cells for bonds, and 2-cells for higher-order triplet interactions — and using these richer representations as the basis for property prediction.
+QT-Net (pronounced *cutie-net* — we didn't choose the name, but we're not complaining) is a Python package for learning per-atom properties from the quantum theory of atoms in molecules (QTAIM) — and any other atomic-level scalar/vector/tensor target — from molecular geometry. Molecules are represented as *topological cell complexes* (0-cells for atoms, 1-cells for edges, 2-cells for higher-order relations), and the models perform message passing across this hierarchy.
 
-The package supports a spectrum of model families: JAX-based SO(3)-equivariant neural networks for rotationally invariant predictions, scalar graph neural networks (GNNs) that incorporate topological features without enforcing equivariance, and classical baselines built on XGBoost with Morgan fingerprints or ChemProp message-passing networks. This makes QT-Net useful both as a research platform for exploring topological representations and as a practical benchmarking toolkit.
+The package is built around two concerns that go beyond raw predictive performance:
+
+1. **Clustering of atomic environments** into chemically meaningful groups, so that test performance can be reported per-cluster rather than as a single pooled metric. This makes it possible to hold out specific atomic environments at evaluation time and quantify how each architecture generalises to them.
+2. **Rigorous statistical model comparison** via repeated-measures ANOVA + Tukey HSD on repeat-level metrics, so that architecture rankings reflect statistically meaningful differences rather than fold-level noise.
+
+QT-Net provides E(3)-equivariant JAX/Flax networks (which become SO(3)-equivariant when the optional `EdgeGeometryReminder` cross-product term is enabled), scalar GNNs that incorporate the same topological structure without enforcing equivariance, and classical baselines built on XGBoost with Morgan fingerprints or ChemProp message-passing networks.
 
 ---
 
@@ -12,27 +17,35 @@ QT-Net targets two broad categories of properties.
 
 **Atomic-level properties** are predicted per-atom and include electron density (N), localization index (LI), dipole moment components (µ_x, µ_y, µ_z), and quadrupole moment components (Q_xy, Q_xz, Q_yz, Q_aniso, Q_zz). These are derived from the AIMEl dataset of QTAIM-partitioned wavefunctions.
 
-**Molecular-level properties** come from the QM9 benchmark and include the isotropic polarizability (α), HOMO-LUMO gap, internal energy at 0 K (U0), and heat capacity (Cv). Both blind (topology-only) and informed (topology + atomic features) variants of the molecular models are supported.
+**Molecular-level properties** come from QM9 and include the isotropic polarizability (α), HOMO-LUMO gap, internal energy at 0 K (U0), and heat capacity (Cv). Both blind (topology-only) and informed (topology + per-atom QTAIM features) variants of the molecular models are supported.
 
 ---
 
 ## 🤖 Models
 
-QT-Net provides several model families, each with a short identifier used in training scripts:
+### Atomic models
+
+These are the architectures discussed in the paper, exposed via `scripts/atomic/train_multitask.py --model-type ...`:
 
 | Identifier | Full name | Description |
 |---|---|---|
-| `ETNN` / `TPaiNN` | Topological PaiNN | SO(3)-equivariant GNN, suitable for vector/tensor targets |
-| `EGNN` / `EquivariantGNN` | Equivariant GNN | Alternative equivariant architecture |
-| `SGNN` / `ScalarGNN` | Scalar GNN | Topology-aware, non-equivariant |
-| `STNN` / `ScalarTPaiNN` | Scalar Topological PaiNN | Scalar variant of TPaiNN |
-| `SBAS` / `ScalarBaseline` | Scalar Baseline | Node-only features, no edge messages |
-| `SBAE` / `ScalarBaselineEdges` | Scalar Baseline + Edges | Adds edge features to the baseline |
+| `EGNN` | EquivariantGNN | E(3)-equivariant GNN over the cell complex |
+| `EGNF` | EquivariantGNN_FC | Fully-connected variant of `EGNN` |
+| `SGNN` | ScalarGNN | Topology-aware, non-equivariant scalar GNN |
+| `SGNF` | ScalarGNN_FC | Fully-connected variant of `SGNN` |
+| `SGN2` | SGNN_v2 | Updated scalar architecture |
+| `SNF2` | SGNN_v2_FC | Fully-connected variant of `SGN2` |
 
-Equivariant models apply SO(3) rotation augmentation during training and use geometric precomputations (gyration tensors, relative positions, radial basis function encodings, and angular encodings) stored in the topology cache. Scalar models skip augmentation but still benefit from the topological cell complex structure.
+Equivariant models are E(3)-equivariant by default; enabling the `EdgeGeometryReminder` term (which uses a cross product) reduces them to SO(3)-equivariance. Rotation augmentation during training is available.
+
+The training script registers a few additional architectures (`ETNN`, `STNN`, `EGN2`, `EGNX`, `SBAS`, `SBAE`, …) for experimentation; they are not part of the paper's evaluation.
+
+### Molecular models
+
+The molecular pipeline focuses on `ScalarGNNMolecular`, available through `scripts/molecular/jax/run_hpo_molecular.py` and `scripts/molecular/jax/train_molecular_jax.py`. It can be trained as **blind** (topology only) or **informed** (`--use-atom-features`, injects per-atom N/LI/µ/Q descriptors as additional node features).
 
 > [!NOTE]
-> Equivariant models are currently only supported for atomic-level targets. For molecular QM9 properties, use the `ScalarGNNMolecular` or `ScalarTPaiNNMolecular` variants.
+> Equivariant models are currently only supported for atomic-level targets.
 
 ---
 
@@ -46,7 +59,7 @@ QT-Net uses [`uv`](https://github.com/astral-sh/uv) for environment and dependen
 Start by cloning the repository and entering the project directory:
 
 ```bash
-git clone https://github.com/pablomcrespo/QT-Net.git
+git clone <repo-url>
 cd QT-Net
 ```
 
@@ -60,10 +73,8 @@ uv pip install -e ".[dev]"
 This will install all required dependencies, including JAX, Flax, ChemProp, XGBoost, RDKit, and Optuna, along with development tools like Jupyter and Matplotlib. The `-e` flag installs the package in editable mode so that local changes to the source are reflected immediately without reinstalling.
 
 > [!WARNING]
-> JAX GPU support requires a separate installation step that depends on your CUDA version. After the base install, follow the [official JAX GPU installation guide](https://jax.readthedocs.io/en/latest/installation.html) and install the appropriate `jax[cuda12]` or `jax[cuda11_pip]` variant. The default install pulls CPU-only JAX.
+> JAX GPU support requires a separate installation step that depends on your CUDA version. After the base install, follow the [official JAX GPU installation guide](https://jax.readthedocs.io/en/latest/installation.html) and install the appropriate `jax[cuda12]` or `jax[cuda11_pip]` variant. The default install pulls CPU-only JAX. We recommend to read the JAX documentation for taking full advantage of these models.
 
-> [!NOTE]
-> If you are running on an HPC cluster with SLURM, you may need to load environment modules (e.g., CUDA, cuDNN) before activating the virtual environment. <!-- TODO: add cluster-specific setup notes, module load commands, and PYTHONPATH configuration if needed -->
 
 ---
 
@@ -71,68 +82,100 @@ This will install all required dependencies, including JAX, Flax, ChemProp, XGBo
 
 Before training, you need to precompute topological representations from the raw datasets. These precomputation steps cache the cell complexes and geometric encodings to disk so that training runs do not need to recompute them every epoch.
 
+Raw and curated data live in `data_curation/`:
+
+```
+data_curation/
+├── atomic/
+│   ├── data/aimel_dataset_with_components.csv
+│   └── cluster_analysis/   # train/val/test split + clustering of atomic environments
+└── molecular/
+    ├── aimel_clustered_molecular.pkl   # AIM-labelled molecules used for QT-Net training
+    ├── qm9_filtered.pkl                # full QM9 with cleaned features
+    └── qm9_inferred.pkl                # qm9_filtered + per-atom AIM properties (produced by inference pipeline)
+```
+
 ### ⚛️ Atomic data
 
-The atomic dataset is sourced from AIMEl, a collection of QTAIM-partitioned atomic properties. <!-- TODO: add link or citation for AIMEl dataset and instructions on where to download/place the raw files -->
+The atomic dataset is sourced from the .sumviz files of AIMEl, a collection of QTAIM-partitioned atomic properties: https://zenodo.org/records/11406726
+
+The `data_curation/atomic/cluster_analysis/` directory contains the notebook (`AIMEl_csv_to_datasets.ipynb`) and helpers (`atomic_env_split.py`, `cluster_cooccurrence.py`) that turn the raw CSV into a clustered train/val/test split, with held-out cluster labels (e.g. `H_10`, `C_11`, `N_13`, `O_10`) used as out-of-distribution probes during evaluation.
 
 Once the raw data is in place, generate the topology cache by running:
 
 ```bash
-python scripts/atomic/precompute_complexes.py
+python scripts/atomic/precompute_complexes.py --cutoff 8.0 --max-neighbors 12
 ```
 
-This produces `data/precomputed_complexes.pkl`, which contains the cell complexes along with RBF-encoded interatomic distances for each molecule in the dataset. Coordinates are stored in Bohr units internally and converted to Ångström during loading in `data_utils.py`.
+This produces `data_curation/atomic/precomputed_complexes.pkl`, which contains the cell complexes along with RBF-encoded interatomic distances for each molecule in the dataset. Coordinates are stored in Bohr units internally and converted to Ångström during loading in `qtnet.data_utils`.
 
 ### 🧪 Molecular data
 
-The molecular dataset is loaded from `data/aimel_clustered_molecular.pkl`. <!-- TODO: describe how this file is produced or where to obtain it --> Two variants of the topology cache are generated — one for the *blind* models (topology only, no atomic features) and one for the *informed* models (topology with atomic QTAIM features):
+The molecular dataset is loaded from `data_curation/molecular/aimel_clustered_molecular.pkl`, also obtained from `AIMEl_csv_to_datasets.ipynb`. Two variants of the topology cache are generated — one for the *blind* models (topology only, no atomic features) and one for the *informed* models (topology with atomic QTAIM features):
 
 ```bash
 python scripts/molecular/jax/pregenerate_batches_molecular.py
 ```
 
-This outputs `precomputed_blind.pkl` and `precomputed_gta.pkl`. Cross-validation splits are scaffold-grouped using Bemis-Murcko scaffolds to avoid data leakage across structurally similar molecules.
+This outputs `data_curation/molecular/precomputed_blind.pkl` and `data_curation/molecular/precomputed_gta.pkl`. Cross-validation splits are scaffold-grouped using Bemis-Murcko scaffolds to avoid data leakage across structurally similar molecules.
 
 > [!NOTE]
-> Precomputation can be memory-intensive for large datasets. If you run into out-of-memory errors, <!-- TODO: describe chunking or batching options if available -->.
+> Precomputation can be memory-intensive for large datasets. If you run into out-of-memory errors, reduce batch size and/or number of nearest neighbors.
 
 ---
 
 ## 🏋️ Training
 
-QT-Net uses a repeated 5×5 scaffold-based cross-validation scheme, yielding 25 folds in total (indexed 0–24). The typical workflow is to first run hyperparameter optimisation (HPO) on fold 0, then train all folds using the best configuration found.
+QT-Net uses a repeated 5×5 scaffold-based cross-validation scheme, yielding 25 folds in total (indexed 0–24, with `repeat = fold // 5`). The typical workflow is to first run hyperparameter optimisation (HPO) on fold 0, then train all folds using the best configuration found.
+
+The training scripts read their hyperparameters from a JSON file in `optimal_hyperparams/` by default (override with `--optuna-file` or, equivalently, the relevant `--*-file` flag). Every training run also writes a `config.json` next to its checkpoints containing the full set of hyperparameters and the random seed actually used, so any individual fold can be reproduced from that file alone.
 
 ### ⚛️ Atomic models
 
 Run HPO for a given model architecture:
 
 ```bash
-python scripts/atomic/run_hpo.py --model-name TPaiNN --n-trials 100
+python scripts/atomic/run_hpo.py --model-name ScalarGNN --n-trials 100
 ```
 
-The best hyperparameter configuration is saved to `optimal_hyperparams/<model>_optuna.json`. You can then train a specific fold using that configuration:
+You can then train a specific fold using the saved configuration:
 
 ```bash
-python scripts/atomic/train_multitask.py --model-type ETNN --fold 0 --epochs 500
+python scripts/atomic/train_multitask.py --model-type SGNN --fold 0 --epochs 500
 ```
 
-Checkpoints and predictions are written to `experiments/atomic/<model>/fold_<n>/`, with `val_preds.pkl` and `test_preds.pkl` containing the held-out predictions for that fold. Training uses the AdamW optimizer with ReduceOnPlateau learning rate scheduling and Orbax for checkpoint management.
+Checkpoints and predictions are written to `experiments/atomic/<model_type>/fold_<n>/`:
+
+```
+checkpoints/    # periodic + best + final Orbax checkpoints
+loss/           # loss_history.json
+config.json     # full kwargs, seed, lr, wd, n_params
+val_preds.pkl   # un-regularized predictions on the val split
+test_preds.pkl  # un-regularized predictions on the held-out test set
+```
+
+Training uses the AdamW optimizer with ReduceOnPlateau learning rate scheduling and Orbax for checkpoint management.
 
 ### 🧪 Molecular models
 
 The molecular training pipeline mirrors the atomic one. Run HPO first:
 
 ```bash
-python scripts/molecular/jax/run_hpo_molecular.py --model-name ScalarTPaiNNMolecular --n-trials 50
+python scripts/molecular/jax/run_hpo_molecular.py \
+    --model-name ScalarGNNMolecular --use-atom-features --n-trials 50
 ```
 
-HPO outputs are saved as `optimal_hyperparams/<model>_blind_optuna.json` or `informed_optuna.json` depending on whether atom features are used. Train a fold with:
+Train a fold × fraction with:
 
 ```bash
-python scripts/molecular/jax/train_molecular_jax.py --model-type STNN_2 --fold 0 --fraction 1.0
+# informed (default)
+python scripts/molecular/jax/train_molecular_jax.py --fold 0 --fraction 1.0
+
+# blind
+python scripts/molecular/jax/train_molecular_jax.py --fold 0 --fraction 0.1 --blind
 ```
 
-The `--fraction` argument controls what fraction of the training data is used, which is useful for data efficiency experiments. <!-- TODO: clarify whether fraction applies to the full dataset or just the training split of the current fold -->
+The `--fraction` argument controls the fraction of the **training split of the current fold** that is actually used for training (val and test splits are unaffected), enabling data-efficiency experiments. Outputs land in `experiments/molecular/<variant>/fold_<n>/frac_<f>/` with the same `checkpoints/`, `loss/`, `config.json`, `val_preds.pkl`, `test_preds.pkl` layout as the atomic models.
 
 ### 📊 Baselines
 
@@ -142,47 +185,75 @@ XGBoost and ChemProp baselines follow the same HPO-then-train pattern:
 # XGBoost
 python scripts/molecular/xgboost/run_hpo_xgboost.py
 python scripts/molecular/xgboost/train_xgboost.py
+python scripts/molecular/xgboost/predict_xgboost.py
 
 # ChemProp
 python scripts/molecular/chemprop/run_hpo_chemprop.py
 python scripts/molecular/chemprop/train_chemprop.py
 ```
 
-> [!NOTE]
-> ChemProp baselines use its internal MPNN architecture and are trained using ChemProp's own trainer, not the JAX/Flax loop used by the GNN models. <!-- TODO: clarify whether ChemProp models also use the topological complex as input or operate on raw SMILES -->
-
 > [!WARNING]
 > XGBoost and ChemProp baselines are under active development and are not fully integrated in QT-Net yet.
 
 ---
 
-## 🔮 Inference and Ensembling
+## 🔮 QTAIM Inference Pipeline
 
-Once models are trained across all 25 folds, you can run inference on new molecules and ensemble the fold predictions for more robust estimates.
-
-For atomic properties:
+To run the *informed* molecular variant on QM9 molecules outside the AIM-labelled subset, QT-Net imputes per-atom AIM properties via an ensemble of atomic models. The full pipeline lives in `scripts/inference/`:
 
 ```bash
-python scripts/inference/infer_QTAIM_QM9.py  # <!-- TODO: document required input format -->
+# 1) Build the atomic-side topology cache for AIMEl
+python scripts/inference/precompute_complexes_aimel.py --cutoff 8.0 --max-neighbors 12
+
+# 2) Train 5 ensemble members (one per --member-idx; suited for SLURM job arrays)
+for i in 0 1 2 3 4; do
+  python scripts/inference/train_QTNet_ensemble.py \
+      --model-type SGN2 --ensemble-label qtnet_v1 --member-idx $i
+done
+
+# 3) Build the QM9 atomic-side topology cache
+python scripts/inference/precompute_complexes_QM9.py
+
+# 4) Run ensemble inference → qm9_inferred.pkl (per-atom N, LI, Mu, Q + ensemble stds)
+python scripts/inference/infer_QTAIM_QM9.py --model-type SGN2
+
+# 5) Build molecular complexes for QM9 (blind + informed)
+python scripts/inference/precompute_molecular_QM9.py
+
+# 6) Predict molecular properties on QM9 with trained molecular ensembles
+python scripts/inference/predict_from_inferred.py \
+    --variants informed blind --fractions 0.1 0.5 1.0
 ```
 
-For molecular properties, predictions from individual folds can be aggregated with:
+Step 6 selects 5 folds per `(variant, fraction)` — one per repeat, the best by `best_val_so_far` from `loss_history.json` — and writes ensemble-averaged predictions to `data_curation/molecular/qm9_molecular_preds.pkl` with `{variant}_{fraction}_pred_{prop}` and `{variant}_{fraction}_std_{prop}` columns.
 
-```bash
-python scripts/inference/predict_from_inferred.py
-python scripts/inference/train_QTNet_ensemble.py
-```
+Ensemble outputs land in `experiments/inference/<model_type>/model_<i>/` (`config.json`, `stats.json`, `checkpoints/`, `loss/`) — mirroring the atomic experiments layout but indexed by ensemble member instead of fold. Per-atom denormalisation must use **each member's own** `stats.json`; predictions are denormalised *before* averaging across members.
 
-<!-- TODO: describe the ensembling strategy (mean, weighted average, stacking?) and the expected input/output format for inference scripts -->
+An auxiliary script, `scripts/inference/molecule_dipoles_from_inferred.py`, recomputes molecular dipole moments from the inferred per-atom dipoles for downstream analysis.
 
 ---
 
 ## 📈 Evaluation and Analysis
 
-After training, the `analyze_CV_experiments.ipynb` notebook aggregates results across all 25 folds and computes summary statistics. The `visualize_molecules.ipynb` notebook provides tools for inspecting the cell complex representations of individual molecules.
+The `analysis/` directory contains the libraries and notebooks used to aggregate fold-level results across the 25 folds, run RM-ANOVA + Tukey HSD model comparisons, and produce the figures and tables in the paper.
 
-> [!WARNING]
-> The automated test suite (`pytest tests/`) is currently empty. There are no unit or integration tests in place. <!-- TODO: add tests covering at minimum data loading, complex precomputation, and a single forward pass for each model family -->
+```
+analysis/
+├── atomic/
+│   ├── result_analysis.py       # canonical RM-ANOVA + Tukey HSD; LaTeX tables
+│   ├── tmp_plot_cell_updated.py # forest plots, parity plots, box plots
+│   ├── analyze_CV_augmented.ipynb
+│   └── analyze_CV_nonaug.ipynb
+├── molecular/
+│   ├── analysis_molecular.py
+│   └── analyze_molecular_training_fracs.ipynb
+└── inference/
+    ├── analyse_inference.py
+    └── inference_results.ipynb
+```
+
+The 5×5 CV convention used throughout: 25 folds → repeat-level mean (5 folds per repeat) → RM-ANOVA on the 5 repeat-level means per model. See `analysis/atomic/result_analysis.py` for the canonical Tukey HSD implementation; the molecular and inference analyses reuse it.
+
 
 ---
 
@@ -190,18 +261,27 @@ After training, the `analyze_CV_experiments.ipynb` notebook aggregates results a
 
 ```
 QT-Net/
-├── src/qtnet/              # Core package: models, data utilities, topological representations
-├── scripts/            # Training, HPO, and inference entry points
+├── src/qtnet/             # Core package: models, data utilities, topological representations
+│   ├── jax_models/        # JAX/Flax model families (equivariant, scalar, molecular, inference)
+│   ├── chemprop_models/
+│   ├── xgb_models/
+│   └── data_utils.py
+├── scripts/               # Training, HPO, and inference entry points
+│   ├── atomic/
+│   ├── molecular/{jax,xgboost,chemprop}/
+│   └── inference/
+├── data_curation/         # Datasets and preprocessing notebooks
+│   ├── atomic/
+│   └── molecular/
+├── analysis/              # Analysis libraries and notebooks
 │   ├── atomic/
 │   ├── molecular/
-│   │   ├── jax/
-│   │   ├── xgboost/
-│   │   └── chemprop/
 │   └── inference/
-├── data_curation/      # Preprocessing notebooks and scripts
-├── notebooks/          # Analysis and visualisation notebooks
-├── experiments/        # Output directory: logs, checkpoints, predictions
-└── optimal_hyperparams/ # Saved Optuna HPO results
+├── experiments/           # Output: logs, checkpoints, predictions
+│   ├── atomic/<model>/fold_<n>/
+│   ├── molecular/<variant>/fold_<n>/frac_<f>/
+│   └── inference/<model_type>/model_<i>/
+└── optimal_hyperparams/   # Saved Optuna HPO results (gitignored; created on first HPO run)
 ```
 
 ---

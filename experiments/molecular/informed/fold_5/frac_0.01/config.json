@@ -1,0 +1,52 @@
+{
+  "model_class": "ScalarGNNMolecular",
+  "model_kwargs": {
+    "num_node_scalars": 16,
+    "num_edge_scalars": 16,
+    "num_complex_scalars": 32,
+    "embedding_dim": 32,
+    "hidden_dim": 32,
+    "num_layers": 5
+  },
+  "variant": "informed",
+  "use_atom_features": true,
+  "fold": 5,
+  "fraction": 0.01,
+  "n_splits": 5,
+  "n_repeats": 5,
+  "group_col": "Murcko_Scaffold",
+  "base_seed": 42,
+  "seed": 47,
+  "epochs": 2000,
+  "batch_size": 4096,
+  "learning_rate": 0.001943422511432045,
+  "weight_decay": 7.659335858120416e-06,
+  "n_params": 165163,
+  "n_train": 221,
+  "n_val": 2459,
+  "n_test": 6215,
+  "target_columns": [
+    "alpha",
+    "gap",
+    "U0",
+    "Cv"
+  ],
+  "norm_stats": {
+    "alpha": {
+      "mean": 74.38402714932128,
+      "std": 7.088098531739172
+    },
+    "gap": {
+      "mean": 0.25326968325791854,
+      "std": 0.048976933663934026
+    },
+    "U0": {
+      "mean": -404.4725763031674,
+      "std": 36.38408014008383
+    },
+    "Cv": {
+      "mean": 29.99996380090498,
+      "std": 3.598751825921312
+    }
+  }
+}

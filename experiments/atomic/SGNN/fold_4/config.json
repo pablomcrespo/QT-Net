@@ -1,0 +1,22 @@
+{
+  "model_type": "SGNN",
+  "model_class": "ScalarGNN",
+  "model_kwargs": {
+    "num_node_scalars": 32,
+    "num_edge_scalars": 32,
+    "embedding_dim": 32,
+    "hidden_dim": 64,
+    "geometric_filter_dim": 32,
+    "num_layers": 7
+  },
+  "lr": 0.005495716186411619,
+  "weight_decay": 0.000906226347126195,
+  "fold": 4,
+  "seed": 46,
+  "epochs": 3000,
+  "batch_size": 1024,
+  "n_params": 677089,
+  "cutoff": 5.25,
+  "max_neighbors": 5,
+  "fully_connected": false
+}

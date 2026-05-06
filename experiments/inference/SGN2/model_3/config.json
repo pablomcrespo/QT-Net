@@ -1,0 +1,38 @@
+{
+  "model_type": "SGN2",
+  "model_class": "SGNN_v2",
+  "model_kwargs": {
+    "num_node_scalars": 32,
+    "num_edge_scalars": 32,
+    "embedding_dim": 32,
+    "hidden_dim": 64,
+    "geometric_filter_dim": 32,
+    "num_layers": 7
+  },
+  "lr": 0.0038322168504927897,
+  "weight_decay": 0.00011423254155608379,
+  "ensemble_label": "scalar_qtnet",
+  "member_idx": 3,
+  "ensemble_size": 5,
+  "seed": 45,
+  "epochs": 2000,
+  "batch_size": 256,
+  "n_params": 686049,
+  "cutoff": 8.0,
+  "max_neighbors": 12,
+  "fully_connected": false,
+  "max_dim": 1,
+  "rotate_every": 1,
+  "augmentation_key": [
+    0,
+    7822
+  ],
+  "element_weights": {
+    "H": 0.5139054504321341,
+    "C": 0.6070371756973677,
+    "N": 1.5361103769979785,
+    "O": 1.3429469968725192
+  },
+  "n_train": 24857,
+  "n_val": 5955
+}

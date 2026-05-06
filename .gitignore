@@ -160,8 +160,14 @@ cython_debug/
 #.idea/
 
 
-# Custom files
+# Large data files — stored compressed; run scripts/setup_data.sh to restore
+data_curation/molecular/qm9_inferred.pkl.gz
+# Allow compressed data files inside data_curation (overrides data/ rule above)
+!data_curation/atomic/data/
 
+# Custom files
+.claude/
+CLAUDE.md
 lightning_logs/
 *slurm*.out
 .DS_Store
