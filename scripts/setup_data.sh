@@ -42,6 +42,7 @@ decompress "$REPO_ROOT/data_curation/molecular/aimel_clustered_molecular.pkl.gz"
 decompress "$REPO_ROOT/data_curation/atomic/data/aimel_dataset_with_components.csv.gz"
 decompress "$REPO_ROOT/data_curation/molecular/qm9_filtered.pkl.gz"
 decompress "$REPO_ROOT/data_curation/atomic/cluster_analysis/train_and_val.pkl.gz"
+decompress "$REPO_ROOT/data_curation/atomic/cluster_analysis/test.pkl.gz"
 
 # Split archive: qm9_inferred.pkl.gz.part{aa,ab,ac}
 reassemble_and_decompress "$REPO_ROOT/data_curation/molecular/qm9_inferred.pkl.gz.part"
