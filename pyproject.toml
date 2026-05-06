@@ -10,7 +10,7 @@ authors = [
   { name = "Pablo Martínez Crespo", email = "pabloma@chalmers.se" },
   { name = "Stefano Ribes", email = "ribes.stefano@gmail.com" },
 ]
-description = "A a Python package for topological data analysis and machine learning on molecular systems."
+description = "A a Python package for learning atomic properties with thorough OOD evaluation."
 readme = "README.md"
 requires-python = ">=3.10"
 keywords = ["python", "packaging"]
