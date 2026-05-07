@@ -1,6 +1,6 @@
 <h1><p align="center">QT-Net</p></h1>
 
-QT-Net (pronounced *cutie-net* — we didn't choose the name, but we're not complaining) is a Python package for learning per-atom properties from the quantum theory of atoms in molecules (QTAIM) — and any other atomic-level scalar/vector/tensor target — from molecular geometry. Molecules are represented as *topological cell complexes* (0-cells for atoms, 1-cells for edges, 2-cells for higher-order relations), and the models perform message passing across this hierarchy.
+QT-Net (pronounced *cutie-net*) is a Python package for learning per-atom properties from the quantum theory of atoms in molecules (QTAIM) — and any other atomic-level scalar/vector/tensor target — from molecular geometry. Molecules are represented as *topological cell complexes* (0-cells for atoms, 1-cells for edges, 2-cells for higher-order relations), and the models perform message passing across this hierarchy.
 
 The package is built around two concerns that go beyond raw predictive performance:
 
