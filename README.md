@@ -80,6 +80,9 @@ This will install all required dependencies, including JAX, Flax, ChemProp, XGBo
 
 ## 🗄️ Data Preparation
 
+The script `scripts/setup_data.sh` decompresses all the necessary data files for replicating
+the experiments in the paper.
+
 Before training, you need to precompute topological representations from the raw datasets. These precomputation steps cache the cell complexes and geometric encodings to disk so that training runs do not need to recompute them every epoch.
 
 Raw and curated data live in `data_curation/`:
