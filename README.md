@@ -59,7 +59,7 @@ QT-Net uses [`uv`](https://github.com/astral-sh/uv) for environment and dependen
 Start by cloning the repository and entering the project directory:
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/pablomcrespo/QT-Net.git
 cd QT-Net
 ```
 
