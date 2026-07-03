@@ -3,6 +3,7 @@ from typing import Optional, Dict
 import jax.numpy as jnp
 import jax
 import flax.nnx as nnx
+from qtnet.jax_models.dynamic_activations import activation
 
 
 class ChemicalEmbedding(nnx.Module):
@@ -115,7 +116,7 @@ class ScalarGatedResidual(nnx.Module):
         self.norm = nnx.LayerNorm(num_features=num_features, rngs=rngs)
         self.gate_mlp = nnx.Sequential(
             nnx.Linear(num_features, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_features, rngs=rngs),
             nnx.sigmoid,
         )
@@ -161,7 +162,7 @@ class ScalarDualChannelNodeUpdate(nnx.Module):
         # Shared gate backbone
         self.gate_backbone = nnx.Sequential(
             nnx.Linear(num_node_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
         )
         # Separate heads → per-feature sigmoid gates
         self.gate_edge_head = nnx.Sequential(
@@ -234,16 +235,16 @@ class ScalarNodeEncoder(nnx.Module):
         mlp_input_dim = 2 * embedding_dim
         self.mlp = nnx.Sequential(
             nnx.Linear(mlp_input_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_scalar_out, rngs=rngs),
         )
         
         # Geometric gate: tanh-bounded, sign-sensitive to r_ij
         self.r_gate = nnx.Sequential(
             nnx.Linear(3, self.geometric_filter_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(self.geometric_filter_dim, num_scalar_out, rngs=rngs),
             jnp.tanh,
         )
@@ -325,7 +326,7 @@ class ScalarEdgeEncoder(nnx.Module):
         # Inner MLP (per-node)
         self.inner_mlp = nnx.Sequential(
             nnx.Linear(num_node_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
         )
         
@@ -335,14 +336,14 @@ class ScalarEdgeEncoder(nnx.Module):
         # Outer MLP (after aggregation)
         self.outer_mlp = nnx.Sequential(
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_scalar_out, rngs=rngs),
         )
         
         # Geometric gate: tanh-bounded
         self.geo_gate = nnx.Sequential(
             nnx.Linear(5, self.geometric_filter_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(self.geometric_filter_dim, num_scalar_out, rngs=rngs),
             jnp.tanh,
         )
@@ -422,7 +423,7 @@ class ScalarBagEncoder(nnx.Module):
         # Inner MLP (per edge)
         self.inner_mlp = nnx.Sequential(
             nnx.Linear(num_edge_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
         )
         
@@ -432,7 +433,7 @@ class ScalarBagEncoder(nnx.Module):
         # Outer MLP (after aggregation)
         self.outer_mlp = nnx.Sequential(
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_bag_scalars, rngs=rngs),
         )
     
@@ -485,9 +486,9 @@ class ScalarEdgeCoboundaryMessages(nnx.Module):
         # Message MLP on [receiver_edge, sender_bag]
         self.message_mlp = nnx.Sequential(
             nnx.Linear(num_edge_scalars + num_bag_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_edge_scalars, rngs=rngs),
         )
     
@@ -545,9 +546,9 @@ class ScalarEdgeFFN(nnx.Module):
         
         self.mlp = nnx.Sequential(
             nnx.Linear(num_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_scalars, rngs=rngs),
         )
     
@@ -587,9 +588,9 @@ class ScalarNodeCoboundaryMessages(nnx.Module):
         # Message MLP on [receiver_node, sender_edge]
         self.message_mlp = nnx.Sequential(
             nnx.Linear(num_node_scalars + num_edge_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_node_scalars, rngs=rngs),
         )
     
@@ -650,9 +651,9 @@ class ScalarNodeBoundaryMessages(nnx.Module):
         # Message MLP on [receiver_node, sender_bag]
         self.message_mlp = nnx.Sequential(
             nnx.Linear(num_node_scalars + num_bag_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_node_scalars, rngs=rngs),
         )
     
@@ -707,14 +708,14 @@ class ScalarChemicalReminder(nnx.Module):
         self.norm = nnx.LayerNorm(num_features=num_scalars, rngs=rngs)
         self.mlp = nnx.Sequential(
             nnx.Linear(num_scalars + embedding_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_scalars, rngs=rngs),
         )
         self.gate_mlp = nnx.Sequential(
             nnx.Linear(num_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_scalars, rngs=rngs),
             nnx.sigmoid,
         )
@@ -767,16 +768,16 @@ class ScalarNodeUpMessages(nnx.Module):
         mlp_input_dim = 2 * num_scalars + num_edge_scalars
         self.message_mlp = nnx.Sequential(
             nnx.Linear(mlp_input_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_scalars, rngs=rngs),
         )
         
         # Geometric gate: tanh-bounded, sign-sensitive
         self.r_gate = nnx.Sequential(
             nnx.Linear(3, self.geometric_filter_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(self.geometric_filter_dim, num_scalars, rngs=rngs),
             jnp.tanh,
         )
@@ -854,7 +855,7 @@ class ScalarEdgeBoundaryMessages(nnx.Module):
         
         self.message_mlp = nnx.Sequential(
             nnx.Linear(num_node_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
         )
         
@@ -863,14 +864,14 @@ class ScalarEdgeBoundaryMessages(nnx.Module):
         
         self.output_mlp = nnx.Sequential(
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_edge_scalars, rngs=rngs),
         )
         
         # Geometric gate: tanh-bounded
         self.geo_gate = nnx.Sequential(
             nnx.Linear(5, self.geometric_filter_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(self.geometric_filter_dim, num_edge_scalars, rngs=rngs),
             jnp.tanh,
         )
@@ -939,16 +940,16 @@ class ScalarEdgeDownMessages(nnx.Module):
         # Message MLP: takes [edge_receiver, edge_sender, node_intermediary]
         self.message_mlp = nnx.Sequential(
             nnx.Linear(2 * num_edge_scalars + num_node_scalars, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_edge_scalars, rngs=rngs),
         )
         
         # Geometric gate: tanh-bounded, on relative gyration tensor ΔG
         self.geo_gate = nnx.Sequential(
             nnx.Linear(5, self.geometric_filter_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(self.geometric_filter_dim, num_edge_scalars, rngs=rngs),
             jnp.tanh,
         )
@@ -1030,9 +1031,9 @@ class ScalarAtomicHead(nnx.Module):
         # Shared backbone
         self.backbone = nnx.Sequential(
             nnx.Linear(num_scalars_in, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=rngs),
-            nnx.silu,
+            activation(),
         )
         
         # Output heads

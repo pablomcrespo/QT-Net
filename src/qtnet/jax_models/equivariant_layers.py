@@ -3,6 +3,7 @@ from typing import Optional, Dict, List, Tuple
 import jax.numpy as jnp
 import jax
 import flax.nnx as nnx
+from qtnet.jax_models.dynamic_activations import activation
 
 from qtnet.jax_models.base_cochain import BaseCochainTensorProduct, EquivariantMessageLayer
 from qtnet.jax_models.layer_utils import (
@@ -234,30 +235,30 @@ class EquivariantNodeEncoder(BaseCochainTensorProduct):
         omega_input_dim = 2 * embedding_dim
         self.omega_mlp = nnx.Sequential(
             nnx.Linear(omega_input_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, message_dim, rngs=self.rngs),
         )
         
         # === Distance-based geometric filters (RBF input) ===
         self.gamma_scalar = nnx.Sequential(
             nnx.Linear(geo_basis_dim, geometric_filter_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(geometric_filter_dim, num_scalar_out, rngs=self.rngs),
             nnx.sigmoid,
         )
         
         self.gamma_vector = nnx.Sequential(
             nnx.Linear(geo_basis_dim, geometric_filter_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(geometric_filter_dim, num_vector_out, rngs=self.rngs),
             nnx.sigmoid,
         )
         
         self.gamma_tensor = nnx.Sequential(
             nnx.Linear(geo_basis_dim, geometric_filter_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(geometric_filter_dim, num_tensor_out, rngs=self.rngs),
             nnx.sigmoid,
         )
@@ -433,12 +434,12 @@ class EquivariantEdgeEncoder(BaseCochainTensorProduct):
         # === L=0 path: inner MLP → aggregate → outer MLP ===
         self.scalar_node_mlp = nnx.Sequential(
             nnx.Linear(mlp_input_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=self.rngs),
         )
         self.scalar_edge_mlp = nnx.Sequential(
             nnx.Linear(hidden_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_scalar_out, rngs=self.rngs),
         )
         self.agg_norm = nnx.LayerNorm(num_features=hidden_dim, rngs = self.rngs)
@@ -446,7 +447,7 @@ class EquivariantEdgeEncoder(BaseCochainTensorProduct):
         # === L=1 path: per-node gate × channel-wise linear ===
         self.phi_l1 = nnx.Sequential(
             nnx.Linear(mlp_input_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_l1_out, rngs=self.rngs),
         )
         self.W_l1 = nnx.Linear(self.num_node_l1_channels, num_l1_out, rngs=self.rngs)
@@ -454,7 +455,7 @@ class EquivariantEdgeEncoder(BaseCochainTensorProduct):
         # === L=2 path: per-node gate × channel-wise linear ===
         self.phi_l2 = nnx.Sequential(
             nnx.Linear(mlp_input_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_l2_out, rngs=self.rngs),
         )
         self.W_l2 = nnx.Linear(self.num_node_l2_channels, num_l2_out, rngs=self.rngs)
@@ -462,19 +463,19 @@ class EquivariantEdgeEncoder(BaseCochainTensorProduct):
         # === Geometric gates (RBF of edge distance) ===
         self.scalar_geo_gate = nnx.Sequential(
             nnx.Linear(geo_basis_dim, geometric_filter_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(geometric_filter_dim, num_scalar_out, rngs=self.rngs),
             nnx.sigmoid,
         )
         self.l1_geo_gate = nnx.Sequential(
             nnx.Linear(geo_basis_dim, geometric_filter_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(geometric_filter_dim, num_l1_out, rngs=self.rngs),
             nnx.sigmoid,
         )
         self.l2_geo_gate = nnx.Sequential(
             nnx.Linear(geo_basis_dim, geometric_filter_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(geometric_filter_dim, num_l2_out, rngs=self.rngs),
             nnx.sigmoid,
         )
@@ -621,12 +622,12 @@ class EquivariantBagEncoder(BaseCochainTensorProduct):
         # === L=0 path: inner MLP → aggregate → outer MLP ===
         self.scalar_inner_mlp = nnx.Sequential(
             nnx.Linear(mlp_input_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=self.rngs),
         )
         self.scalar_outer_mlp = nnx.Sequential(
             nnx.Linear(hidden_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, num_scalar_out, rngs=self.rngs),
         )
         self.agg_norm = nnx.LayerNorm(num_features=hidden_dim, rngs = self.rngs)
@@ -635,7 +636,7 @@ class EquivariantBagEncoder(BaseCochainTensorProduct):
         if self.edge_info.num_l1 > 0 and num_l1_out > 0:
             self.phi_l1 = nnx.Sequential(
                 nnx.Linear(mlp_input_dim, hidden_dim, rngs=self.rngs),
-                nnx.silu,
+                activation(),
                 nnx.Linear(hidden_dim, num_l1_out, rngs=self.rngs),
             )
             self.W_l1 = nnx.Linear(self.edge_info.num_l1, num_l1_out, rngs=self.rngs)
@@ -644,7 +645,7 @@ class EquivariantBagEncoder(BaseCochainTensorProduct):
         if self.edge_info.num_l2 > 0 and num_l2_out > 0:
             self.phi_l2 = nnx.Sequential(
                 nnx.Linear(mlp_input_dim, hidden_dim, rngs=self.rngs),
-                nnx.silu,
+                activation(),
                 nnx.Linear(hidden_dim, num_l2_out, rngs=self.rngs),
             )
             self.W_l2 = nnx.Linear(self.edge_info.num_l2, num_l2_out, rngs=self.rngs)
@@ -799,7 +800,7 @@ class EquivariantGatedResidual(BaseCochainTensorProduct):
         
         self.gate_mlp = nnx.Sequential(
             nnx.Linear(self.x_info.num_instances, gate_hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(gate_hidden_dim, self.x_info.num_instances, rngs=self.rngs),
             nnx.sigmoid,
         )
@@ -865,9 +866,9 @@ class EquivariantFFN(BaseCochainTensorProduct):
         
         self.mlp = nnx.Sequential(
             nnx.Linear(self.x_info.num_instances, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, mlp_output_dim, rngs=self.rngs),
         )
     
@@ -1057,7 +1058,7 @@ class EquivariantDualChannelUpdate(BaseCochainTensorProduct):
         # Shared gate backbone
         self.gate_backbone = nnx.Sequential(
             nnx.Linear(self.x_info.num_instances, gate_hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
         )
         
         # Separate sigmoid heads for message and geometry channels
@@ -1157,16 +1158,16 @@ class ChemicalReminder(BaseCochainTensorProduct):
         
         self.mlp = nnx.Sequential(
             nnx.Linear(mlp_input_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, mlp_output_dim, rngs=self.rngs),
         )
         
         # Sigmoid gate on un-normed features (for gated residual)
         self.gate_mlp = nnx.Sequential(
             nnx.Linear(self.x_info.num_instances, hidden_dim, rngs=self.rngs),
-            nnx.silu,
+            activation(),
             nnx.Linear(hidden_dim, self.x_info.num_instances, rngs=self.rngs),
             nnx.sigmoid,
         )
@@ -1501,9 +1502,9 @@ class NodeHead(BaseCochainTensorProduct):
             if use_mlp:
                 self.scalar_mlp = nnx.Sequential(
                     nnx.Linear(self.num_l0_in, hidden_dim, rngs=self.rngs),
-                    nnx.silu,
+                    activation(),
                     nnx.Linear(hidden_dim, hidden_dim, rngs=self.rngs),
-                    nnx.silu,
+                    activation(),
                     nnx.Linear(hidden_dim, num_scalar_out, rngs=self.rngs),
                 )
             else:
