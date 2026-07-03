@@ -222,3 +222,5 @@ optimal_hyperparams/*
 setup_env_slurm.sh
 experiments/
 optimal_hyperparams/
+# Reassembled/decompressed data artifacts from scripts/setup_data.sh
+data_curation/molecular/qm9_inferred.pkl.gz.*
