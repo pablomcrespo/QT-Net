@@ -146,8 +146,8 @@ def run_one(cls, dynamic, seed, args, train_batches, val_batches, weights):
     _, val_hist = train_multitask(
         model=model, optimizer=optimizer,
         train_batches=train_batches, val_batches=val_batches,
-        epochs=args.epochs, verbose=False, disable_saving=True,
-        element_weight_array=weights,
+        epochs=args.epochs, verbose=args.verbose, print_every=args.print_every,
+        disable_saving=True, element_weight_array=weights,
     )
     dt = time.perf_counter() - t0
 
@@ -210,6 +210,8 @@ def main():
     ap.add_argument("--lr", type=float, default=3e-3)
     ap.add_argument("--weight-decay", type=float, default=1e-4)
     ap.add_argument("--seeds", type=int, nargs="+", default=[0, 1, 2])
+    ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("--print-every", type=int, default=1)
     ap.add_argument("--out-dir", default=os.path.join(
         REPO_ROOT, "experiments", "learnable_activations"))
     args = ap.parse_args()
