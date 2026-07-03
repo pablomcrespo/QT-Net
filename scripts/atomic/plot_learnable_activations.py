@@ -72,6 +72,7 @@ def main():
     fig, axes = plt.subplots(1, n, figsize=(6.2 * n, 4.4), squeeze=False)
     for ax, (m, s) in zip(axes[0], summaries.items()):
         runs = s["runs"]
+        tail_max = 0.0  # y-limit that focuses on the informative region
         for dyn, color, lab in [(False, SILU_C, "static SiLU"),
                                 (True, DYN_C, "soft dynActivation")]:
             mean, std = curves(runs, dyn)
@@ -80,6 +81,11 @@ def main():
             x = np.arange(1, len(mean) + 1)
             ax.plot(x, mean, color=color, lw=2, label=lab)
             ax.fill_between(x, mean - std, mean + std, color=color, alpha=0.18)
+            # skip the first few epochs (huge initial loss) when setting ylim
+            if len(mean) > 10:
+                tail_max = max(tail_max, float(np.max((mean + std)[10:])))
+        if tail_max > 0:
+            ax.set_ylim(top=tail_max * 1.05)
         ax.set_title(f"{m}  (max_neighbors={s['max_neighbors']})")
         ax.set_xlabel("epoch")
         ax.set_ylabel("validation loss (total)")
