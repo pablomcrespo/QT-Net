@@ -848,6 +848,210 @@ def train_molecular_multitask(
 
 
 # ═══════════════════════════════════════════════════════════════════════
+# 5b. Molecular training with per-epoch SO(3) augmentation + exact resume
+# ═══════════════════════════════════════════════════════════════════════
+
+TRAIN_STATE_DIR = "train_state"             # orbax: params + Adam moments + scheduler
+TRAIN_STATE_META = "train_state_meta.json"  # loop bookkeeping orbax cannot hold
+
+
+def save_train_state(optimizer: nnx.Optimizer, checkpoint_dir: Optional[str],
+                     meta: Dict) -> None:
+    """Persist everything a resume needs.
+
+    ``nnx.state(optimizer)`` holds the model parameters, Adam's moments and the
+    ReduceOnPlateau state (``scale`` IS the current learning-rate multiplier).
+    Saving only the model would restart the LR schedule at scale 1.0 on resume,
+    which is indistinguishable from undertraining.  ``meta`` carries the epoch,
+    the best validation loss and the loss histories.
+    """
+    if not checkpoint_dir:
+        return
+    save_state_checkpoint(nnx.state(optimizer), checkpoint_dir, TRAIN_STATE_DIR)
+    with open(os.path.join(checkpoint_dir, TRAIN_STATE_META), 'w') as f:
+        json.dump(meta, f)
+
+
+def load_train_state(optimizer: nnx.Optimizer,
+                     checkpoint_dir: Optional[str]) -> Optional[Dict]:
+    """Restore optimizer + scheduler state in place; return the loop meta or None."""
+    if not checkpoint_dir:
+        return None
+    meta_p = os.path.join(checkpoint_dir, TRAIN_STATE_META)
+    state_p = os.path.join(checkpoint_dir, TRAIN_STATE_DIR)
+    if not (os.path.exists(meta_p) and os.path.exists(state_p)):
+        return None
+    ref = _state_to_numpy(nnx.state(optimizer))
+    nnx.update(optimizer, _CHECKPOINTER.restore(os.path.abspath(state_p), item=ref))
+    with open(meta_p) as f:
+        meta = json.load(f)
+    print(f"  resumed from epoch {meta['epoch']} (best_val {meta['best_val']:.5f}, "
+          f"lr_scale {get_lr_scale(optimizer):.4f})")
+    return meta
+
+
+def train_molecular_multitask_augmented(
+    model: nnx.Module,
+    optimizer: nnx.Optimizer,
+    train_batches: List,
+    train_targets: np.ndarray,
+    val_batches: Optional[List],
+    val_targets: Optional[np.ndarray],
+    target_names: List[str],
+    epochs: int = 200,
+    rotation_seed: int = 0,
+    rotate_every: int = 1,
+    save_every: int = 100,
+    checkpoint_dir: Optional[str] = None,
+    loss_dir: Optional[str] = None,
+    verbose: bool = True,
+    print_every: int = 10,
+    resume: bool = False,
+) -> Tuple[Dict[str, List[float]], Optional[Dict[str, List[float]]]]:
+    """``train_molecular_multitask`` with a fresh SO(3) rotation of the training
+    batches every ``rotate_every`` epochs (``augment_molecular_batches``) and
+    resumable optimizer / scheduler state.
+
+    Needed by scalar models that read frame-dependent inputs (positions, edge
+    gyration tensors, the Mu / Q components of the informed variant).  The
+    rotation key is ``fold_in(PRNGKey(rotation_seed), epoch)`` on the ABSOLUTE
+    epoch, so it is deterministic.  Validation batches are never rotated.
+    Writes the same artifacts as ``train_molecular_multitask``
+    (``model_best_so_far``, ``model_epoch{N}``, ``loss_history.json``) plus the
+    ``train_state`` needed by ``resume``.
+
+    A resumed run is statistically equivalent to an uninterrupted one but not
+    bit-identical: the batches are rotated in place and compounding, and a
+    resumed job rebuilds them in the stored frame.  Orientations are uniform on
+    SO(3) either way.
+    """
+    from qtnet.jax_models.augmentation import augment_molecular_batches
+
+    loss_keys = ['total'] + list(target_names)
+    has_plateau = isinstance(optimizer.tx, optax.GradientTransformationExtraArgs)
+
+    @functools.partial(nnx.jit, static_argnames=('num_graphs',))
+    def _train_step(model, optimizer, batch, batch_targets, num_graphs):
+        graph_idx = batch.cochain_batches[0].owner_cochains
+
+        def loss_fn(model):
+            output = model(batch, graph_idx=graph_idx, num_graphs=num_graphs)
+            return compute_molecular_multitask_loss(
+                output['predictions'], batch_targets, target_names, None)
+
+        grads, losses = nnx.grad(loss_fn, has_aux=True)(model)
+        if has_plateau:
+            optimizer.update(grads, value=losses['total'])
+        else:
+            optimizer.update(grads)
+        return losses
+
+    @functools.partial(nnx.jit, static_argnames=('num_graphs',))
+    def _val_step(model, batch, batch_targets, num_graphs):
+        graph_idx = batch.cochain_batches[0].owner_cochains
+        output = model(batch, graph_idx=graph_idx, num_graphs=num_graphs)
+        _, losses = compute_molecular_multitask_loss(
+            output['predictions'], batch_targets, target_names, None)
+        return losses
+
+    train_history: Dict[str, List[float]] = {k: [] for k in loss_keys}
+    val_history: Optional[Dict[str, List[float]]] = (
+        {k: [] for k in loss_keys} if val_batches is not None else None)
+    best_val_loss, best_state = float('inf'), None
+    rot_key = jax.random.PRNGKey(int(rotation_seed))
+
+    start_epoch = 0
+    if resume:
+        meta = load_train_state(optimizer, checkpoint_dir)
+        if meta is not None:
+            start_epoch = int(meta['epoch'])
+            best_val_loss = float(meta['best_val'])
+            train_history = {k: list(v) for k, v in meta['train_history'].items()}
+            if meta.get('val_history'):
+                val_history = {k: list(v) for k, v in meta['val_history'].items()}
+            if start_epoch >= epochs:
+                print(f"  already at epoch {start_epoch} >= {epochs}; nothing to do")
+                return train_history, val_history
+            best_path = os.path.join(checkpoint_dir, 'model_best_so_far')
+            if os.path.exists(best_path):
+                best_state = _CHECKPOINTER.restore(
+                    os.path.abspath(best_path), item=_state_to_numpy(nnx.state(model)))
+
+    def _meta(epoch):
+        return {'epoch': epoch, 'best_val': best_val_loss,
+                'train_history': train_history, 'val_history': val_history,
+                'rotation_seed': int(rotation_seed), 'epochs_target': epochs}
+
+    if verbose:
+        print(f"Molecular multitask training (SO(3)-augmented): {epochs - start_epoch} epochs, "
+              f"{len(train_batches)} batches/epoch, properties={target_names}")
+
+    for epoch in range(start_epoch, epochs):
+        if epoch % rotate_every == 0:
+            augment_molecular_batches(train_batches, jax.random.fold_in(rot_key, epoch))
+
+        epoch_losses: Dict[str, List] = {k: [] for k in loss_keys}
+        mol_idx = 0
+        for batch in train_batches:
+            n_mols = int(batch.num_complexes[0])
+            batch_targets = jnp.asarray(train_targets[mol_idx:mol_idx + n_mols])
+            mol_idx += n_mols
+            losses = _train_step(model, optimizer, batch, batch_targets, num_graphs=n_mols)
+            for k in loss_keys:
+                if k in losses:
+                    epoch_losses[k].append(float(losses[k]))
+        for k in loss_keys:
+            if epoch_losses[k]:
+                train_history[k].append(float(np.mean(epoch_losses[k])))
+
+        avg_val = None
+        if val_batches is not None and val_targets is not None:
+            vl: Dict[str, List] = {k: [] for k in loss_keys}
+            mol_idx = 0
+            for batch in val_batches:
+                n_mols = int(batch.num_complexes[0])
+                batch_targets_v = jnp.asarray(val_targets[mol_idx:mol_idx + n_mols])
+                mol_idx += n_mols
+                losses = _val_step(model, batch, batch_targets_v, num_graphs=n_mols)
+                for k in loss_keys:
+                    if k in losses:
+                        vl[k].append(float(losses[k]))
+            for k in loss_keys:
+                if vl[k]:
+                    val_history[k].append(float(np.mean(vl[k])))
+            avg_val = val_history['total'][-1]
+            if avg_val < best_val_loss:
+                best_val_loss = avg_val
+                best_state = jax.tree_util.tree_map(lambda x: x.copy(), nnx.state(model))
+
+        if checkpoint_dir and (epoch + 1) % save_every == 0:
+            save_checkpoint(model, checkpoint_dir, f"model_epoch{epoch + 1}")
+            if best_state is not None:
+                save_state_checkpoint(best_state, checkpoint_dir, "model_best_so_far")
+            save_train_state(optimizer, checkpoint_dir, _meta(epoch + 1))
+            if loss_dir:
+                _save_history(train_history, val_history, best_val_loss,
+                              loss_dir, verbose=False, lr_scale=get_lr_scale(optimizer))
+
+        if verbose and ((epoch + 1) % print_every == 0 or epoch == start_epoch):
+            parts = [f"{k}={train_history[k][-1]:.4f}" for k in loss_keys if train_history[k]]
+            msg = f"Epoch {epoch + 1}/{epochs}: " + ", ".join(parts)
+            if avg_val is not None:
+                msg += f" | Val total {avg_val:.4f}"
+            print(msg, flush=True)
+
+    if loss_dir:
+        _save_history(train_history, val_history, best_val_loss,
+                      loss_dir, verbose, lr_scale=get_lr_scale(optimizer))
+    if checkpoint_dir:
+        save_checkpoint(model, checkpoint_dir, f"model_epoch{epochs}")
+        if best_state is not None:
+            save_state_checkpoint(best_state, checkpoint_dir, "model_best_so_far")
+        save_train_state(optimizer, checkpoint_dir, _meta(epochs))
+    return train_history, val_history
+
+
+# ═══════════════════════════════════════════════════════════════════════
 # 6. Legacy I/O (text-file histories)
 # ═══════════════════════════════════════════════════════════════════════
 

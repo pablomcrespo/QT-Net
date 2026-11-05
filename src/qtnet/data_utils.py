@@ -159,6 +159,288 @@ def create_cv_splits(
                 }
 
 
+# ---------------------------------------------------------------------------
+# Environment x chemotype cross-validation (environment-holdout study)
+# ---------------------------------------------------------------------------
+
+def load_qm9_classification_frame(aimel_pkl: str, remainder_pkl: str,
+                                  order_file: str) -> pd.DataFrame:
+    """Whole QM9 (AIMEl ∪ remainder, 128,908 molecules) as the classifications saw it.
+
+    Joins ``aimel_clustered_molecular.pkl`` and ``qm9_filtered.pkl`` (or
+    ``qm9_inferred.pkl``) on the QM9 id, puts the rows in the order recorded in
+    ``order_file`` (``qm9_classification_order.json.gz``) and replaces the
+    geometry of the AIMEl molecules whose QTAIM structure is a different
+    conformer by their QM9 conformer.  Row order matters: it fixes HDBSCAN's
+    cluster numbering and k-means' initialisation.  All other AIMEl geometries
+    differ from QM9 only by a rigid rotation, to which SOAP is invariant.
+
+    Columns: ``index``, ``smiles``, ``atom``, ``position_x/y/z`` (Bohr),
+    ``in_aimel`` and the QM9 targets alpha, gap, U0, Cv.
+    """
+    import gzip
+    import json
+
+    with gzip.open(order_file, 'rt') as f:
+        spec = json.load(f)
+    cols = ['index', 'smiles', 'atom', 'position_x', 'position_y', 'position_z',
+            'alpha', 'gap', 'U0', 'Cv']
+    a = pd.read_pickle(aimel_pkl)
+    r = pd.read_pickle(remainder_pkl).rename(columns={'elements': 'atom'})
+    a = a.assign(index=a['index'].astype(np.int64), in_aimel=True)[cols + ['in_aimel']]
+    r = r.assign(index=r['index'].astype(np.int64), in_aimel=False)[cols + ['in_aimel']]
+    frame = pd.concat([a, r], ignore_index=True).set_index('index', drop=False)
+    order = np.asarray(spec['qm9_index'], dtype=np.int64)
+    if len(order) != len(frame) or set(order) != set(frame.index):
+        raise ValueError(f"order file lists {len(order)} ids; the frames hold {len(frame)} molecules")
+    frame = frame.loc[order].reset_index(drop=True)
+    pos = pd.Series(np.arange(len(frame)), index=frame['index'])
+    overrides = spec.get('geometry_overrides', {})
+    columns = {c: list(frame[c]) for c in ('position_x', 'position_y', 'position_z')}
+    for qid, geo in overrides.items():
+        i = int(pos.loc[int(qid)])
+        if list(map(str, frame['atom'].iloc[i])) != geo['atom']:
+            raise ValueError(f"atom order of override {qid} does not match the frame")
+        for c in columns:
+            columns[c][i] = np.asarray(geo[c], dtype=float)
+    for c, values in columns.items():
+        frame[c] = values
+    return frame
+
+
+def env_fold_masks(qm9_index, env_labels: pd.Series, env_folds: List[List[str]]) -> np.ndarray:
+    """(n_env_folds, n_molecules) bool: does molecule i carry an atom whose
+    environment label belongs to environment fold e?
+
+    ``qm9_index``  : QM9 ids of the frame's rows, in row order.
+    ``env_labels`` : per-molecule list of per-atom environment labels, indexed by
+                     QM9 id (the whole-QM9 6-Bohr classification).
+    ``env_folds``  : one list of environment labels per environment fold.
+
+    Joined on the QM9 id, never on a row position, so one label table serves
+    every frame (AIMEl, the remainder, ...).
+    """
+    ids = np.asarray(qm9_index, dtype=np.int64)
+    missing = [int(i) for i in ids if int(i) not in env_labels.index]
+    if missing:
+        raise KeyError(f"{len(missing)} molecules have no environment labels (e.g. {missing[:3]})")
+    labels = env_labels.loc[ids].to_numpy()
+    masks = np.zeros((len(env_folds), len(ids)), dtype=bool)
+    for e, fold_labels in enumerate(env_folds):
+        s = set(fold_labels)
+        masks[e] = [bool(s.intersection(lab)) for lab in labels]
+    return masks
+
+
+def _balanced_group_partition(group_ids: np.ndarray, is_block: np.ndarray,
+                              n_splits: int, rng: np.random.Generator) -> np.ndarray:
+    """Assign every molecule to one of ``n_splits`` folds, balancing MOLECULE counts.
+
+    Whole groups are placed largest-first into the currently smallest fold
+    (sklearn's GroupKFold balances the number of groups, which leaves very
+    uneven molecule counts when group sizes are skewed).  Singleton / noise
+    molecules (``is_block == False``) are then scattered to even out the folds.
+    """
+    n = len(group_ids)
+    fold_of = np.full(n, -1, dtype=int)
+    fold_sizes = np.zeros(n_splits, dtype=np.int64)
+    block_ids = np.unique(group_ids[is_block]) if is_block.any() else np.array([], dtype=object)
+    idx_by_group = {g: np.where(group_ids == g)[0] for g in block_ids}
+    block_ids = block_ids[rng.permutation(len(block_ids))]
+    order = sorted(range(len(block_ids)), key=lambda k: -len(idx_by_group[block_ids[k]]))
+    for k in order:
+        sel = idx_by_group[block_ids[k]]
+        f = int(np.argmin(fold_sizes))
+        fold_of[sel] = f
+        fold_sizes[f] += len(sel)
+    noise = np.where(~is_block)[0]
+    rng.shuffle(noise)
+    for i in noise:
+        f = int(np.argmin(fold_sizes))
+        fold_of[i] = f
+        fold_sizes[f] += 1
+    return fold_of
+
+
+def _stratified_subsample(pool: np.ndarray, group_ids: np.ndarray, n_target: int,
+                          rng: np.random.Generator) -> np.ndarray:
+    """Per-molecule subsample of ``pool`` of exactly ``n_target`` rows, stratified by group.
+
+    Every group present in ``pool`` contributes at least one molecule; the rest of
+    ``n_target`` is allocated proportionally to group size (largest remainder, ties
+    broken by the seeded rng).  Guarantees that a group which is in the training pool
+    is also in the training subsample at every fraction, so "chemotype seen" means
+    the same thing at frac 0.01 as at frac 1.0.
+    """
+    g = group_ids[pool]
+    groups, inverse, sizes = np.unique(g, return_inverse=True, return_counts=True)
+    if n_target < len(groups):
+        raise ValueError(f"n_target={n_target} cannot cover {len(groups)} groups with one molecule each")
+    quota = sizes * (n_target / len(pool))
+    alloc = np.minimum(np.maximum(1, np.floor(quota).astype(int)), sizes)
+    short = n_target - int(alloc.sum())
+    if short > 0:
+        rem = quota - np.floor(quota) + rng.random(len(groups)) * 1e-9
+        rem[alloc >= sizes] = -np.inf
+        for k in np.argsort(-rem)[:short]:
+            alloc[k] += 1
+    elif short < 0:           # the ">= 1 per group" floor overshot: trim the largest excesses
+        for _ in range(-short):
+            k = int(np.argmax(np.where(alloc > 1, alloc - quota, -np.inf)))
+            alloc[k] -= 1
+    picks = [rng.choice(pool[inverse == k], size=int(alloc[k]), replace=False)
+             for k in range(len(groups))]
+    return np.sort(np.concatenate(picks))
+
+
+def create_env_chemotype_cv_splits(
+    ds: pd.DataFrame,
+    env_masks: np.ndarray,
+    group_col: str,
+    n_splits: int = 5,
+    n_repeats: int = 5,
+    base_seed: int = 42,
+    training_fractions: Optional[List[float]] = None,
+    val_fraction: float = 0.1,
+    id_ref_frac: float = 0.03,
+    pool_cap: Any = 'min',
+):
+    """Repeated chemotype CV crossed with an atomic-environment holdout.
+
+    Chemotypes: the molecules of each repeat are partitioned into ``n_splits``
+    molecule-count-balanced folds of whole ``group_col`` groups (seed
+    ``base_seed + repeat``).  Environments: fold ``(repeat, cv_fold)`` reserves
+    environment fold ``(repeat + cv_fold) % n_env`` — a Latin square, so every
+    (chemotype fold, environment fold) combination of a repeat appears once and
+    every environment fold is reserved five times across the 25 folds.  EVERY
+    molecule carrying a reserved environment leaves the training pool, so the
+    reserved environments have zero atoms in train.  The test set is a 2x2:
+
+        A  held-out chemotype, seen environments
+        B  held-out chemotype, reserved environments   (both novel)
+        C  seen chemotype,     reserved environments   (environment novelty alone)
+        D  seen chemotype,     seen environments       (in-distribution reference,
+                                                        ``id_ref_frac`` of the frame,
+                                                        sampled per molecule)
+
+    Because the reserve rotates with the repeat while a molecule's chemotype is
+    held out once per repeat, the same molecule is scored both in B (its
+    environments unseen) and in A of another fold (seen): the molecule-matched
+    environment contrast needs no extra runs.
+
+    ``pool_cap`` equalises the training pools: ``'min'`` caps every fold's pool
+    (full_train_idx) at the smallest pool over all folds by a seeded
+    per-molecule subsample; an int caps at that size; None disables.  Applied
+    BEFORE the val carve and the fraction subsample, so val and every training
+    fraction are drawn from pools of identical size.  Fractions subsample the
+    trainable pool per molecule, STRATIFIED by ``group_col`` (every pool chemotype
+    keeps at least one molecule — ``_stratified_subsample``), with the seed
+    convention of ``create_cv_splits``.  Coherence with the test set therefore
+    holds at every fraction in both directions: a held-out chemotype or a
+    reserved environment never reaches train (it is purged from the pool), and a
+    chemotype the panels call "seen" (C, D) is always in train.  Environments the
+    panels call "seen" are guaranteed present in the POOL; at small fractions a
+    rare environment can be absent from the subsample by chance — score that from
+    the run's recorded training set, not from the panel label.
+
+    Yields the ``create_cv_splits`` keys plus ``panels`` ({'A','B','C','D'} →
+    row indices), ``env_fold`` and ``pool_size``.  ``test_idx`` = A∪B∪C∪D and
+    ``val_idx`` are identical for every training fraction of a fold.
+    """
+    if training_fractions is None:
+        training_fractions = [1.0]
+    env_masks = np.asarray(env_masks, dtype=bool)
+    n = len(ds)
+    if env_masks.shape[1] != n:
+        raise ValueError(f"env_masks has {env_masks.shape[1]} columns for {n} rows")
+    n_env = env_masks.shape[0]
+    group_ids = np.asarray(ds[group_col], dtype=object)
+    is_block = np.array([not (pd.isna(g) or str(g).startswith('_noise_')) for g in group_ids])
+    group_ids = np.array([g if b else f'_noise_{i}' for i, (g, b) in enumerate(zip(group_ids, is_block))],
+                         dtype=object)
+
+    # Pass 1: chemotype partitions, panels and uncapped pools for all folds.
+    folds = []
+    for repeat in range(n_repeats):
+        fold_of = _balanced_group_partition(group_ids, is_block, n_splits,
+                                            np.random.default_rng(base_seed + repeat))
+        for cv_fold in range(n_splits):
+            global_fold = repeat * n_splits + cv_fold
+            env_fold = (repeat + cv_fold) % n_env
+            novel = env_masks[env_fold]
+            in_test = fold_of == cv_fold
+            a_idx = np.where(in_test & ~novel)[0]
+            b_idx = np.where(in_test & novel)[0]
+            c_idx = np.where(~in_test & novel)[0]
+            d_pool = np.where(~in_test & ~novel)[0]
+            # D is drawn only from chemotypes with >= 2 molecules on the training side, so
+            # removing a D molecule can never empty its chemotype from train (D must be
+            # "chemotype seen" by construction, and tiny chemotypes exist).
+            _, inv, cnt = np.unique(group_ids[d_pool], return_inverse=True, return_counts=True)
+            d_cand = d_pool[cnt[inv] >= 2]
+            rng_d = np.random.default_rng(base_seed + global_fold * 100 + 11)
+            n_d = min(len(a_idx), int(id_ref_frac * n), max(0, len(d_cand) - 1))
+            d_idx = (np.sort(rng_d.choice(d_cand, size=n_d, replace=False))
+                     if n_d > 0 else np.array([], dtype=d_pool.dtype))
+            full_train_idx = np.setdiff1d(d_pool, d_idx, assume_unique=True)
+            folds.append(dict(repeat=repeat, cv_fold=cv_fold, fold=global_fold,
+                              env_fold=env_fold, novel=novel,
+                              panels={'A': a_idx, 'B': b_idx, 'C': c_idx, 'D': d_idx},
+                              full_train_idx=full_train_idx))
+
+    if pool_cap == 'min':
+        cap = min(len(f['full_train_idx']) for f in folds)
+    elif pool_cap is None:
+        cap = None
+    else:
+        cap = int(pool_cap)
+
+    # Pass 2: cap, carve val, subsample fractions.
+    for f in folds:
+        global_fold = f['fold']
+        full_train_idx = f['full_train_idx']
+        if cap is not None and len(full_train_idx) > cap:
+            rng_c = np.random.default_rng(base_seed + global_fold * 100 + 13)
+            full_train_idx = _stratified_subsample(full_train_idx, group_ids, cap, rng_c)
+        test_idx = np.sort(np.concatenate(list(f['panels'].values())))
+        assert not np.intersect1d(full_train_idx, test_idx).size
+        assert not f['novel'][full_train_idx].any(), "reserved environment leaked into train"
+
+        if val_fraction > 0.0:
+            # Draw the TRAINABLE set chemotype-stratified and let val be its complement:
+            # every pool chemotype keeps >= 1 molecule for training, and val is still a
+            # per-molecule random ~val_fraction of the pool.
+            rng_v = np.random.default_rng(base_seed + global_fold * 100 + 7)
+            n_val = max(1, int(len(full_train_idx) * val_fraction))
+            trainable_idx = _stratified_subsample(full_train_idx, group_ids,
+                                                  len(full_train_idx) - n_val, rng_v)
+            val_idx = np.setdiff1d(full_train_idx, trainable_idx, assume_unique=True)
+        else:
+            val_idx = np.array([], dtype=full_train_idx.dtype)
+            trainable_idx = full_train_idx
+
+        for fraction in training_fractions:
+            if fraction < 1.0:
+                rng = np.random.default_rng(base_seed + global_fold * 1000 + int(fraction * 1000))
+                n_train = max(1, int(len(trainable_idx) * fraction))
+                train_idx = _stratified_subsample(trainable_idx, group_ids, n_train, rng)
+            else:
+                train_idx = trainable_idx
+            yield {
+                "repeat": f['repeat'],
+                "cv_fold": f['cv_fold'],
+                "fold": global_fold,
+                "fraction": fraction,
+                "train_idx": train_idx,
+                "full_train_idx": full_train_idx,
+                "val_idx": val_idx,
+                "test_idx": test_idx,
+                "panels": f['panels'],
+                "env_fold": f['env_fold'],
+                "pool_size": int(len(full_train_idx)),
+            }
+
+
 def compute_molecular_stats(ds: pd.DataFrame, columns: Optional[list] = None) -> pd.DataFrame:
     """
     Compute mean and standard deviation for the specified columns.

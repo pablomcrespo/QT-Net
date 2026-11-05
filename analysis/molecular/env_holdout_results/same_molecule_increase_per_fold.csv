@@ -1,0 +1,1585 @@
+set,variant,fraction,fold,contrast,increase_%,n_molecules
+test,blind,0.01,0,environment | chemotype held out,21.17281906727064,1032
+test,blind,0.01,1,environment | chemotype held out,23.29464578222136,1287
+test,blind,0.01,2,environment | chemotype held out,0.006416758003610856,516
+test,blind,0.01,3,environment | chemotype held out,-20.21061106772694,1795
+test,blind,0.01,4,environment | chemotype held out,4.845787162134167,1717
+test,blind,0.01,5,environment | chemotype held out,-1.8348075349747957,331
+test,blind,0.01,6,environment | chemotype held out,17.177563638587433,230
+test,blind,0.01,7,environment | chemotype held out,-18.482848301059295,1230
+test,blind,0.01,8,environment | chemotype held out,14.999092056841858,485
+test,blind,0.01,9,environment | chemotype held out,16.1531637660448,370
+test,blind,0.01,10,environment | chemotype held out,-8.460918038325985,1152
+test,blind,0.01,11,environment | chemotype held out,-29.118128844103254,965
+test,blind,0.01,12,environment | chemotype held out,28.259339867708952,794
+test,blind,0.01,13,environment | chemotype held out,15.78903777757486,87
+test,blind,0.01,14,environment | chemotype held out,30.713167075346433,579
+test,blind,0.01,15,environment | chemotype held out,8.311774246228788,955
+test,blind,0.01,16,environment | chemotype held out,13.186394532580596,414
+test,blind,0.01,17,environment | chemotype held out,5.371281211833019,774
+test,blind,0.01,19,environment | chemotype held out,-18.428915052781818,639
+test,blind,0.01,20,environment | chemotype held out,13.797779411189273,1655
+test,blind,0.01,21,environment | chemotype held out,4.441360090379654,416
+test,blind,0.01,22,environment | chemotype held out,52.93083922693654,961
+test,blind,0.01,23,environment | chemotype held out,9.789477024012553,127
+test,blind,0.01,24,environment | chemotype held out,35.3411239748275,1260
+test,blind,0.01,0,environment | chemotype seen,14.28533089926316,724
+test,blind,0.01,1,environment | chemotype seen,29.29254635248895,986
+test,blind,0.01,2,environment | chemotype seen,-6.060869041747114,933
+test,blind,0.01,3,environment | chemotype seen,-12.302640444644666,2254
+test,blind,0.01,4,environment | chemotype seen,10.008503567356032,1460
+test,blind,0.01,5,environment | chemotype seen,27.819331725953223,1458
+test,blind,0.01,6,environment | chemotype seen,-3.5896162764993016,1033
+test,blind,0.01,7,environment | chemotype seen,-17.347585501075688,2520
+test,blind,0.01,8,environment | chemotype seen,18.192964449618245,2033
+test,blind,0.01,9,environment | chemotype seen,14.516352757236442,962
+test,blind,0.01,10,environment | chemotype seen,-7.561683366590793,650
+test,blind,0.01,11,environment | chemotype seen,-17.92638458037612,2658
+test,blind,0.01,12,environment | chemotype seen,9.372444244631652,1901
+test,blind,0.01,13,environment | chemotype seen,34.739931289104454,1098
+test,blind,0.01,14,environment | chemotype seen,24.816380645434577,1336
+test,blind,0.01,15,environment | chemotype seen,14.33649070856304,2674
+test,blind,0.01,16,environment | chemotype seen,19.655721854882195,2074
+test,blind,0.01,17,environment | chemotype seen,8.591339305920254,799
+test,blind,0.01,18,environment | chemotype seen,4.345594124813302,1591
+test,blind,0.01,19,environment | chemotype seen,-5.198643086359896,852
+test,blind,0.01,20,environment | chemotype seen,20.41079778504198,1560
+test,blind,0.01,21,environment | chemotype seen,14.828401567585072,949
+test,blind,0.01,22,environment | chemotype seen,35.67214297471122,1170
+test,blind,0.01,23,environment | chemotype seen,-2.4789440631515487,1080
+test,blind,0.01,24,environment | chemotype seen,23.66860042382057,2558
+test,blind,0.01,0,chemotype | environments seen,31.87259950507158,2809
+test,blind,0.01,1,chemotype | environments seen,60.31789610660817,2740
+test,blind,0.01,2,chemotype | environments seen,-10.464246367754852,3013
+test,blind,0.01,3,chemotype | environments seen,-10.173691652444301,2489
+test,blind,0.01,4,chemotype | environments seen,7.229905113514032,2423
+test,blind,0.01,5,chemotype | environments seen,13.800880565894253,3075
+test,blind,0.01,6,chemotype | environments seen,18.01660023734747,3254
+test,blind,0.01,7,chemotype | environments seen,-18.246363432232982,2684
+test,blind,0.01,8,chemotype | environments seen,20.880188228252067,3064
+test,blind,0.01,9,chemotype | environments seen,9.126127641583134,3046
+test,blind,0.01,10,chemotype | environments seen,-13.185587483216324,2734
+test,blind,0.01,11,chemotype | environments seen,-23.208451849626137,2904
+test,blind,0.01,12,chemotype | environments seen,10.725454241236125,2920
+test,blind,0.01,13,chemotype | environments seen,36.11193827929338,3191
+test,blind,0.01,14,chemotype | environments seen,29.265377340678203,3011
+test,blind,0.01,15,chemotype | environments seen,19.819686825297097,2783
+test,blind,0.01,16,chemotype | environments seen,21.291068629028878,3175
+test,blind,0.01,17,chemotype | environments seen,4.196169087205546,2939
+test,blind,0.01,18,chemotype | environments seen,-2.6607015898954463,3275
+test,blind,0.01,19,chemotype | environments seen,-12.348766816054832,2935
+test,blind,0.01,20,chemotype | environments seen,21.95727669471953,2524
+test,blind,0.01,21,chemotype | environments seen,13.64269583972734,3171
+test,blind,0.01,22,chemotype | environments seen,12.926615503573911,2783
+test,blind,0.01,23,chemotype | environments seen,0.2782207193318659,3290
+test,blind,0.01,24,chemotype | environments seen,24.96461564367836,2666
+test,blind,0.01,0,chemotype | environments unseen,15.036368985415024,1032
+test,blind,0.01,1,chemotype | environments unseen,7.3863581158811575,1287
+test,blind,0.01,2,chemotype | environments unseen,-5.676363784453629,516
+test,blind,0.01,3,chemotype | environments unseen,-13.300411313241828,1795
+test,blind,0.01,4,chemotype | environments unseen,-3.5329482236839542,1717
+test,blind,0.01,5,chemotype | environments unseen,-5.328770101375972,331
+test,blind,0.01,6,chemotype | environments unseen,10.52490573071927,230
+test,blind,0.01,7,chemotype | environments unseen,-16.463399230556814,1230
+test,blind,0.01,8,chemotype | environments unseen,9.6672353579333,485
+test,blind,0.01,9,chemotype | environments unseen,10.945615364124883,370
+test,blind,0.01,10,chemotype | environments unseen,-1.9421405812244337,1152
+test,blind,0.01,11,chemotype | environments unseen,-18.53039844831047,965
+test,blind,0.01,12,chemotype | environments unseen,5.716007767129653,794
+test,blind,0.01,13,chemotype | environments unseen,5.756163484219301,87
+test,blind,0.01,14,chemotype | environments unseen,9.473275280701813,579
+test,blind,0.01,15,chemotype | environments unseen,19.53292084298892,955
+test,blind,0.01,16,chemotype | environments unseen,-2.1849642023850127,414
+test,blind,0.01,17,chemotype | environments unseen,-5.2658309912188885,774
+test,blind,0.01,19,chemotype | environments unseen,-7.7974128716568565,639
+test,blind,0.01,20,chemotype | environments unseen,14.250174301032075,1655
+test,blind,0.01,21,chemotype | environments unseen,-9.900650549140197,416
+test,blind,0.01,22,chemotype | environments unseen,15.922175218355381,961
+test,blind,0.01,23,chemotype | environments unseen,13.465756913264611,127
+test,blind,0.01,24,chemotype | environments unseen,54.927401059770084,1260
+test,blind,0.05,0,environment | chemotype held out,19.183740718732427,1032
+test,blind,0.05,1,environment | chemotype held out,13.19242100426711,1287
+test,blind,0.05,2,environment | chemotype held out,-0.060186719518754095,516
+test,blind,0.05,3,environment | chemotype held out,13.330749689982628,1795
+test,blind,0.05,4,environment | chemotype held out,-4.694625160279493,1717
+test,blind,0.05,5,environment | chemotype held out,9.087242550165191,331
+test,blind,0.05,6,environment | chemotype held out,10.469410321749027,230
+test,blind,0.05,7,environment | chemotype held out,12.65671175730738,1230
+test,blind,0.05,8,environment | chemotype held out,0.894173622484967,485
+test,blind,0.05,9,environment | chemotype held out,30.537190133043907,370
+test,blind,0.05,10,environment | chemotype held out,9.32799937437517,1152
+test,blind,0.05,11,environment | chemotype held out,3.6275791284025165,965
+test,blind,0.05,12,environment | chemotype held out,11.504485370387137,794
+test,blind,0.05,13,environment | chemotype held out,10.988810725598757,87
+test,blind,0.05,14,environment | chemotype held out,18.744768402405178,579
+test,blind,0.05,15,environment | chemotype held out,-0.3870554322280346,955
+test,blind,0.05,16,environment | chemotype held out,22.60292655312918,414
+test,blind,0.05,17,environment | chemotype held out,0.929478726832758,774
+test,blind,0.05,19,environment | chemotype held out,31.556654299627994,639
+test,blind,0.05,20,environment | chemotype held out,13.665151841940643,1655
+test,blind,0.05,21,environment | chemotype held out,14.732888126539784,416
+test,blind,0.05,22,environment | chemotype held out,6.252565721354546,961
+test,blind,0.05,23,environment | chemotype held out,1.4028009789132325,127
+test,blind,0.05,24,environment | chemotype held out,-7.2830282409612686,1260
+test,blind,0.05,0,environment | chemotype seen,35.25113608740554,724
+test,blind,0.05,1,environment | chemotype seen,20.68984093078101,986
+test,blind,0.05,2,environment | chemotype seen,10.304007504029817,933
+test,blind,0.05,3,environment | chemotype seen,9.050598450150323,2254
+test,blind,0.05,4,environment | chemotype seen,4.563695529760182,1460
+test,blind,0.05,5,environment | chemotype seen,23.829153264780345,1458
+test,blind,0.05,6,environment | chemotype seen,16.249651238386708,1033
+test,blind,0.05,7,environment | chemotype seen,13.040333154133451,2520
+test,blind,0.05,8,environment | chemotype seen,2.053770122585565,2033
+test,blind,0.05,9,environment | chemotype seen,35.22985266418627,962
+test,blind,0.05,10,environment | chemotype seen,21.69621163610262,650
+test,blind,0.05,11,environment | chemotype seen,9.319057614191149,2658
+test,blind,0.05,12,environment | chemotype seen,12.824393743256433,1901
+test,blind,0.05,13,environment | chemotype seen,24.588697378731872,1098
+test,blind,0.05,14,environment | chemotype seen,25.924970993832545,1336
+test,blind,0.05,15,environment | chemotype seen,-0.7863353411349376,2674
+test,blind,0.05,16,environment | chemotype seen,30.304469561976365,2074
+test,blind,0.05,17,environment | chemotype seen,14.976827634600012,799
+test,blind,0.05,18,environment | chemotype seen,14.39807066916807,1591
+test,blind,0.05,19,environment | chemotype seen,19.65982310799938,852
+test,blind,0.05,20,environment | chemotype seen,11.042442865185947,1560
+test,blind,0.05,21,environment | chemotype seen,35.34928987665294,949
+test,blind,0.05,22,environment | chemotype seen,23.86753636132516,1170
+test,blind,0.05,23,environment | chemotype seen,17.47186905407114,1080
+test,blind,0.05,24,environment | chemotype seen,9.269245322489882,2558
+test,blind,0.05,0,chemotype | environments seen,15.953406291714458,2809
+test,blind,0.05,1,chemotype | environments seen,10.14377930520963,2740
+test,blind,0.05,2,chemotype | environments seen,14.853261418932949,3013
+test,blind,0.05,3,chemotype | environments seen,5.020712122742746,2489
+test,blind,0.05,4,chemotype | environments seen,6.29901775027817,2423
+test,blind,0.05,5,chemotype | environments seen,19.394153521470535,3075
+test,blind,0.05,6,chemotype | environments seen,10.399152660724534,3254
+test,blind,0.05,7,chemotype | environments seen,9.473310338062404,2684
+test,blind,0.05,8,chemotype | environments seen,-2.6767651836889357,3064
+test,blind,0.05,9,chemotype | environments seen,13.531712527888399,3046
+test,blind,0.05,10,chemotype | environments seen,19.91341533229413,2734
+test,blind,0.05,11,chemotype | environments seen,6.2721379567035624,2904
+test,blind,0.05,12,chemotype | environments seen,19.77542254206223,2920
+test,blind,0.05,13,chemotype | environments seen,3.9612856341926017,3191
+test,blind,0.05,14,chemotype | environments seen,19.142292300432388,3011
+test,blind,0.05,15,chemotype | environments seen,1.7465274981202388,2783
+test,blind,0.05,16,chemotype | environments seen,24.255374452604027,3175
+test,blind,0.05,17,chemotype | environments seen,3.417909992683332,2939
+test,blind,0.05,18,chemotype | environments seen,12.583521287227372,3275
+test,blind,0.05,19,chemotype | environments seen,21.833537342670294,2935
+test,blind,0.05,20,chemotype | environments seen,8.263397039349066,2524
+test,blind,0.05,21,chemotype | environments seen,5.501654623636076,3171
+test,blind,0.05,22,chemotype | environments seen,15.878401461528277,2783
+test,blind,0.05,23,chemotype | environments seen,11.013380316265081,3290
+test,blind,0.05,24,chemotype | environments seen,0.6862709400871138,2666
+test,blind,0.05,0,chemotype | environments unseen,13.661910551784347,1032
+test,blind,0.05,1,chemotype | environments unseen,2.8154771412305117,1287
+test,blind,0.05,2,chemotype | environments unseen,-0.5145319909624739,516
+test,blind,0.05,3,chemotype | environments unseen,7.51668456525393,1795
+test,blind,0.05,4,chemotype | environments unseen,-5.567177702671957,1717
+test,blind,0.05,5,chemotype | environments unseen,6.269212904527536,331
+test,blind,0.05,6,chemotype | environments unseen,-3.4387183609999017,230
+test,blind,0.05,7,chemotype | environments unseen,18.988816951317073,1230
+test,blind,0.05,8,chemotype | environments unseen,-6.659566625155871,485
+test,blind,0.05,9,chemotype | environments unseen,24.655056525743326,370
+test,blind,0.05,10,chemotype | environments unseen,14.818175249024637,1152
+test,blind,0.05,11,chemotype | environments unseen,4.373811755647557,965
+test,blind,0.05,12,chemotype | environments unseen,5.927280119128125,794
+test,blind,0.05,13,chemotype | environments unseen,3.7291212125534554,87
+test,blind,0.05,14,chemotype | environments unseen,10.8567345437927,579
+test,blind,0.05,15,chemotype | environments unseen,-2.2963195557306326,955
+test,blind,0.05,16,chemotype | environments unseen,15.18849138872854,414
+test,blind,0.05,17,chemotype | environments unseen,-2.241795716890776,774
+test,blind,0.05,19,chemotype | environments unseen,27.83639768683973,639
+test,blind,0.05,20,chemotype | environments unseen,15.604106972631914,1655
+test,blind,0.05,21,chemotype | environments unseen,-2.234735370302636,416
+test,blind,0.05,22,chemotype | environments unseen,-1.6269680043582428,961
+test,blind,0.05,23,chemotype | environments unseen,-14.496896459517364,127
+test,blind,0.05,24,chemotype | environments unseen,4.375764725306273,1260
+test,blind,0.1,0,environment | chemotype held out,24.820789549178624,1032
+test,blind,0.1,1,environment | chemotype held out,17.915985194588693,1287
+test,blind,0.1,2,environment | chemotype held out,7.500172148638553,516
+test,blind,0.1,3,environment | chemotype held out,16.756014134710387,1795
+test,blind,0.1,4,environment | chemotype held out,22.893471921585117,1717
+test,blind,0.1,5,environment | chemotype held out,9.413693658219863,331
+test,blind,0.1,6,environment | chemotype held out,30.389663626415064,230
+test,blind,0.1,7,environment | chemotype held out,8.366217030955276,1230
+test,blind,0.1,8,environment | chemotype held out,8.89876628128193,485
+test,blind,0.1,9,environment | chemotype held out,6.7644390755386645,370
+test,blind,0.1,10,environment | chemotype held out,12.468609150401452,1152
+test,blind,0.1,11,environment | chemotype held out,6.377132838183568,965
+test,blind,0.1,12,environment | chemotype held out,12.231236138914944,794
+test,blind,0.1,13,environment | chemotype held out,13.736245363363874,87
+test,blind,0.1,14,environment | chemotype held out,8.007453451023911,579
+test,blind,0.1,15,environment | chemotype held out,1.0881450258040566,955
+test,blind,0.1,16,environment | chemotype held out,17.35474210068453,414
+test,blind,0.1,17,environment | chemotype held out,11.541976868142758,774
+test,blind,0.1,19,environment | chemotype held out,6.479310789112439,639
+test,blind,0.1,20,environment | chemotype held out,22.783692484420648,1655
+test,blind,0.1,21,environment | chemotype held out,14.70748135501012,416
+test,blind,0.1,22,environment | chemotype held out,5.156519947787226,961
+test,blind,0.1,23,environment | chemotype held out,18.463401441956265,127
+test,blind,0.1,24,environment | chemotype held out,12.015026158791354,1260
+test,blind,0.1,0,environment | chemotype seen,26.438296281202803,724
+test,blind,0.1,1,environment | chemotype seen,20.83843818742514,986
+test,blind,0.1,2,environment | chemotype seen,15.313044227660448,933
+test,blind,0.1,3,environment | chemotype seen,17.912257913122048,2254
+test,blind,0.1,4,environment | chemotype seen,39.9339745194345,1460
+test,blind,0.1,5,environment | chemotype seen,13.050935271731518,1458
+test,blind,0.1,6,environment | chemotype seen,21.96952417438516,1033
+test,blind,0.1,7,environment | chemotype seen,23.472979325618766,2520
+test,blind,0.1,8,environment | chemotype seen,16.497383569568736,2033
+test,blind,0.1,9,environment | chemotype seen,24.42585916770447,962
+test,blind,0.1,10,environment | chemotype seen,7.965596994091792,650
+test,blind,0.1,11,environment | chemotype seen,6.8783428600900915,2658
+test,blind,0.1,12,environment | chemotype seen,13.205784181382175,1901
+test,blind,0.1,13,environment | chemotype seen,11.853781601552177,1098
+test,blind,0.1,14,environment | chemotype seen,11.802360556895088,1336
+test,blind,0.1,15,environment | chemotype seen,15.345851500771875,2674
+test,blind,0.1,16,environment | chemotype seen,23.269533194270373,2074
+test,blind,0.1,17,environment | chemotype seen,19.13581534048582,799
+test,blind,0.1,18,environment | chemotype seen,20.778514615801633,1591
+test,blind,0.1,19,environment | chemotype seen,19.960993278628116,852
+test,blind,0.1,20,environment | chemotype seen,20.851549900749966,1560
+test,blind,0.1,21,environment | chemotype seen,19.828566713551265,949
+test,blind,0.1,22,environment | chemotype seen,14.30315844288962,1170
+test,blind,0.1,23,environment | chemotype seen,13.077692954886045,1080
+test,blind,0.1,24,environment | chemotype seen,14.884050189223409,2558
+test,blind,0.1,0,chemotype | environments seen,7.615184658923108,2809
+test,blind,0.1,1,chemotype | environments seen,5.054428151332457,2740
+test,blind,0.1,2,chemotype | environments seen,18.91463892036296,3013
+test,blind,0.1,3,chemotype | environments seen,11.228697376758728,2489
+test,blind,0.1,4,chemotype | environments seen,32.02833570334825,2423
+test,blind,0.1,5,chemotype | environments seen,6.798713774930394,3075
+test,blind,0.1,6,chemotype | environments seen,7.968593752280004,3254
+test,blind,0.1,7,chemotype | environments seen,14.905673412161306,2684
+test,blind,0.1,8,chemotype | environments seen,6.202662379566408,3064
+test,blind,0.1,9,chemotype | environments seen,12.075425494690766,3046
+test,blind,0.1,10,chemotype | environments seen,2.6466332355738396,2734
+test,blind,0.1,11,chemotype | environments seen,-1.7303327154502073,2904
+test,blind,0.1,12,chemotype | environments seen,22.766474733409506,2920
+test,blind,0.1,13,chemotype | environments seen,22.771029649898125,3191
+test,blind,0.1,14,chemotype | environments seen,24.60898621928055,3011
+test,blind,0.1,15,chemotype | environments seen,-3.296949062175522,2783
+test,blind,0.1,16,chemotype | environments seen,0.24469216221220413,3175
+test,blind,0.1,17,chemotype | environments seen,8.170328131802904,2939
+test,blind,0.1,18,chemotype | environments seen,8.953911716604578,3275
+test,blind,0.1,19,chemotype | environments seen,15.048602621900724,2935
+test,blind,0.1,20,chemotype | environments seen,11.260441984088356,2524
+test,blind,0.1,21,chemotype | environments seen,-5.2783702166726645,3171
+test,blind,0.1,22,chemotype | environments seen,20.5037086090529,2783
+test,blind,0.1,23,chemotype | environments seen,1.1041474943297933,3290
+test,blind,0.1,24,chemotype | environments seen,14.630747898254102,2666
+test,blind,0.1,0,chemotype | environments unseen,15.86954729669646,1032
+test,blind,0.1,1,chemotype | environments unseen,5.050030073878155,1287
+test,blind,0.1,2,chemotype | environments unseen,3.3325558375745126,516
+test,blind,0.1,3,chemotype | environments unseen,11.834866135334588,1795
+test,blind,0.1,4,chemotype | environments unseen,23.61968303656958,1717
+test,blind,0.1,5,chemotype | environments unseen,-1.9617637947939726,331
+test,blind,0.1,6,chemotype | environments unseen,21.0481368038799,230
+test,blind,0.1,7,chemotype | environments unseen,13.05136752815195,1230
+test,blind,0.1,8,chemotype | environments unseen,-3.5420813600706023,485
+test,blind,0.1,9,chemotype | environments unseen,8.307421009790357,370
+test,blind,0.1,10,chemotype | environments unseen,8.04597925662664,1152
+test,blind,0.1,11,chemotype | environments unseen,-7.547456349983683,965
+test,blind,0.1,12,chemotype | environments unseen,-1.4746750489629727,794
+test,blind,0.1,13,chemotype | environments unseen,4.1304580355519445,87
+test,blind,0.1,14,chemotype | environments unseen,3.0012046308663205,579
+test,blind,0.1,15,chemotype | environments unseen,-8.19327346332263,955
+test,blind,0.1,16,chemotype | environments unseen,9.814280664849424,414
+test,blind,0.1,17,chemotype | environments unseen,10.677404381508785,774
+test,blind,0.1,19,chemotype | environments unseen,12.383506682404011,639
+test,blind,0.1,20,chemotype | environments unseen,7.864047752287977,1655
+test,blind,0.1,21,chemotype | environments unseen,21.267007624574596,416
+test,blind,0.1,22,chemotype | environments unseen,0.7445342520066676,961
+test,blind,0.1,23,chemotype | environments unseen,-0.45189131488012035,127
+test,blind,0.1,24,chemotype | environments unseen,19.208849624507405,1260
+test,blind,1.0,0,environment | chemotype held out,18.064609877734163,1032
+test,blind,1.0,1,environment | chemotype held out,36.124396483681025,1287
+test,blind,1.0,2,environment | chemotype held out,19.52790444432542,516
+test,blind,1.0,3,environment | chemotype held out,12.308393387347916,1795
+test,blind,1.0,4,environment | chemotype held out,14.783960432568433,1717
+test,blind,1.0,5,environment | chemotype held out,27.79715200266061,331
+test,blind,1.0,6,environment | chemotype held out,19.509497104178077,230
+test,blind,1.0,7,environment | chemotype held out,11.648391375496633,1230
+test,blind,1.0,8,environment | chemotype held out,17.931683886313728,485
+test,blind,1.0,9,environment | chemotype held out,26.200450263331447,370
+test,blind,1.0,10,environment | chemotype held out,19.38809029436571,1152
+test,blind,1.0,11,environment | chemotype held out,18.748738977233984,965
+test,blind,1.0,12,environment | chemotype held out,13.865192145315921,794
+test,blind,1.0,13,environment | chemotype held out,53.975515255677934,87
+test,blind,1.0,14,environment | chemotype held out,19.859608823993185,579
+test,blind,1.0,15,environment | chemotype held out,27.55637525043542,955
+test,blind,1.0,16,environment | chemotype held out,38.322090466710435,414
+test,blind,1.0,17,environment | chemotype held out,81.45655314450265,774
+test,blind,1.0,19,environment | chemotype held out,16.203766592764516,639
+test,blind,1.0,20,environment | chemotype held out,32.82359860825301,1655
+test,blind,1.0,21,environment | chemotype held out,28.79881737049461,416
+test,blind,1.0,22,environment | chemotype held out,10.759049422646477,961
+test,blind,1.0,23,environment | chemotype held out,16.370736818963184,127
+test,blind,1.0,24,environment | chemotype held out,-1.2383578353760343,1260
+test,blind,1.0,0,environment | chemotype seen,46.442373351399944,724
+test,blind,1.0,1,environment | chemotype seen,43.0597538408745,986
+test,blind,1.0,2,environment | chemotype seen,32.83222888560887,933
+test,blind,1.0,3,environment | chemotype seen,11.520405482545039,2254
+test,blind,1.0,4,environment | chemotype seen,42.77420257834174,1460
+test,blind,1.0,5,environment | chemotype seen,40.967323206271864,1458
+test,blind,1.0,6,environment | chemotype seen,28.53658493221691,1033
+test,blind,1.0,7,environment | chemotype seen,24.769774645471493,2520
+test,blind,1.0,8,environment | chemotype seen,38.30060490166242,2033
+test,blind,1.0,9,environment | chemotype seen,71.84606874246066,962
+test,blind,1.0,10,environment | chemotype seen,33.45804278903133,650
+test,blind,1.0,11,environment | chemotype seen,22.062225664678706,2658
+test,blind,1.0,12,environment | chemotype seen,31.0404447793894,1901
+test,blind,1.0,13,environment | chemotype seen,108.59109127098804,1098
+test,blind,1.0,14,environment | chemotype seen,34.64452183350682,1336
+test,blind,1.0,15,environment | chemotype seen,44.65800582542513,2674
+test,blind,1.0,16,environment | chemotype seen,67.32111083337551,2074
+test,blind,1.0,17,environment | chemotype seen,85.84754315137478,799
+test,blind,1.0,18,environment | chemotype seen,24.045188240612177,1591
+test,blind,1.0,19,environment | chemotype seen,24.05025652449917,852
+test,blind,1.0,20,environment | chemotype seen,28.942937301023015,1560
+test,blind,1.0,21,environment | chemotype seen,56.525951272140446,949
+test,blind,1.0,22,environment | chemotype seen,26.832440655280006,1170
+test,blind,1.0,23,environment | chemotype seen,18.48796375077601,1080
+test,blind,1.0,24,environment | chemotype seen,23.578398124414562,2558
+test,blind,1.0,0,chemotype | environments seen,-0.8637030208082574,2809
+test,blind,1.0,1,chemotype | environments seen,27.466843384787204,2740
+test,blind,1.0,2,chemotype | environments seen,21.25663904231035,3013
+test,blind,1.0,3,chemotype | environments seen,3.134874772532143,2489
+test,blind,1.0,4,chemotype | environments seen,25.60249361300174,2423
+test,blind,1.0,5,chemotype | environments seen,17.89472934844696,3075
+test,blind,1.0,6,chemotype | environments seen,16.31486499645259,3254
+test,blind,1.0,7,chemotype | environments seen,10.237582785017883,2684
+test,blind,1.0,8,chemotype | environments seen,13.877056512178491,3064
+test,blind,1.0,9,chemotype | environments seen,34.519566017932284,3046
+test,blind,1.0,10,chemotype | environments seen,23.44207183883693,2734
+test,blind,1.0,11,chemotype | environments seen,8.257708028673125,2904
+test,blind,1.0,12,chemotype | environments seen,13.328479993280121,2920
+test,blind,1.0,13,chemotype | environments seen,27.317748924612097,3191
+test,blind,1.0,14,chemotype | environments seen,22.749133281744342,3011
+test,blind,1.0,15,chemotype | environments seen,32.32181688707282,2783
+test,blind,1.0,16,chemotype | environments seen,23.850247465398613,3175
+test,blind,1.0,17,chemotype | environments seen,20.534574319993304,2939
+test,blind,1.0,18,chemotype | environments seen,12.095917747085567,3275
+test,blind,1.0,19,chemotype | environments seen,25.60993972576411,2935
+test,blind,1.0,20,chemotype | environments seen,23.48459908816623,2524
+test,blind,1.0,21,chemotype | environments seen,11.177831974660357,3171
+test,blind,1.0,22,chemotype | environments seen,7.862431851440612,2783
+test,blind,1.0,23,chemotype | environments seen,10.030384032267111,3290
+test,blind,1.0,24,chemotype | environments seen,20.173319592551028,2666
+test,blind,1.0,0,chemotype | environments unseen,-2.4980921419062554,1032
+test,blind,1.0,1,chemotype | environments unseen,16.046395304366715,1287
+test,blind,1.0,2,chemotype | environments unseen,13.457432175387215,516
+test,blind,1.0,3,chemotype | environments unseen,-1.3320369293290395,1795
+test,blind,1.0,4,chemotype | environments unseen,7.352838600399206,1717
+test,blind,1.0,5,chemotype | environments unseen,19.790447869710903,331
+test,blind,1.0,6,chemotype | environments unseen,6.139494801151082,230
+test,blind,1.0,7,chemotype | environments unseen,4.307956335573445,1230
+test,blind,1.0,8,chemotype | environments unseen,-6.5432903611956394,485
+test,blind,1.0,9,chemotype | environments unseen,14.03945565826382,370
+test,blind,1.0,10,chemotype | environments unseen,13.9921765578445,1152
+test,blind,1.0,11,chemotype | environments unseen,9.925958198304713,965
+test,blind,1.0,12,chemotype | environments unseen,1.1391304254072605,794
+test,blind,1.0,13,chemotype | environments unseen,23.858206276478526,87
+test,blind,1.0,14,chemotype | environments unseen,6.817631956436337,579
+test,blind,1.0,15,chemotype | environments unseen,14.473331496238082,955
+test,blind,1.0,16,chemotype | environments unseen,21.71900926813924,414
+test,blind,1.0,17,chemotype | environments unseen,43.19622759231666,774
+test,blind,1.0,19,chemotype | environments unseen,16.227707930691654,639
+test,blind,1.0,20,chemotype | environments unseen,9.42832078807194,1655
+test,blind,1.0,21,chemotype | environments unseen,-0.5884243755097074,416
+test,blind,1.0,22,chemotype | environments unseen,-4.603556863944271,961
+test,blind,1.0,23,chemotype | environments unseen,-5.681748883352514,127
+test,blind,1.0,24,chemotype | environments unseen,2.4105122100276306,1260
+test,informed,0.01,0,environment | chemotype held out,20.25661208165159,1032
+test,informed,0.01,1,environment | chemotype held out,5.0182469982772595,1287
+test,informed,0.01,2,environment | chemotype held out,-1.1631086180515968,516
+test,informed,0.01,3,environment | chemotype held out,-4.770115258547377,1795
+test,informed,0.01,4,environment | chemotype held out,3.3345058352472035,1717
+test,informed,0.01,5,environment | chemotype held out,7.929381852578803,331
+test,informed,0.01,6,environment | chemotype held out,-8.748867650596587,230
+test,informed,0.01,7,environment | chemotype held out,-4.69405358405643,1230
+test,informed,0.01,8,environment | chemotype held out,16.49664645990949,485
+test,informed,0.01,9,environment | chemotype held out,14.204922522582203,370
+test,informed,0.01,10,environment | chemotype held out,-3.5926334082952214,1152
+test,informed,0.01,11,environment | chemotype held out,20.795753416943285,965
+test,informed,0.01,12,environment | chemotype held out,21.61464902739399,794
+test,informed,0.01,13,environment | chemotype held out,8.549285834943667,87
+test,informed,0.01,14,environment | chemotype held out,14.040545618297454,579
+test,informed,0.01,15,environment | chemotype held out,-4.27674737667146,955
+test,informed,0.01,16,environment | chemotype held out,4.68658121815512,414
+test,informed,0.01,17,environment | chemotype held out,17.498519455508752,774
+test,informed,0.01,19,environment | chemotype held out,-6.648395977618315,639
+test,informed,0.01,20,environment | chemotype held out,9.038854244106155,1655
+test,informed,0.01,21,environment | chemotype held out,13.202801849533188,416
+test,informed,0.01,22,environment | chemotype held out,30.2459722896599,961
+test,informed,0.01,23,environment | chemotype held out,16.59725978468179,127
+test,informed,0.01,24,environment | chemotype held out,-1.3831490812984357,1260
+test,informed,0.01,0,environment | chemotype seen,21.579184882708628,724
+test,informed,0.01,1,environment | chemotype seen,11.896810673207488,986
+test,informed,0.01,2,environment | chemotype seen,-7.960918422737457,933
+test,informed,0.01,3,environment | chemotype seen,-1.9773189150077457,2254
+test,informed,0.01,4,environment | chemotype seen,1.4945156004145521,1460
+test,informed,0.01,5,environment | chemotype seen,17.658900421761277,1458
+test,informed,0.01,6,environment | chemotype seen,-10.440075555024114,1033
+test,informed,0.01,7,environment | chemotype seen,-6.185573844934301,2520
+test,informed,0.01,8,environment | chemotype seen,8.483833037710376,2033
+test,informed,0.01,9,environment | chemotype seen,19.25353237989072,962
+test,informed,0.01,10,environment | chemotype seen,-1.8429429095314944,650
+test,informed,0.01,11,environment | chemotype seen,21.89794846766465,2658
+test,informed,0.01,12,environment | chemotype seen,14.789825818421296,1901
+test,informed,0.01,13,environment | chemotype seen,14.781179872183596,1098
+test,informed,0.01,14,environment | chemotype seen,12.477176331675414,1336
+test,informed,0.01,15,environment | chemotype seen,4.84994716072005,2674
+test,informed,0.01,16,environment | chemotype seen,10.251219141970775,2074
+test,informed,0.01,17,environment | chemotype seen,12.554099106893306,799
+test,informed,0.01,18,environment | chemotype seen,-5.202943597036901,1591
+test,informed,0.01,19,environment | chemotype seen,-12.207446706471348,852
+test,informed,0.01,20,environment | chemotype seen,25.877061400489964,1560
+test,informed,0.01,21,environment | chemotype seen,7.475803264161657,949
+test,informed,0.01,22,environment | chemotype seen,23.458658006186706,1170
+test,informed,0.01,23,environment | chemotype seen,13.542554232838633,1080
+test,informed,0.01,24,environment | chemotype seen,7.832397783359085,2558
+test,informed,0.01,0,chemotype | environments seen,19.173934650726736,2809
+test,informed,0.01,1,chemotype | environments seen,22.030633208814653,2740
+test,informed,0.01,2,chemotype | environments seen,2.058019447062116,3013
+test,informed,0.01,3,chemotype | environments seen,-3.1391046137164285,2489
+test,informed,0.01,4,chemotype | environments seen,13.012420110150376,2423
+test,informed,0.01,5,chemotype | environments seen,16.09650724105751,3075
+test,informed,0.01,6,chemotype | environments seen,5.367725276867144,3254
+test,informed,0.01,7,chemotype | environments seen,-7.355499816815261,2684
+test,informed,0.01,8,chemotype | environments seen,9.165133346857694,3064
+test,informed,0.01,9,chemotype | environments seen,17.643738351044128,3046
+test,informed,0.01,10,chemotype | environments seen,0.7222503814839458,2734
+test,informed,0.01,11,chemotype | environments seen,11.910951291949615,2904
+test,informed,0.01,12,chemotype | environments seen,19.37058971949405,2920
+test,informed,0.01,13,chemotype | environments seen,9.476930249020729,3191
+test,informed,0.01,14,chemotype | environments seen,6.95806135884781,3011
+test,informed,0.01,15,chemotype | environments seen,3.914469239020468,2783
+test,informed,0.01,16,chemotype | environments seen,6.068121040090374,3175
+test,informed,0.01,17,chemotype | environments seen,-15.200425220421774,2939
+test,informed,0.01,18,chemotype | environments seen,-13.929346000387607,3275
+test,informed,0.01,19,chemotype | environments seen,-17.0217420149288,2935
+test,informed,0.01,20,chemotype | environments seen,20.85580760281482,2524
+test,informed,0.01,21,chemotype | environments seen,-9.932452561071255,3171
+test,informed,0.01,22,chemotype | environments seen,13.159443170715642,2783
+test,informed,0.01,23,chemotype | environments seen,16.121770378911158,3290
+test,informed,0.01,24,chemotype | environments seen,4.917994008357019,2666
+test,informed,0.01,0,chemotype | environments unseen,16.360630863084108,1032
+test,informed,0.01,1,chemotype | environments unseen,-3.6806960536843882,1287
+test,informed,0.01,2,chemotype | environments unseen,-2.45643499868982,516
+test,informed,0.01,3,chemotype | environments unseen,-8.40288070981326,1795
+test,informed,0.01,4,chemotype | environments unseen,-7.464498303454757,1717
+test,informed,0.01,5,chemotype | environments unseen,8.065560163088753,331
+test,informed,0.01,6,chemotype | environments unseen,-13.20501727367465,230
+test,informed,0.01,7,chemotype | environments unseen,-6.439502928570148,1230
+test,informed,0.01,8,chemotype | environments unseen,5.072806122899854,485
+test,informed,0.01,9,chemotype | environments unseen,0.30980860659235243,370
+test,informed,0.01,10,chemotype | environments unseen,4.732808886708867,1152
+test,informed,0.01,11,chemotype | environments unseen,21.077716029477692,965
+test,informed,0.01,12,chemotype | environments unseen,5.790055399815729,794
+test,informed,0.01,13,chemotype | environments unseen,3.2888365625697515,87
+test,informed,0.01,14,chemotype | environments unseen,8.46342531384362,579
+test,informed,0.01,15,chemotype | environments unseen,8.756635228171508,955
+test,informed,0.01,16,chemotype | environments unseen,-10.301975051217854,414
+test,informed,0.01,17,chemotype | environments unseen,14.71620699533567,774
+test,informed,0.01,19,chemotype | environments unseen,-8.441564361907037,639
+test,informed,0.01,20,chemotype | environments unseen,15.544116452436395,1655
+test,informed,0.01,21,chemotype | environments unseen,-3.8287788051141054,416
+test,informed,0.01,22,chemotype | environments unseen,12.899261061014254,961
+test,informed,0.01,23,chemotype | environments unseen,19.60331674095042,127
+test,informed,0.01,24,chemotype | environments unseen,4.637617498774378,1260
+test,informed,0.05,0,environment | chemotype held out,-0.20198733364624832,1032
+test,informed,0.05,1,environment | chemotype held out,29.321383375323073,1287
+test,informed,0.05,2,environment | chemotype held out,43.31365266883951,516
+test,informed,0.05,3,environment | chemotype held out,10.30335981545912,1795
+test,informed,0.05,4,environment | chemotype held out,19.3776440622255,1717
+test,informed,0.05,5,environment | chemotype held out,27.364498129678374,331
+test,informed,0.05,6,environment | chemotype held out,19.318659282471387,230
+test,informed,0.05,7,environment | chemotype held out,8.762656347198098,1230
+test,informed,0.05,8,environment | chemotype held out,9.605459229927138,485
+test,informed,0.05,9,environment | chemotype held out,12.34379728197272,370
+test,informed,0.05,10,environment | chemotype held out,8.437601103407637,1152
+test,informed,0.05,11,environment | chemotype held out,7.48362926190061,965
+test,informed,0.05,12,environment | chemotype held out,4.1946572509805256,794
+test,informed,0.05,13,environment | chemotype held out,25.583721630978538,87
+test,informed,0.05,14,environment | chemotype held out,19.92630963144214,579
+test,informed,0.05,15,environment | chemotype held out,0.3834612735043237,955
+test,informed,0.05,16,environment | chemotype held out,8.713910634824018,414
+test,informed,0.05,17,environment | chemotype held out,5.180805832850655,774
+test,informed,0.05,19,environment | chemotype held out,15.694109884339223,639
+test,informed,0.05,20,environment | chemotype held out,30.519619196126975,1655
+test,informed,0.05,21,environment | chemotype held out,29.107888458704313,416
+test,informed,0.05,22,environment | chemotype held out,7.23241284235131,961
+test,informed,0.05,23,environment | chemotype held out,7.015521404989476,127
+test,informed,0.05,24,environment | chemotype held out,-5.622274606904789,1260
+test,informed,0.05,0,environment | chemotype seen,10.879319038305916,724
+test,informed,0.05,1,environment | chemotype seen,27.987903079055325,986
+test,informed,0.05,2,environment | chemotype seen,33.056458176105195,933
+test,informed,0.05,3,environment | chemotype seen,8.924766741626009,2254
+test,informed,0.05,4,environment | chemotype seen,19.305520651676567,1460
+test,informed,0.05,5,environment | chemotype seen,27.56072746406836,1458
+test,informed,0.05,6,environment | chemotype seen,20.629284250313223,1033
+test,informed,0.05,7,environment | chemotype seen,9.206062100281356,2520
+test,informed,0.05,8,environment | chemotype seen,15.111558077855491,2033
+test,informed,0.05,9,environment | chemotype seen,27.90494217082653,962
+test,informed,0.05,10,environment | chemotype seen,17.14530644534118,650
+test,informed,0.05,11,environment | chemotype seen,10.374695243787656,2658
+test,informed,0.05,12,environment | chemotype seen,11.431426232370786,1901
+test,informed,0.05,13,environment | chemotype seen,39.006334644296054,1098
+test,informed,0.05,14,environment | chemotype seen,18.579285483018392,1336
+test,informed,0.05,15,environment | chemotype seen,10.059449497667462,2674
+test,informed,0.05,16,environment | chemotype seen,21.288013038621596,2074
+test,informed,0.05,17,environment | chemotype seen,13.230765914091467,799
+test,informed,0.05,18,environment | chemotype seen,21.43806804203321,1591
+test,informed,0.05,19,environment | chemotype seen,4.894851591371407,852
+test,informed,0.05,20,environment | chemotype seen,33.9149830290881,1560
+test,informed,0.05,21,environment | chemotype seen,27.246341393735957,949
+test,informed,0.05,22,environment | chemotype seen,14.247282702560012,1170
+test,informed,0.05,23,environment | chemotype seen,15.992803495030069,1080
+test,informed,0.05,24,environment | chemotype seen,10.63802487689435,2558
+test,informed,0.05,0,chemotype | environments seen,3.929954977175795,2809
+test,informed,0.05,1,chemotype | environments seen,6.963959443845644,2740
+test,informed,0.05,2,chemotype | environments seen,23.711439128898483,3013
+test,informed,0.05,3,chemotype | environments seen,3.093913265448777,2489
+test,informed,0.05,4,chemotype | environments seen,30.07073939464768,2423
+test,informed,0.05,5,chemotype | environments seen,25.14191461290614,3075
+test,informed,0.05,6,chemotype | environments seen,8.753813227658716,3254
+test,informed,0.05,7,chemotype | environments seen,4.123673797803617,2684
+test,informed,0.05,8,chemotype | environments seen,11.372321701714839,3064
+test,informed,0.05,9,chemotype | environments seen,19.024500902830898,3046
+test,informed,0.05,10,chemotype | environments seen,13.642625240999683,2734
+test,informed,0.05,11,chemotype | environments seen,7.21002556583615,2904
+test,informed,0.05,12,chemotype | environments seen,6.738021865562654,2920
+test,informed,0.05,13,chemotype | environments seen,19.01630391097683,3191
+test,informed,0.05,14,chemotype | environments seen,22.71927911831417,3011
+test,informed,0.05,15,chemotype | environments seen,0.9495903667562173,2783
+test,informed,0.05,16,chemotype | environments seen,11.66134960301545,3175
+test,informed,0.05,17,chemotype | environments seen,1.1655380606968442,2939
+test,informed,0.05,18,chemotype | environments seen,16.590613957634766,3275
+test,informed,0.05,19,chemotype | environments seen,21.830257575855903,2935
+test,informed,0.05,20,chemotype | environments seen,15.579372659169058,2524
+test,informed,0.05,21,chemotype | environments seen,3.202533177234369,3171
+test,informed,0.05,22,chemotype | environments seen,7.461121509291258,2783
+test,informed,0.05,23,chemotype | environments seen,-1.224277643599847,3290
+test,informed,0.05,24,chemotype | environments seen,11.896218014075112,2666
+test,informed,0.05,0,chemotype | environments unseen,-5.866830166149689,1032
+test,informed,0.05,1,chemotype | environments unseen,15.627248520623137,1287
+test,informed,0.05,2,chemotype | environments unseen,27.13601510151496,516
+test,informed,0.05,3,chemotype | environments unseen,7.5355715860104,1795
+test,informed,0.05,4,chemotype | environments unseen,12.497993758055411,1717
+test,informed,0.05,5,chemotype | environments unseen,18.020061385477174,331
+test,informed,0.05,6,chemotype | environments unseen,3.7518503721089322,230
+test,informed,0.05,7,chemotype | environments unseen,8.919238070385966,1230
+test,informed,0.05,8,chemotype | environments unseen,0.4661526786627821,485
+test,informed,0.05,9,chemotype | environments unseen,13.155015955860845,370
+test,informed,0.05,10,chemotype | environments unseen,5.8279414127079034,1152
+test,informed,0.05,11,chemotype | environments unseen,4.362580543123089,965
+test,informed,0.05,12,chemotype | environments unseen,-6.840621439299394,794
+test,informed,0.05,13,chemotype | environments unseen,16.385950059676762,87
+test,informed,0.05,14,chemotype | environments unseen,7.64679447475832,579
+test,informed,0.05,15,chemotype | environments unseen,-0.23447139711143428,955
+test,informed,0.05,16,chemotype | environments unseen,-0.9592376482821011,414
+test,informed,0.05,17,chemotype | environments unseen,-5.0566696840886785,774
+test,informed,0.05,19,chemotype | environments unseen,12.074515093887584,639
+test,informed,0.05,20,chemotype | environments unseen,28.341912764405095,1655
+test,informed,0.05,21,chemotype | environments unseen,16.328955830351855,416
+test,informed,0.05,22,chemotype | environments unseen,-7.068658769233798,961
+test,informed,0.05,23,chemotype | environments unseen,-5.154314377042616,127
+test,informed,0.05,24,chemotype | environments unseen,6.3913773440911115,1260
+test,informed,0.1,0,environment | chemotype held out,17.644696380954862,1032
+test,informed,0.1,1,environment | chemotype held out,21.84686199486929,1287
+test,informed,0.1,2,environment | chemotype held out,12.988330744323664,516
+test,informed,0.1,3,environment | chemotype held out,12.35136958196555,1795
+test,informed,0.1,4,environment | chemotype held out,12.090004966770756,1717
+test,informed,0.1,5,environment | chemotype held out,46.380856121019754,331
+test,informed,0.1,6,environment | chemotype held out,25.64633208662812,230
+test,informed,0.1,7,environment | chemotype held out,13.543768233969995,1230
+test,informed,0.1,8,environment | chemotype held out,21.238006396190897,485
+test,informed,0.1,9,environment | chemotype held out,15.414909252938461,370
+test,informed,0.1,10,environment | chemotype held out,-2.5016456315449407,1152
+test,informed,0.1,11,environment | chemotype held out,9.265074099715132,965
+test,informed,0.1,12,environment | chemotype held out,19.658618756314496,794
+test,informed,0.1,13,environment | chemotype held out,37.7140387943442,87
+test,informed,0.1,14,environment | chemotype held out,36.18324060536121,579
+test,informed,0.1,15,environment | chemotype held out,3.1060507021044703,955
+test,informed,0.1,16,environment | chemotype held out,12.908640610929552,414
+test,informed,0.1,17,environment | chemotype held out,15.754524126057273,774
+test,informed,0.1,19,environment | chemotype held out,-1.7946833436959295,639
+test,informed,0.1,20,environment | chemotype held out,24.55470956671977,1655
+test,informed,0.1,21,environment | chemotype held out,22.569142289512946,416
+test,informed,0.1,22,environment | chemotype held out,10.37733123311677,961
+test,informed,0.1,23,environment | chemotype held out,-0.540816702639483,127
+test,informed,0.1,24,environment | chemotype held out,-4.529211086281152,1260
+test,informed,0.1,0,environment | chemotype seen,34.83916492729795,724
+test,informed,0.1,1,environment | chemotype seen,23.848493320434937,986
+test,informed,0.1,2,environment | chemotype seen,24.37867997389243,933
+test,informed,0.1,3,environment | chemotype seen,22.775584644192033,2254
+test,informed,0.1,4,environment | chemotype seen,18.310051773103837,1460
+test,informed,0.1,5,environment | chemotype seen,35.99392205089728,1458
+test,informed,0.1,6,environment | chemotype seen,20.276722884817815,1033
+test,informed,0.1,7,environment | chemotype seen,19.82090769399391,2520
+test,informed,0.1,8,environment | chemotype seen,24.842474046234393,2033
+test,informed,0.1,9,environment | chemotype seen,32.750625859117115,962
+test,informed,0.1,10,environment | chemotype seen,3.001736716342813,650
+test,informed,0.1,11,environment | chemotype seen,9.177938738927054,2658
+test,informed,0.1,12,environment | chemotype seen,20.054226653531742,1901
+test,informed,0.1,13,environment | chemotype seen,35.89778891199746,1098
+test,informed,0.1,14,environment | chemotype seen,30.635600126380517,1336
+test,informed,0.1,15,environment | chemotype seen,16.75384499414332,2674
+test,informed,0.1,16,environment | chemotype seen,18.200427119684207,2074
+test,informed,0.1,17,environment | chemotype seen,29.977878727429104,799
+test,informed,0.1,18,environment | chemotype seen,24.766148052135748,1591
+test,informed,0.1,19,environment | chemotype seen,18.52935458161257,852
+test,informed,0.1,20,environment | chemotype seen,30.226055049481527,1560
+test,informed,0.1,21,environment | chemotype seen,37.551415135659866,949
+test,informed,0.1,22,environment | chemotype seen,30.223491064271045,1170
+test,informed,0.1,23,environment | chemotype seen,4.979786359667093,1080
+test,informed,0.1,24,environment | chemotype seen,15.872393471061876,2558
+test,informed,0.1,0,chemotype | environments seen,14.059537800723124,2809
+test,informed,0.1,1,chemotype | environments seen,12.61220240232521,2740
+test,informed,0.1,2,chemotype | environments seen,17.60769024617461,3013
+test,informed,0.1,3,chemotype | environments seen,13.365757919260956,2489
+test,informed,0.1,4,chemotype | environments seen,16.181276201768075,2423
+test,informed,0.1,5,chemotype | environments seen,26.471423583412204,3075
+test,informed,0.1,6,chemotype | environments seen,14.165056613021727,3254
+test,informed,0.1,7,chemotype | environments seen,9.778200198945758,2684
+test,informed,0.1,8,chemotype | environments seen,17.56943810731992,3064
+test,informed,0.1,9,chemotype | environments seen,15.798428213871357,3046
+test,informed,0.1,10,chemotype | environments seen,4.579384685027907,2734
+test,informed,0.1,11,chemotype | environments seen,1.2326665767343898,2904
+test,informed,0.1,12,chemotype | environments seen,11.060630571325134,2920
+test,informed,0.1,13,chemotype | environments seen,6.197682283627659,3191
+test,informed,0.1,14,chemotype | environments seen,29.31944242321418,3011
+test,informed,0.1,15,chemotype | environments seen,8.701782943924172,2783
+test,informed,0.1,16,chemotype | environments seen,7.6167555728147365,3175
+test,informed,0.1,17,chemotype | environments seen,8.81217172065757,2939
+test,informed,0.1,18,chemotype | environments seen,15.577592899084983,3275
+test,informed,0.1,19,chemotype | environments seen,11.780309107442143,2935
+test,informed,0.1,20,chemotype | environments seen,16.72768578301923,2524
+test,informed,0.1,21,chemotype | environments seen,0.026473395128986554,3171
+test,informed,0.1,22,chemotype | environments seen,12.089796197732067,2783
+test,informed,0.1,23,chemotype | environments seen,9.198306983681055,3290
+test,informed,0.1,24,chemotype | environments seen,6.90888490554238,2666
+test,informed,0.1,0,chemotype | environments unseen,13.71625474319724,1032
+test,informed,0.1,1,chemotype | environments unseen,-4.590251226975244,1287
+test,informed,0.1,2,chemotype | environments unseen,6.920937094087936,516
+test,informed,0.1,3,chemotype | environments unseen,4.049783687102401,1795
+test,informed,0.1,4,chemotype | environments unseen,6.994504516795049,1717
+test,informed,0.1,5,chemotype | environments unseen,32.93193276103315,331
+test,informed,0.1,6,chemotype | environments unseen,13.558363546466905,230
+test,informed,0.1,7,chemotype | environments unseen,8.603233440462686,1230
+test,informed,0.1,8,chemotype | environments unseen,10.83124953833218,485
+test,informed,0.1,9,chemotype | environments unseen,10.997446950399489,370
+test,informed,0.1,10,chemotype | environments unseen,6.5820710892109116,1152
+test,informed,0.1,11,chemotype | environments unseen,-6.4068137443189075,965
+test,informed,0.1,12,chemotype | environments unseen,8.297699297473773,794
+test,informed,0.1,13,chemotype | environments unseen,11.069585615300825,87
+test,informed,0.1,14,chemotype | environments unseen,11.241860631858202,579
+test,informed,0.1,15,chemotype | environments unseen,1.06415484232993,955
+test,informed,0.1,16,chemotype | environments unseen,-0.42274242438146403,414
+test,informed,0.1,17,chemotype | environments unseen,2.4969555538875325,774
+test,informed,0.1,19,chemotype | environments unseen,5.261860103570055,639
+test,informed,0.1,20,chemotype | environments unseen,24.475486125041606,1655
+test,informed,0.1,21,chemotype | environments unseen,10.059628762133817,416
+test,informed,0.1,22,chemotype | environments unseen,-4.225769065222341,961
+test,informed,0.1,23,chemotype | environments unseen,-7.249949434991597,127
+test,informed,0.1,24,chemotype | environments unseen,3.693586711857917,1260
+test,informed,1.0,0,environment | chemotype held out,75.24634112839843,1032
+test,informed,1.0,1,environment | chemotype held out,35.5129512741522,1287
+test,informed,1.0,2,environment | chemotype held out,27.18267385139582,516
+test,informed,1.0,3,environment | chemotype held out,40.56543482131612,1795
+test,informed,1.0,4,environment | chemotype held out,28.666538664011714,1717
+test,informed,1.0,5,environment | chemotype held out,27.502245780521257,331
+test,informed,1.0,6,environment | chemotype held out,39.45871372662808,230
+test,informed,1.0,7,environment | chemotype held out,26.500340429555912,1230
+test,informed,1.0,8,environment | chemotype held out,17.523258891268295,485
+test,informed,1.0,9,environment | chemotype held out,22.236056915270083,370
+test,informed,1.0,10,environment | chemotype held out,35.7181868694085,1152
+test,informed,1.0,11,environment | chemotype held out,25.14498551479127,965
+test,informed,1.0,12,environment | chemotype held out,49.079204190435135,794
+test,informed,1.0,13,environment | chemotype held out,35.198141984939326,87
+test,informed,1.0,14,environment | chemotype held out,27.845263191153006,579
+test,informed,1.0,15,environment | chemotype held out,18.601819303827995,955
+test,informed,1.0,16,environment | chemotype held out,19.020203421752246,414
+test,informed,1.0,17,environment | chemotype held out,35.77706655244044,774
+test,informed,1.0,19,environment | chemotype held out,10.951423673674629,639
+test,informed,1.0,20,environment | chemotype held out,17.213073594030604,1655
+test,informed,1.0,21,environment | chemotype held out,46.28817003191668,416
+test,informed,1.0,22,environment | chemotype held out,32.567049093581126,961
+test,informed,1.0,23,environment | chemotype held out,5.114844824977849,127
+test,informed,1.0,24,environment | chemotype held out,19.799202471824316,1260
+test,informed,1.0,0,environment | chemotype seen,117.48103883439529,724
+test,informed,1.0,1,environment | chemotype seen,47.80369747183049,986
+test,informed,1.0,2,environment | chemotype seen,42.79957400186726,933
+test,informed,1.0,3,environment | chemotype seen,36.59154577575387,2254
+test,informed,1.0,4,environment | chemotype seen,42.056094009986765,1460
+test,informed,1.0,5,environment | chemotype seen,47.35906205715191,1458
+test,informed,1.0,6,environment | chemotype seen,40.54817857414549,1033
+test,informed,1.0,7,environment | chemotype seen,36.96925016147678,2520
+test,informed,1.0,8,environment | chemotype seen,32.89493746734434,2033
+test,informed,1.0,9,environment | chemotype seen,48.47080285300794,962
+test,informed,1.0,10,environment | chemotype seen,53.382711877190246,650
+test,informed,1.0,11,environment | chemotype seen,34.59995584160107,2658
+test,informed,1.0,12,environment | chemotype seen,65.8797229580604,1901
+test,informed,1.0,13,environment | chemotype seen,55.61412143829324,1098
+test,informed,1.0,14,environment | chemotype seen,41.64710643958234,1336
+test,informed,1.0,15,environment | chemotype seen,35.647117895645046,2674
+test,informed,1.0,16,environment | chemotype seen,29.641304736897187,2074
+test,informed,1.0,17,environment | chemotype seen,56.74263827280434,799
+test,informed,1.0,18,environment | chemotype seen,28.943368348155094,1591
+test,informed,1.0,19,environment | chemotype seen,23.39123486180873,852
+test,informed,1.0,20,environment | chemotype seen,33.89862260372965,1560
+test,informed,1.0,21,environment | chemotype seen,58.673004490450595,949
+test,informed,1.0,22,environment | chemotype seen,45.8131956739424,1170
+test,informed,1.0,23,environment | chemotype seen,20.6825534331063,1080
+test,informed,1.0,24,environment | chemotype seen,36.109636975917866,2558
+test,informed,1.0,0,chemotype | environments seen,24.398737082120444,2809
+test,informed,1.0,1,chemotype | environments seen,8.419682660775996,2740
+test,informed,1.0,2,chemotype | environments seen,19.23097198932542,3013
+test,informed,1.0,3,chemotype | environments seen,22.838801724103185,2489
+test,informed,1.0,4,chemotype | environments seen,19.486592287659292,2423
+test,informed,1.0,5,chemotype | environments seen,22.29026791290812,3075
+test,informed,1.0,6,chemotype | environments seen,16.022468133660855,3254
+test,informed,1.0,7,chemotype | environments seen,16.177867724494618,2684
+test,informed,1.0,8,chemotype | environments seen,15.673694219668008,3064
+test,informed,1.0,9,chemotype | environments seen,21.087293434079108,3046
+test,informed,1.0,10,chemotype | environments seen,31.250842212591945,2734
+test,informed,1.0,11,chemotype | environments seen,15.16742481184405,2904
+test,informed,1.0,12,chemotype | environments seen,27.97093067777848,2920
+test,informed,1.0,13,chemotype | environments seen,17.52870569335648,3191
+test,informed,1.0,14,chemotype | environments seen,31.040927395993535,3011
+test,informed,1.0,15,chemotype | environments seen,22.84790370814978,2783
+test,informed,1.0,16,chemotype | environments seen,5.749530984330493,3175
+test,informed,1.0,17,chemotype | environments seen,15.994619640283169,2939
+test,informed,1.0,18,chemotype | environments seen,8.766546155860645,3275
+test,informed,1.0,19,chemotype | environments seen,24.655578440127744,2935
+test,informed,1.0,20,chemotype | environments seen,14.824886736076948,2524
+test,informed,1.0,21,chemotype | environments seen,11.634489533026844,3171
+test,informed,1.0,22,chemotype | environments seen,24.75541598944701,2783
+test,informed,1.0,23,chemotype | environments seen,9.574118177728739,3290
+test,informed,1.0,24,chemotype | environments seen,19.69951234798558,2666
+test,informed,1.0,0,chemotype | environments unseen,59.55555232082111,1032
+test,informed,1.0,1,chemotype | environments unseen,7.786307286403586,1287
+test,informed,1.0,2,chemotype | environments unseen,12.455438548008019,516
+test,informed,1.0,3,chemotype | environments unseen,14.406760208405718,1795
+test,informed,1.0,4,chemotype | environments unseen,20.897652873468445,1717
+test,informed,1.0,5,chemotype | environments unseen,18.416724168454035,331
+test,informed,1.0,6,chemotype | environments unseen,14.817100720243706,230
+test,informed,1.0,7,chemotype | environments unseen,11.677677731178193,1230
+test,informed,1.0,8,chemotype | environments unseen,-4.589706772218127,485
+test,informed,1.0,9,chemotype | environments unseen,9.517889355303218,370
+test,informed,1.0,10,chemotype | environments unseen,28.470543580706806,1152
+test,informed,1.0,11,chemotype | environments unseen,2.630470966404409,965
+test,informed,1.0,12,chemotype | environments unseen,31.588645367531267,794
+test,informed,1.0,13,chemotype | environments unseen,1.3248233754635468,87
+test,informed,1.0,14,chemotype | environments unseen,6.2346169605285,579
+test,informed,1.0,15,chemotype | environments unseen,1.5121069061556978,955
+test,informed,1.0,16,chemotype | environments unseen,-0.010427781525929321,414
+test,informed,1.0,17,chemotype | environments unseen,6.392105714009716,774
+test,informed,1.0,19,chemotype | environments unseen,3.6977783868244716,639
+test,informed,1.0,20,chemotype | environments unseen,7.107292825529489,1655
+test,informed,1.0,21,chemotype | environments unseen,13.059928547843223,416
+test,informed,1.0,22,chemotype | environments unseen,8.143519252870217,961
+test,informed,1.0,23,chemotype | environments unseen,-14.445071044216558,127
+test,informed,1.0,24,chemotype | environments unseen,15.679678617267953,1260
+remainder,blind,0.01,0,environment | chemotype held out,21.638968064042263,3812
+remainder,blind,0.01,0,environment | chemotype seen,14.167462675138166,4065
+remainder,blind,0.01,0,chemotype | environments seen,31.170317906357976,18206
+remainder,blind,0.01,0,chemotype | environments unseen,17.23999762464482,3812
+remainder,blind,0.05,0,environment | chemotype held out,18.168746731764323,3812
+remainder,blind,0.05,0,environment | chemotype seen,40.32546025194186,4065
+remainder,blind,0.05,0,chemotype | environments seen,20.244257911631117,18206
+remainder,blind,0.05,0,chemotype | environments unseen,20.795782553532547,3812
+remainder,blind,0.1,0,environment | chemotype held out,21.147104366971163,3812
+remainder,blind,0.1,0,environment | chemotype seen,18.3773553203727,4065
+remainder,blind,0.1,0,chemotype | environments seen,9.799000150612349,18206
+remainder,blind,0.1,0,chemotype | environments unseen,18.03822864405983,3812
+remainder,blind,1.0,0,environment | chemotype held out,12.657948093003794,3812
+remainder,blind,1.0,0,environment | chemotype seen,25.9045113942646,4065
+remainder,blind,1.0,0,chemotype | environments seen,1.1384431417590635,18206
+remainder,blind,1.0,0,chemotype | environments unseen,0.2767715970474329,3812
+remainder,blind,0.01,1,environment | chemotype held out,21.108887087248686,3083
+remainder,blind,0.01,1,environment | chemotype seen,29.83749479107682,8814
+remainder,blind,0.01,1,chemotype | environments seen,36.0951338955321,12260
+remainder,blind,0.01,1,chemotype | environments unseen,5.585265735199631,3083
+remainder,blind,0.05,1,environment | chemotype held out,6.029598554032845,3083
+remainder,blind,0.05,1,environment | chemotype seen,13.63358854113939,8814
+remainder,blind,0.05,1,chemotype | environments seen,0.5947295032561043,12260
+remainder,blind,0.05,1,chemotype | environments unseen,-2.163492764409896,3083
+remainder,blind,0.1,1,environment | chemotype held out,16.43858663105756,3083
+remainder,blind,0.1,1,environment | chemotype seen,16.783577310220487,8814
+remainder,blind,0.1,1,chemotype | environments seen,6.496936438263461,12260
+remainder,blind,0.1,1,chemotype | environments unseen,1.3343456062695798,3083
+remainder,blind,1.0,1,environment | chemotype held out,34.08082487282043,3083
+remainder,blind,1.0,1,environment | chemotype seen,27.996015988801318,8814
+remainder,blind,1.0,1,chemotype | environments seen,21.93411685663493,12260
+remainder,blind,1.0,1,chemotype | environments unseen,16.56306455480042,3083
+remainder,blind,0.01,10,environment | chemotype held out,-14.518536063490583,5014
+remainder,blind,0.01,10,environment | chemotype seen,-8.842909265288409,4235
+remainder,blind,0.01,10,chemotype | environments seen,-16.397481166684315,17004
+remainder,blind,0.01,10,chemotype | environments unseen,-5.896308195685926,5014
+remainder,blind,0.05,10,environment | chemotype held out,3.9458958546710297,5014
+remainder,blind,0.05,10,environment | chemotype seen,17.333777042947656,4235
+remainder,blind,0.05,10,chemotype | environments seen,21.535012445988272,17004
+remainder,blind,0.05,10,chemotype | environments unseen,15.664138215746721,5014
+remainder,blind,0.1,10,environment | chemotype held out,7.743411969460754,5014
+remainder,blind,0.1,10,environment | chemotype seen,7.913241600846494,4235
+remainder,blind,0.1,10,chemotype | environments seen,2.0950660793541815,17004
+remainder,blind,0.1,10,chemotype | environments unseen,7.415475944483617,5014
+remainder,blind,1.0,10,environment | chemotype held out,15.631127824099634,5014
+remainder,blind,1.0,10,environment | chemotype seen,27.55656773891244,4235
+remainder,blind,1.0,10,chemotype | environments seen,19.336599593618665,17004
+remainder,blind,1.0,10,chemotype | environments unseen,15.081762629307512,5014
+remainder,blind,0.01,11,environment | chemotype held out,-35.219291763306316,1573
+remainder,blind,0.01,11,environment | chemotype seen,-24.471361734183844,13555
+remainder,blind,0.01,11,chemotype | environments seen,-23.741680659383135,13770
+remainder,blind,0.01,11,chemotype | environments unseen,-25.80789575721082,1573
+remainder,blind,0.05,11,environment | chemotype held out,1.7500771755019784,1573
+remainder,blind,0.05,11,environment | chemotype seen,1.1230810328754917,13555
+remainder,blind,0.05,11,chemotype | environments seen,-1.3867812294565742,13770
+remainder,blind,0.05,11,chemotype | environments unseen,3.7546900423098046,1573
+remainder,blind,0.1,11,environment | chemotype held out,-0.7348695087791934,1573
+remainder,blind,0.1,11,environment | chemotype seen,-1.9467255123642717,13555
+remainder,blind,0.1,11,chemotype | environments seen,-5.868152980762648,13770
+remainder,blind,0.1,11,chemotype | environments unseen,-6.6669128985345845,1573
+remainder,blind,1.0,11,environment | chemotype held out,4.963701236290223,1573
+remainder,blind,1.0,11,environment | chemotype seen,6.984181388867189,13555
+remainder,blind,1.0,11,chemotype | environments seen,1.8249860792289039,13770
+remainder,blind,1.0,11,chemotype | environments unseen,2.5853349289374115,1573
+remainder,blind,0.01,12,environment | chemotype held out,23.434063928223495,2571
+remainder,blind,0.01,12,environment | chemotype seen,13.649015513154527,12296
+remainder,blind,0.01,12,chemotype | environments seen,6.511560202654338,14698
+remainder,blind,0.01,12,chemotype | environments unseen,5.043659490588712,2571
+remainder,blind,0.05,12,environment | chemotype held out,14.54227785341194,2571
+remainder,blind,0.05,12,environment | chemotype seen,12.773876999215208,12296
+remainder,blind,0.05,12,chemotype | environments seen,16.99521716506822,14698
+remainder,blind,0.05,12,chemotype | environments unseen,7.293685800494533,2571
+remainder,blind,0.1,12,environment | chemotype held out,13.989024781581984,2571
+remainder,blind,0.1,12,environment | chemotype seen,11.77341530273623,12296
+remainder,blind,0.1,12,chemotype | environments seen,14.986119743644338,14698
+remainder,blind,0.1,12,chemotype | environments unseen,-2.662319813329023,2571
+remainder,blind,1.0,12,environment | chemotype held out,20.366645136876556,2571
+remainder,blind,1.0,12,environment | chemotype seen,24.073591537896608,12296
+remainder,blind,1.0,12,chemotype | environments seen,9.424088158691449,14698
+remainder,blind,1.0,12,chemotype | environments unseen,1.3062315372261066,2571
+remainder,blind,0.01,13,environment | chemotype held out,5.198000917138932,221
+remainder,blind,0.01,13,environment | chemotype seen,28.384380203624033,7656
+remainder,blind,0.01,13,chemotype | environments seen,25.1290809166255,24137
+remainder,blind,0.01,13,chemotype | environments unseen,1.4692645697705946,221
+remainder,blind,0.05,13,environment | chemotype held out,4.603941220345379,221
+remainder,blind,0.05,13,environment | chemotype seen,14.443694288208716,7656
+remainder,blind,0.05,13,chemotype | environments seen,-6.041206775256123,24137
+remainder,blind,0.05,13,chemotype | environments unseen,1.3593286129052085,221
+remainder,blind,0.1,13,environment | chemotype held out,2.849206215321468,221
+remainder,blind,0.1,13,environment | chemotype seen,6.422227749857704,7656
+remainder,blind,0.1,13,chemotype | environments seen,31.516478832795205,24137
+remainder,blind,0.1,13,chemotype | environments unseen,0.7848521597593621,221
+remainder,blind,1.0,13,environment | chemotype held out,40.52034842491048,221
+remainder,blind,1.0,13,environment | chemotype seen,70.07302069097216,7656
+remainder,blind,1.0,13,chemotype | environments seen,2.7566621638312854,24137
+remainder,blind,1.0,13,chemotype | environments unseen,22.706310883732172,221
+remainder,blind,0.01,14,environment | chemotype held out,32.930330867607836,1572
+remainder,blind,0.01,14,environment | chemotype seen,25.00607038586117,10325
+remainder,blind,0.01,14,chemotype | environments seen,29.16117548493672,13768
+remainder,blind,0.01,14,chemotype | environments unseen,14.524971409607172,1572
+remainder,blind,0.05,14,environment | chemotype held out,17.055262095365926,1572
+remainder,blind,0.05,14,environment | chemotype seen,18.185439009783593,10325
+remainder,blind,0.05,14,chemotype | environments seen,11.64213293738004,13768
+remainder,blind,0.05,14,chemotype | environments unseen,10.324372043903974,1572
+remainder,blind,0.1,14,environment | chemotype held out,9.209265385340696,1572
+remainder,blind,0.1,14,environment | chemotype seen,13.79958315556155,10325
+remainder,blind,0.1,14,chemotype | environments seen,13.874209675254786,13768
+remainder,blind,0.1,14,chemotype | environments unseen,7.293010555430744,1572
+remainder,blind,1.0,14,environment | chemotype held out,21.525049182665494,1572
+remainder,blind,1.0,14,environment | chemotype seen,19.593555836538734,10325
+remainder,blind,1.0,14,chemotype | environments seen,13.905646347818676,13768
+remainder,blind,1.0,14,chemotype | environments unseen,9.918203432552943,1572
+remainder,blind,0.01,15,environment | chemotype held out,3.1865934187145117,2055
+remainder,blind,0.01,15,environment | chemotype seen,4.635336848536783,13073
+remainder,blind,0.01,15,chemotype | environments seen,7.572096053542486,19963
+remainder,blind,0.01,15,chemotype | environments unseen,18.332691697226064,2055
+remainder,blind,0.05,15,environment | chemotype held out,-2.420356827946219,2055
+remainder,blind,0.05,15,environment | chemotype seen,-4.436427397563053,13073
+remainder,blind,0.05,15,chemotype | environments seen,4.668636212359613,19963
+remainder,blind,0.05,15,chemotype | environments unseen,-2.711532470742551,2055
+remainder,blind,0.1,15,environment | chemotype held out,5.925953512010075,2055
+remainder,blind,0.1,15,environment | chemotype seen,-2.097954325757115,13073
+remainder,blind,0.1,15,chemotype | environments seen,-1.7911726653746292,19963
+remainder,blind,0.1,15,chemotype | environments unseen,-3.3545468884964986,2055
+remainder,blind,1.0,15,environment | chemotype held out,26.03550005941554,2055
+remainder,blind,1.0,15,environment | chemotype seen,24.453233142047164,13073
+remainder,blind,1.0,15,chemotype | environments seen,27.788646568940784,19963
+remainder,blind,1.0,15,chemotype | environments unseen,17.473089389272147,2055
+remainder,blind,0.01,16,environment | chemotype held out,13.713927367603304,1481
+remainder,blind,0.01,16,environment | chemotype seen,16.128193732248693,13386
+remainder,blind,0.01,16,chemotype | environments seen,12.707711856083588,13862
+remainder,blind,0.01,16,chemotype | environments unseen,-4.012532834661013,1481
+remainder,blind,0.05,16,environment | chemotype held out,15.663121516357133,1481
+remainder,blind,0.05,16,environment | chemotype seen,21.99090490010872,13386
+remainder,blind,0.05,16,chemotype | environments seen,16.670711978488804,13862
+remainder,blind,0.05,16,chemotype | environments unseen,12.943390989398562,1481
+remainder,blind,0.1,16,environment | chemotype held out,12.789460556207912,1481
+remainder,blind,0.1,16,environment | chemotype seen,15.479511838098688,13386
+remainder,blind,0.1,16,chemotype | environments seen,-1.302303485286772,13862
+remainder,blind,0.1,16,chemotype | environments unseen,4.39491544246027,1481
+remainder,blind,1.0,16,environment | chemotype held out,35.31803898538976,1481
+remainder,blind,1.0,16,environment | chemotype seen,50.970720970643164,13386
+remainder,blind,1.0,16,chemotype | environments seen,21.069631441278414,13862
+remainder,blind,1.0,16,chemotype | environments unseen,20.863353066254952,1481
+remainder,blind,0.01,17,environment | chemotype held out,4.789485569732811,1814
+remainder,blind,0.01,17,environment | chemotype seen,1.2194507368829814,6063
+remainder,blind,0.01,17,chemotype | environments seen,-4.040306956923623,15455
+remainder,blind,0.01,17,chemotype | environments unseen,-1.2767140470868332,1814
+remainder,blind,0.05,17,environment | chemotype held out,-2.039138698385199,1814
+remainder,blind,0.05,17,environment | chemotype seen,12.126103964757858,6063
+remainder,blind,0.05,17,chemotype | environments seen,3.426489678082584,15455
+remainder,blind,0.05,17,chemotype | environments unseen,-3.1741406073417746,1814
+remainder,blind,0.1,17,environment | chemotype held out,1.5897426943130575,1814
+remainder,blind,0.1,17,environment | chemotype seen,6.798067734758198,6063
+remainder,blind,0.1,17,chemotype | environments seen,2.8353918939485196,15455
+remainder,blind,0.1,17,chemotype | environments unseen,-4.747370969982949,1814
+remainder,blind,1.0,17,environment | chemotype held out,70.44673529908165,1814
+remainder,blind,1.0,17,environment | chemotype seen,62.98269370321072,6063
+remainder,blind,1.0,17,chemotype | environments seen,13.393653132163433,15455
+remainder,blind,1.0,17,chemotype | environments unseen,38.51518726324114,1814
+remainder,blind,0.01,18,environment | chemotype held out,-7.208973862676129,915
+remainder,blind,0.01,18,environment | chemotype seen,6.076033734372775,10982
+remainder,blind,0.01,18,chemotype | environments seen,-13.210636952299113,23131
+remainder,blind,0.01,18,chemotype | environments unseen,-12.843184146329168,915
+remainder,blind,0.05,18,environment | chemotype held out,13.076660608149954,915
+remainder,blind,0.05,18,environment | chemotype seen,12.86009198475993,10982
+remainder,blind,0.05,18,chemotype | environments seen,4.288113383361349,23131
+remainder,blind,0.05,18,chemotype | environments unseen,3.5790953216896852,915
+remainder,blind,0.1,18,environment | chemotype held out,-2.89698370668175,915
+remainder,blind,0.1,18,environment | chemotype seen,18.321246803571775,10982
+remainder,blind,0.1,18,chemotype | environments seen,4.036004624022333,23131
+remainder,blind,0.1,18,chemotype | environments unseen,-1.0111194652912854,915
+remainder,blind,1.0,18,environment | chemotype held out,-9.829237747538887,915
+remainder,blind,1.0,18,environment | chemotype seen,14.472902794794056,10982
+remainder,blind,1.0,18,chemotype | environments seen,-8.013568928530631,23131
+remainder,blind,1.0,18,chemotype | environments unseen,1.8665242511654334,915
+remainder,blind,0.01,19,environment | chemotype held out,-18.564698980455866,1315
+remainder,blind,0.01,19,environment | chemotype seen,-11.12302715030454,7934
+remainder,blind,0.01,19,chemotype | environments seen,-18.30816684337089,14337
+remainder,blind,0.01,19,chemotype | environments unseen,-5.397044997586235,1315
+remainder,blind,0.05,19,environment | chemotype held out,22.509454338685764,1315
+remainder,blind,0.05,19,environment | chemotype seen,8.385443191634483,7934
+remainder,blind,0.05,19,chemotype | environments seen,12.944430507277236,14337
+remainder,blind,0.05,19,chemotype | environments unseen,17.56388347601873,1315
+remainder,blind,0.1,19,environment | chemotype held out,5.696217644423115,1315
+remainder,blind,0.1,19,environment | chemotype seen,20.237912278735738,7934
+remainder,blind,0.1,19,chemotype | environments seen,8.907882152848444,14337
+remainder,blind,0.1,19,chemotype | environments unseen,13.075782235095016,1315
+remainder,blind,1.0,19,environment | chemotype held out,9.583785185664233,1315
+remainder,blind,1.0,19,environment | chemotype seen,14.89254281800763,7934
+remainder,blind,1.0,19,chemotype | environments seen,13.11581334830652,14337
+remainder,blind,1.0,19,chemotype | environments unseen,10.773388919087687,1315
+remainder,blind,0.01,2,environment | chemotype held out,-15.635818429836757,1509
+remainder,blind,0.01,2,environment | chemotype seen,-11.910237626189312,7740
+remainder,blind,0.01,2,chemotype | environments seen,-19.00320424357075,13953
+remainder,blind,0.01,2,chemotype | environments unseen,-14.762006867881519,1509
+remainder,blind,0.05,2,environment | chemotype held out,3.905573742166407,1509
+remainder,blind,0.05,2,environment | chemotype seen,10.019300876015667,7740
+remainder,blind,0.05,2,chemotype | environments seen,8.280593842929566,13953
+remainder,blind,0.05,2,chemotype | environments unseen,8.695480786476313,1509
+remainder,blind,0.1,2,environment | chemotype held out,7.075889238741297,1509
+remainder,blind,0.1,2,environment | chemotype seen,11.236012187913726,7740
+remainder,blind,0.1,2,chemotype | environments seen,16.336628969063845,13953
+remainder,blind,0.1,2,chemotype | environments unseen,-1.4571361649500671,1509
+remainder,blind,1.0,2,environment | chemotype held out,17.704359801348165,1509
+remainder,blind,1.0,2,environment | chemotype seen,25.133581843299712,7740
+remainder,blind,1.0,2,chemotype | environments seen,14.196467774528122,13953
+remainder,blind,1.0,2,chemotype | environments unseen,9.135555083421922,1509
+remainder,blind,0.01,20,environment | chemotype held out,26.610157520862238,6183
+remainder,blind,0.01,20,environment | chemotype seen,25.935388525087834,8684
+remainder,blind,0.01,20,chemotype | environments seen,20.326148102965526,15835
+remainder,blind,0.01,20,chemotype | environments unseen,27.41245027058196,6183
+remainder,blind,0.05,20,environment | chemotype held out,8.541869343801329,6183
+remainder,blind,0.05,20,environment | chemotype seen,15.621142986948522,8684
+remainder,blind,0.05,20,chemotype | environments seen,11.375304031488094,15835
+remainder,blind,0.05,20,chemotype | environments unseen,18.805154191948027,6183
+remainder,blind,0.1,20,environment | chemotype held out,13.503561204341832,6183
+remainder,blind,0.1,20,environment | chemotype seen,17.244757469662048,8684
+remainder,blind,0.1,20,chemotype | environments seen,9.335969753306125,15835
+remainder,blind,0.1,20,chemotype | environments unseen,8.49313205244567,6183
+remainder,blind,1.0,20,environment | chemotype held out,29.039153302410725,6183
+remainder,blind,1.0,20,environment | chemotype seen,37.08370666295384,8684
+remainder,blind,1.0,20,chemotype | environments seen,29.064512264762406,15835
+remainder,blind,1.0,20,chemotype | environments unseen,15.178920564367802,6183
+remainder,blind,0.01,21,environment | chemotype held out,1.4433623177150758,1238
+remainder,blind,0.01,21,environment | chemotype seen,6.581061915261677,6639
+remainder,blind,0.01,21,chemotype | environments seen,9.18481148467043,14105
+remainder,blind,0.01,21,chemotype | environments unseen,-10.205584875293683,1238
+remainder,blind,0.05,21,environment | chemotype held out,23.182903688545647,1238
+remainder,blind,0.05,21,environment | chemotype seen,31.21336760280307,6639
+remainder,blind,0.05,21,chemotype | environments seen,7.366570543132136,14105
+remainder,blind,0.05,21,chemotype | environments unseen,8.027164790489023,1238
+remainder,blind,0.1,21,environment | chemotype held out,2.373298237910354,1238
+remainder,blind,0.1,21,environment | chemotype seen,14.361857891187636,6639
+remainder,blind,0.1,21,chemotype | environments seen,1.7074104975369249,14105
+remainder,blind,0.1,21,chemotype | environments unseen,7.176952758189041,1238
+remainder,blind,1.0,21,environment | chemotype held out,16.720743394128128,1238
+remainder,blind,1.0,21,environment | chemotype seen,37.986927369182084,6639
+remainder,blind,1.0,21,chemotype | environments seen,4.789212947526186,14105
+remainder,blind,1.0,21,chemotype | environments unseen,-4.170969416080304,1238
+remainder,blind,0.01,22,environment | chemotype held out,46.09402580109431,3066
+remainder,blind,0.01,22,environment | chemotype seen,41.056898337528715,8831
+remainder,blind,0.01,22,chemotype | environments seen,17.786723895602165,12396
+remainder,blind,0.01,22,chemotype | environments unseen,16.84824743232673,3066
+remainder,blind,0.05,22,environment | chemotype held out,2.7000529557785837,3066
+remainder,blind,0.05,22,environment | chemotype seen,23.468010338013514,8831
+remainder,blind,0.05,22,chemotype | environments seen,12.638447292029952,12396
+remainder,blind,0.05,22,chemotype | environments unseen,-3.385309526438403,3066
+remainder,blind,0.1,22,environment | chemotype held out,10.735857168371432,3066
+remainder,blind,0.1,22,environment | chemotype seen,23.73256550175551,8831
+remainder,blind,0.1,22,chemotype | environments seen,17.45961400709869,12396
+remainder,blind,0.1,22,chemotype | environments unseen,2.5512113108050314,3066
+remainder,blind,1.0,22,environment | chemotype held out,8.722962770973663,3066
+remainder,blind,1.0,22,environment | chemotype seen,9.386069044154185,8831
+remainder,blind,1.0,22,chemotype | environments seen,6.095219493569979,12396
+remainder,blind,1.0,22,chemotype | environments unseen,-5.879824712456594,3066
+remainder,blind,0.01,23,environment | chemotype held out,-2.9208480097033496,472
+remainder,blind,0.01,23,environment | chemotype seen,-4.031305061590419,8777
+remainder,blind,0.01,23,chemotype | environments seen,3.973203339493137,25381
+remainder,blind,0.01,23,chemotype | environments unseen,11.208000569693146,472
+remainder,blind,0.05,23,environment | chemotype held out,11.317343750075862,472
+remainder,blind,0.05,23,environment | chemotype seen,13.926026197576356,8777
+remainder,blind,0.05,23,chemotype | environments seen,8.54094041117592,25381
+remainder,blind,0.05,23,chemotype | environments unseen,0.4566911172191605,472
+remainder,blind,0.1,23,environment | chemotype held out,0.5277881837416356,472
+remainder,blind,0.1,23,environment | chemotype seen,13.074856946196505,8777
+remainder,blind,0.1,23,chemotype | environments seen,7.6325641144206475,25381
+remainder,blind,0.1,23,chemotype | environments unseen,4.621644024298604,472
+remainder,blind,1.0,23,environment | chemotype held out,12.009484577807704,472
+remainder,blind,1.0,23,environment | chemotype seen,13.039863387967127,8777
+remainder,blind,1.0,23,chemotype | environments seen,6.241272446033401,25381
+remainder,blind,1.0,23,chemotype | environments unseen,-4.1336078100612035,472
+remainder,blind,0.01,24,environment | chemotype held out,35.40413118625502,2918
+remainder,blind,0.01,24,environment | chemotype seen,21.27976769687965,12210
+remainder,blind,0.01,24,chemotype | environments seen,23.138973233580543,12734
+remainder,blind,0.01,24,chemotype | environments unseen,54.275373773011026,2918
+remainder,blind,0.05,24,environment | chemotype held out,-4.7786779896655975,2918
+remainder,blind,0.05,24,environment | chemotype seen,-0.9944987178594736,12210
+remainder,blind,0.05,24,chemotype | environments seen,-4.226326999427747,12734
+remainder,blind,0.05,24,chemotype | environments unseen,3.014267954784721,2918
+remainder,blind,0.1,24,environment | chemotype held out,7.863502815483131,2918
+remainder,blind,0.1,24,environment | chemotype seen,6.831921142440427,12210
+remainder,blind,0.1,24,chemotype | environments seen,10.120080022519788,12734
+remainder,blind,0.1,24,chemotype | environments unseen,13.435004934013348,2918
+remainder,blind,1.0,24,environment | chemotype held out,2.6446132579252595,2918
+remainder,blind,1.0,24,environment | chemotype seen,13.656101466368618,12210
+remainder,blind,1.0,24,chemotype | environments seen,14.989209857533842,12734
+remainder,blind,1.0,24,chemotype | environments unseen,6.679847035450861,2918
+remainder,blind,0.01,3,environment | chemotype held out,-9.845299424182599,5613
+remainder,blind,0.01,3,environment | chemotype seen,-10.919183014934395,9515
+remainder,blind,0.01,3,chemotype | environments seen,-13.001744654024591,20240
+remainder,blind,0.01,3,chemotype | environments unseen,-3.3048841401846154,5613
+remainder,blind,0.05,3,environment | chemotype held out,21.284406642014517,5613
+remainder,blind,0.05,3,environment | chemotype seen,3.3512267234819104,9515
+remainder,blind,0.05,3,chemotype | environments seen,16.979951276270064,20240
+remainder,blind,0.05,3,chemotype | environments unseen,15.151371879012576,5613
+remainder,blind,0.1,3,environment | chemotype held out,21.484665437802885,5613
+remainder,blind,0.1,3,environment | chemotype seen,16.131280333039044,9515
+remainder,blind,0.1,3,chemotype | environments seen,19.776987056536807,20240
+remainder,blind,0.1,3,chemotype | environments unseen,25.6749244546627,5613
+remainder,blind,1.0,3,environment | chemotype held out,17.163399910306936,5613
+remainder,blind,1.0,3,environment | chemotype seen,4.4758446191795285,9515
+remainder,blind,1.0,3,chemotype | environments seen,7.791094006226096,20240
+remainder,blind,1.0,3,chemotype | environments unseen,4.2180950374122865,5613
+remainder,blind,0.01,4,environment | chemotype held out,4.711671775631645,3085
+remainder,blind,0.01,4,environment | chemotype seen,7.141773209412536,11782
+remainder,blind,0.01,4,chemotype | environments seen,2.5043979761542214,12567
+remainder,blind,0.01,4,chemotype | environments unseen,-3.7689316123438887,3085
+remainder,blind,0.05,4,environment | chemotype held out,1.4119615351829462,3085
+remainder,blind,0.05,4,environment | chemotype seen,5.467066082409693,11782
+remainder,blind,0.05,4,chemotype | environments seen,5.2053969432956,12567
+remainder,blind,0.05,4,chemotype | environments unseen,-3.260833386776981,3085
+remainder,blind,0.1,4,environment | chemotype held out,20.05911029066344,3085
+remainder,blind,0.1,4,environment | chemotype seen,27.970570918852484,11782
+remainder,blind,0.1,4,chemotype | environments seen,22.141596596556397,12567
+remainder,blind,0.1,4,chemotype | environments unseen,18.119287549427366,3085
+remainder,blind,1.0,4,environment | chemotype held out,28.220676640111446,3085
+remainder,blind,1.0,4,environment | chemotype seen,35.84399849651274,11782
+remainder,blind,1.0,4,chemotype | environments seen,25.014759590397755,12567
+remainder,blind,1.0,4,chemotype | environments unseen,15.765480536416943,3085
+remainder,blind,0.01,5,environment | chemotype held out,-0.46543750999769173,2287
+remainder,blind,0.01,5,environment | chemotype seen,16.08644377416297,9610
+remainder,blind,0.01,5,chemotype | environments seen,2.3518795587129824,19731
+remainder,blind,0.01,5,chemotype | environments unseen,-9.71874582994913,2287
+remainder,blind,0.05,5,environment | chemotype held out,9.596116009995558,2287
+remainder,blind,0.05,5,environment | chemotype seen,15.590529561631147,9610
+remainder,blind,0.05,5,chemotype | environments seen,21.20089074266057,19731
+remainder,blind,0.05,5,chemotype | environments unseen,2.6495975804993264,2287
+remainder,blind,0.1,5,environment | chemotype held out,11.473516578108336,2287
+remainder,blind,0.1,5,environment | chemotype seen,9.308406719575528,9610
+remainder,blind,0.1,5,chemotype | environments seen,9.077812290357645,19731
+remainder,blind,0.1,5,chemotype | environments unseen,-5.8571935998356235,2287
+remainder,blind,1.0,5,environment | chemotype held out,18.912077738692282,2287
+remainder,blind,1.0,5,environment | chemotype seen,20.039968089292337,9610
+remainder,blind,1.0,5,chemotype | environments seen,16.077185046866788,19731
+remainder,blind,1.0,5,chemotype | environments unseen,8.248126394021163,2287
+remainder,blind,0.01,6,environment | chemotype held out,6.614602757238208,939
+remainder,blind,0.01,6,environment | chemotype seen,-1.9923751705369042,8310
+remainder,blind,0.01,6,chemotype | environments seen,12.032639076153906,14404
+remainder,blind,0.01,6,chemotype | environments unseen,10.376163753217273,939
+remainder,blind,0.05,6,environment | chemotype held out,-2.2164845423509414,939
+remainder,blind,0.05,6,environment | chemotype seen,14.866548058800468,8310
+remainder,blind,0.05,6,chemotype | environments seen,3.0900236386700284,14404
+remainder,blind,0.05,6,chemotype | environments unseen,-8.492576633552922,939
+remainder,blind,0.1,6,environment | chemotype held out,22.673148165721745,939
+remainder,blind,0.1,6,environment | chemotype seen,16.531753668314266,8310
+remainder,blind,0.1,6,chemotype | environments seen,10.14787583942637,14404
+remainder,blind,0.1,6,chemotype | environments unseen,18.31414588959704,939
+remainder,blind,1.0,6,environment | chemotype held out,7.616220963937682,939
+remainder,blind,1.0,6,environment | chemotype seen,19.34697296401027,8310
+remainder,blind,1.0,6,chemotype | environments seen,8.153432194177318,14404
+remainder,blind,1.0,6,chemotype | environments unseen,4.1283843754300475,939
+remainder,blind,0.01,7,environment | chemotype held out,-15.034619688039204,2737
+remainder,blind,0.01,7,environment | chemotype seen,-19.17085246812123,12391
+remainder,blind,0.01,7,chemotype | environments seen,-17.854322459642525,14532
+remainder,blind,0.01,7,chemotype | environments unseen,-17.176681605284294,2737
+remainder,blind,0.05,7,environment | chemotype held out,4.804627201078429,2737
+remainder,blind,0.05,7,environment | chemotype seen,15.171608682452431,12391
+remainder,blind,0.05,7,chemotype | environments seen,3.420838804493223,14532
+remainder,blind,0.05,7,chemotype | environments unseen,8.168453207634839,2737
+remainder,blind,0.1,7,environment | chemotype held out,10.142079795112608,2737
+remainder,blind,0.1,7,environment | chemotype seen,16.229082107203524,12391
+remainder,blind,0.1,7,chemotype | environments seen,11.075440050237141,14532
+remainder,blind,0.1,7,chemotype | environments unseen,9.243512383343186,2737
+remainder,blind,1.0,7,environment | chemotype held out,12.737792152357091,2737
+remainder,blind,1.0,7,environment | chemotype seen,15.215547008709056,12391
+remainder,blind,1.0,7,chemotype | environments seen,3.445133055842742,14532
+remainder,blind,1.0,7,chemotype | environments unseen,2.5317870055686016,2737
+remainder,blind,0.01,8,environment | chemotype held out,11.377466577976827,1547
+remainder,blind,0.01,8,environment | chemotype seen,13.898424579883676,13320
+remainder,blind,0.01,8,chemotype | environments seen,6.567839733822729,22499
+remainder,blind,0.01,8,chemotype | environments unseen,2.5203967069149114,1547
+remainder,blind,0.05,8,environment | chemotype held out,-14.793122968728149,1547
+remainder,blind,0.05,8,environment | chemotype seen,2.6702128911427336,13320
+remainder,blind,0.05,8,chemotype | environments seen,-18.03508541030086,22499
+remainder,blind,0.05,8,chemotype | environments unseen,-17.81393803796015,1547
+remainder,blind,0.1,8,environment | chemotype held out,-5.3448697535698875,1547
+remainder,blind,0.1,8,environment | chemotype seen,6.3898733074448035,13320
+remainder,blind,0.1,8,chemotype | environments seen,-4.429515516142082,22499
+remainder,blind,0.1,8,chemotype | environments unseen,-1.5264635338713082,1547
+remainder,blind,1.0,8,environment | chemotype held out,2.1599277703348525,1547
+remainder,blind,1.0,8,environment | chemotype seen,27.213858279165883,13320
+remainder,blind,1.0,8,chemotype | environments seen,-5.900443144086576,22499
+remainder,blind,1.0,8,chemotype | environments unseen,-21.45327585335609,1547
+remainder,blind,0.01,9,environment | chemotype held out,18.55800464678242,898
+remainder,blind,0.01,9,environment | chemotype seen,12.438181320732749,6979
+remainder,blind,0.01,9,chemotype | environments seen,5.093639015586822,14754
+remainder,blind,0.01,9,chemotype | environments unseen,17.529604799792175,898
+remainder,blind,0.05,9,environment | chemotype held out,40.512351928207956,898
+remainder,blind,0.05,9,environment | chemotype seen,26.644596637198674,6979
+remainder,blind,0.05,9,chemotype | environments seen,5.6702884322954645,14754
+remainder,blind,0.05,9,chemotype | environments unseen,27.11620202891201,898
+remainder,blind,0.1,9,environment | chemotype held out,3.5893822167864737,898
+remainder,blind,0.1,9,environment | chemotype seen,17.32582914888613,6979
+remainder,blind,0.1,9,chemotype | environments seen,11.954607736740854,14754
+remainder,blind,0.1,9,chemotype | environments unseen,10.811923494380581,898
+remainder,blind,1.0,9,environment | chemotype held out,15.68525001191182,898
+remainder,blind,1.0,9,environment | chemotype seen,49.27080055913051,6979
+remainder,blind,1.0,9,chemotype | environments seen,20.05928208973605,14754
+remainder,blind,1.0,9,chemotype | environments unseen,9.322297418244665,898
+remainder,informed,0.01,0,environment | chemotype held out,10.90183454242159,3812
+remainder,informed,0.01,0,environment | chemotype seen,13.612059193791772,4065
+remainder,informed,0.01,0,chemotype | environments seen,13.002237970099712,18206
+remainder,informed,0.01,0,chemotype | environments unseen,11.203363430241073,3812
+remainder,informed,0.05,0,environment | chemotype held out,-3.565496409224786,3812
+remainder,informed,0.05,0,environment | chemotype seen,6.585235212994969,4065
+remainder,informed,0.05,0,chemotype | environments seen,3.547014207395536,18206
+remainder,informed,0.05,0,chemotype | environments unseen,-3.8878499437498926,3812
+remainder,informed,0.1,0,environment | chemotype held out,6.544705940885019,3812
+remainder,informed,0.1,0,environment | chemotype seen,21.055787609634898,4065
+remainder,informed,0.1,0,chemotype | environments seen,17.136744639967958,18206
+remainder,informed,0.1,0,chemotype | environments unseen,6.354345012530342,3812
+remainder,informed,1.0,0,environment | chemotype held out,60.13468266464608,3812
+remainder,informed,1.0,0,environment | chemotype seen,77.15642663934871,4065
+remainder,informed,1.0,0,chemotype | environments seen,18.486253948664903,18206
+remainder,informed,1.0,0,chemotype | environments unseen,56.70463453845956,3812
+remainder,informed,0.01,1,environment | chemotype held out,6.9893116230382635,3083
+remainder,informed,0.01,1,environment | chemotype seen,14.42543927974798,8814
+remainder,informed,0.01,1,chemotype | environments seen,6.950033920176367,12260
+remainder,informed,0.01,1,chemotype | environments unseen,-3.373923392389313,3083
+remainder,informed,0.05,1,environment | chemotype held out,19.000244498031954,3083
+remainder,informed,0.05,1,environment | chemotype seen,16.543321236466518,8814
+remainder,informed,0.05,1,chemotype | environments seen,3.4790746441689495,12260
+remainder,informed,0.05,1,chemotype | environments unseen,5.882535215080896,3083
+remainder,informed,0.1,1,environment | chemotype held out,17.264649857279554,3083
+remainder,informed,0.1,1,environment | chemotype seen,18.084486636015786,8814
+remainder,informed,0.1,1,chemotype | environments seen,10.128168441267508,12260
+remainder,informed,0.1,1,chemotype | environments unseen,-3.987530832335155,3083
+remainder,informed,1.0,1,environment | chemotype held out,28.944489440037348,3083
+remainder,informed,1.0,1,environment | chemotype seen,32.668735093649744,8814
+remainder,informed,1.0,1,chemotype | environments seen,9.512520047154416,12260
+remainder,informed,1.0,1,chemotype | environments unseen,5.027583135662516,3083
+remainder,informed,0.01,10,environment | chemotype held out,1.2039166028734916,5014
+remainder,informed,0.01,10,environment | chemotype seen,-0.6564670565321362,4235
+remainder,informed,0.01,10,chemotype | environments seen,2.118434788947754,17004
+remainder,informed,0.01,10,chemotype | environments unseen,7.552105543321212,5014
+remainder,informed,0.05,10,environment | chemotype held out,5.536692032791343,5014
+remainder,informed,0.05,10,environment | chemotype seen,11.249982182047594,4235
+remainder,informed,0.05,10,chemotype | environments seen,12.247834042561951,17004
+remainder,informed,0.05,10,chemotype | environments unseen,2.227202404058321,5014
+remainder,informed,0.1,10,environment | chemotype held out,-1.9285970855092094,5014
+remainder,informed,0.1,10,environment | chemotype seen,4.5556695980120825,4235
+remainder,informed,0.1,10,chemotype | environments seen,11.537090812330646,17004
+remainder,informed,0.1,10,chemotype | environments unseen,6.22774440713222,5014
+remainder,informed,1.0,10,environment | chemotype held out,23.87260034857996,5014
+remainder,informed,1.0,10,environment | chemotype seen,34.40343790940587,4235
+remainder,informed,1.0,10,chemotype | environments seen,34.42999654165382,17004
+remainder,informed,1.0,10,chemotype | environments unseen,25.095865574751276,5014
+remainder,informed,0.01,11,environment | chemotype held out,14.05034348412553,1573
+remainder,informed,0.01,11,environment | chemotype seen,16.329867945012982,13555
+remainder,informed,0.01,11,chemotype | environments seen,9.333486620033758,13770
+remainder,informed,0.01,11,chemotype | environments unseen,11.524334174786077,1573
+remainder,informed,0.05,11,environment | chemotype held out,10.32631390056042,1573
+remainder,informed,0.05,11,environment | chemotype seen,8.866336203120495,13555
+remainder,informed,0.05,11,chemotype | environments seen,2.8203295105315487,13770
+remainder,informed,0.05,11,chemotype | environments unseen,9.122474216663724,1573
+remainder,informed,0.1,11,environment | chemotype held out,-0.6174126009787537,1573
+remainder,informed,0.1,11,environment | chemotype seen,5.798600652337315,13555
+remainder,informed,0.1,11,chemotype | environments seen,-7.424635625193148,13770
+remainder,informed,0.1,11,chemotype | environments unseen,-6.98913409983555,1573
+remainder,informed,1.0,11,environment | chemotype held out,25.36517791891154,1573
+remainder,informed,1.0,11,environment | chemotype seen,43.59046564445335,13555
+remainder,informed,1.0,11,chemotype | environments seen,17.62182664554973,13770
+remainder,informed,1.0,11,chemotype | environments unseen,11.054298268910129,1573
+remainder,informed,0.01,12,environment | chemotype held out,10.451183380720625,2571
+remainder,informed,0.01,12,environment | chemotype seen,11.927333372900378,12296
+remainder,informed,0.01,12,chemotype | environments seen,22.716149031564978,14698
+remainder,informed,0.01,12,chemotype | environments unseen,2.129002725621895,2571
+remainder,informed,0.05,12,environment | chemotype held out,14.270117049111631,2571
+remainder,informed,0.05,12,environment | chemotype seen,13.672359127010068,12296
+remainder,informed,0.05,12,chemotype | environments seen,7.864870554552641,14698
+remainder,informed,0.05,12,chemotype | environments unseen,1.4837640463005868,2571
+remainder,informed,0.1,12,environment | chemotype held out,21.13540368471843,2571
+remainder,informed,0.1,12,environment | chemotype seen,14.027572810939603,12296
+remainder,informed,0.1,12,chemotype | environments seen,11.068657326775494,14698
+remainder,informed,0.1,12,chemotype | environments unseen,5.647865411279919,2571
+remainder,informed,1.0,12,environment | chemotype held out,42.059346855220575,2571
+remainder,informed,1.0,12,environment | chemotype seen,53.71547031410331,12296
+remainder,informed,1.0,12,chemotype | environments seen,22.496729784412434,14698
+remainder,informed,1.0,12,chemotype | environments unseen,25.87418680210534,2571
+remainder,informed,0.01,13,environment | chemotype held out,12.034982142027632,221
+remainder,informed,0.01,13,environment | chemotype seen,4.102584711222673,7656
+remainder,informed,0.01,13,chemotype | environments seen,1.774228497716389,24137
+remainder,informed,0.01,13,chemotype | environments unseen,-0.043028740005598864,221
+remainder,informed,0.05,13,environment | chemotype held out,1.019572751144505,221
+remainder,informed,0.05,13,environment | chemotype seen,28.58361400744211,7656
+remainder,informed,0.05,13,chemotype | environments seen,20.787919264091897,24137
+remainder,informed,0.05,13,chemotype | environments unseen,3.29193283657947,221
+remainder,informed,0.1,13,environment | chemotype held out,17.543936601414984,221
+remainder,informed,0.1,13,environment | chemotype seen,25.41177864021858,7656
+remainder,informed,0.1,13,chemotype | environments seen,84.61331629826711,24137
+remainder,informed,0.1,13,chemotype | environments unseen,11.72068880500839,221
+remainder,informed,1.0,13,environment | chemotype held out,31.076244233661278,221
+remainder,informed,1.0,13,environment | chemotype seen,37.82729407711893,7656
+remainder,informed,1.0,13,chemotype | environments seen,5.266061880686704,24137
+remainder,informed,1.0,13,chemotype | environments unseen,13.602726902806122,221
+remainder,informed,0.01,14,environment | chemotype held out,10.935177851190094,1572
+remainder,informed,0.01,14,environment | chemotype seen,11.808940502432069,10325
+remainder,informed,0.01,14,chemotype | environments seen,9.19341810363862,13768
+remainder,informed,0.01,14,chemotype | environments unseen,3.5927639593664393,1572
+remainder,informed,0.05,14,environment | chemotype held out,22.270055804977005,1572
+remainder,informed,0.05,14,environment | chemotype seen,18.57959228952552,10325
+remainder,informed,0.05,14,chemotype | environments seen,12.676914391182716,13768
+remainder,informed,0.05,14,chemotype | environments unseen,14.340171035141093,1572
+remainder,informed,0.1,14,environment | chemotype held out,35.74301204157166,1572
+remainder,informed,0.1,14,environment | chemotype seen,31.887967794366133,10325
+remainder,informed,0.1,14,chemotype | environments seen,14.801031877672825,13768
+remainder,informed,0.1,14,chemotype | environments unseen,14.289732605357077,1572
+remainder,informed,1.0,14,environment | chemotype held out,43.69988601695674,1572
+remainder,informed,1.0,14,environment | chemotype seen,26.408334416521697,10325
+remainder,informed,1.0,14,chemotype | environments seen,21.797351093595616,13768
+remainder,informed,1.0,14,chemotype | environments unseen,20.402789851941126,1572
+remainder,informed,0.01,15,environment | chemotype held out,-6.633786890567537,2055
+remainder,informed,0.01,15,environment | chemotype seen,6.037502633398612,13073
+remainder,informed,0.01,15,chemotype | environments seen,-0.3860365867197504,19963
+remainder,informed,0.01,15,chemotype | environments unseen,4.253093801354112,2055
+remainder,informed,0.05,15,environment | chemotype held out,-0.234026557344856,2055
+remainder,informed,0.05,15,environment | chemotype seen,-0.2537152993832912,13073
+remainder,informed,0.05,15,chemotype | environments seen,-3.5106266687854304,19963
+remainder,informed,0.05,15,chemotype | environments unseen,-3.126182367189824,2055
+remainder,informed,0.1,15,environment | chemotype held out,2.0854754390797794,2055
+remainder,informed,0.1,15,environment | chemotype seen,14.371859447167088,13073
+remainder,informed,0.1,15,chemotype | environments seen,8.114673717375165,19963
+remainder,informed,0.1,15,chemotype | environments unseen,4.6160389824257075,2055
+remainder,informed,1.0,15,environment | chemotype held out,15.731416922240731,2055
+remainder,informed,1.0,15,environment | chemotype seen,3.884798000450458,13073
+remainder,informed,1.0,15,chemotype | environments seen,14.818549154356607,19963
+remainder,informed,1.0,15,chemotype | environments unseen,5.058014708029608,2055
+remainder,informed,0.01,16,environment | chemotype held out,5.613554823470339,1481
+remainder,informed,0.01,16,environment | chemotype seen,6.424006644263462,13386
+remainder,informed,0.01,16,chemotype | environments seen,5.003535829069499,13862
+remainder,informed,0.01,16,chemotype | environments unseen,-7.4008213458948315,1481
+remainder,informed,0.05,16,environment | chemotype held out,3.505279492619962,1481
+remainder,informed,0.05,16,environment | chemotype seen,8.353450086679592,13386
+remainder,informed,0.05,16,chemotype | environments seen,3.544287331943007,13862
+remainder,informed,0.05,16,chemotype | environments unseen,-4.497711020701991,1481
+remainder,informed,0.1,16,environment | chemotype held out,2.8326144207891346,1481
+remainder,informed,0.1,16,environment | chemotype seen,11.796488712283448,13386
+remainder,informed,0.1,16,chemotype | environments seen,-2.8716959682559366,13862
+remainder,informed,0.1,16,chemotype | environments unseen,-7.47541347509196,1481
+remainder,informed,1.0,16,environment | chemotype held out,9.85395326125489,1481
+remainder,informed,1.0,16,environment | chemotype seen,18.099612515656624,13386
+remainder,informed,1.0,16,chemotype | environments seen,5.727364806813196,13862
+remainder,informed,1.0,16,chemotype | environments unseen,-5.539317464086515,1481
+remainder,informed,0.01,17,environment | chemotype held out,-3.247573467301266,1814
+remainder,informed,0.01,17,environment | chemotype seen,1.692191744129472,6063
+remainder,informed,0.01,17,chemotype | environments seen,-15.024266034475348,15455
+remainder,informed,0.01,17,chemotype | environments unseen,-0.6760309559905773,1814
+remainder,informed,0.05,17,environment | chemotype held out,-3.9403184744082456,1814
+remainder,informed,0.05,17,environment | chemotype seen,9.10103439133323,6063
+remainder,informed,0.05,17,chemotype | environments seen,-0.6332733531012353,15455
+remainder,informed,0.05,17,chemotype | environments unseen,-8.48441447803005,1814
+remainder,informed,0.1,17,environment | chemotype held out,7.484143544319732,1814
+remainder,informed,0.1,17,environment | chemotype seen,14.873709097815908,6063
+remainder,informed,0.1,17,chemotype | environments seen,3.112011610370086,15455
+remainder,informed,0.1,17,chemotype | environments unseen,-3.0209882165924387,1814
+remainder,informed,1.0,17,environment | chemotype held out,14.625513872802394,1814
+remainder,informed,1.0,17,environment | chemotype seen,35.914126092476295,6063
+remainder,informed,1.0,17,chemotype | environments seen,7.285587743844987,15455
+remainder,informed,1.0,17,chemotype | environments unseen,-3.046702851943479,1814
+remainder,informed,0.01,18,environment | chemotype held out,10.724332439656063,915
+remainder,informed,0.01,18,environment | chemotype seen,-4.284259625008678,10982
+remainder,informed,0.01,18,chemotype | environments seen,-12.172397818209664,23131
+remainder,informed,0.01,18,chemotype | environments unseen,-4.337954256948683,915
+remainder,informed,0.05,18,environment | chemotype held out,43.52334709809396,915
+remainder,informed,0.05,18,environment | chemotype seen,23.232472905553934,10982
+remainder,informed,0.05,18,chemotype | environments seen,34.55212337149613,23131
+remainder,informed,0.05,18,chemotype | environments unseen,52.02740772954897,915
+remainder,informed,0.1,18,environment | chemotype held out,-10.270330190815507,915
+remainder,informed,0.1,18,environment | chemotype seen,20.753535922235212,10982
+remainder,informed,0.1,18,chemotype | environments seen,20.097149182661408,23131
+remainder,informed,0.1,18,chemotype | environments unseen,13.630948094513265,915
+remainder,informed,1.0,18,environment | chemotype held out,30.32794705254002,915
+remainder,informed,1.0,18,environment | chemotype seen,18.430530144336938,10982
+remainder,informed,1.0,18,chemotype | environments seen,5.790566123579706,23131
+remainder,informed,1.0,18,chemotype | environments unseen,9.179747101539297,915
+remainder,informed,0.01,19,environment | chemotype held out,-11.90358001529587,1315
+remainder,informed,0.01,19,environment | chemotype seen,-19.4703642040769,7934
+remainder,informed,0.01,19,chemotype | environments seen,-20.830118934345293,14337
+remainder,informed,0.01,19,chemotype | environments unseen,-9.588196696241836,1315
+remainder,informed,0.05,19,environment | chemotype held out,10.034604863933383,1315
+remainder,informed,0.05,19,environment | chemotype seen,6.281445096467671,7934
+remainder,informed,0.05,19,chemotype | environments seen,12.67446401216586,14337
+remainder,informed,0.05,19,chemotype | environments unseen,8.454341823304576,1315
+remainder,informed,0.1,19,environment | chemotype held out,-0.8258529510411723,1315
+remainder,informed,0.1,19,environment | chemotype seen,17.97896207726001,7934
+remainder,informed,0.1,19,chemotype | environments seen,8.395039953183566,14337
+remainder,informed,0.1,19,chemotype | environments unseen,3.4429372543598262,1315
+remainder,informed,1.0,19,environment | chemotype held out,6.947351652385269,1315
+remainder,informed,1.0,19,environment | chemotype seen,14.2997784881041,7934
+remainder,informed,1.0,19,chemotype | environments seen,10.24615974194989,14337
+remainder,informed,1.0,19,chemotype | environments unseen,4.287430000314308,1315
+remainder,informed,0.01,2,environment | chemotype held out,-10.639355558257977,1509
+remainder,informed,0.01,2,environment | chemotype seen,-9.351447033788654,7740
+remainder,informed,0.01,2,chemotype | environments seen,1.7544374091772412,13953
+remainder,informed,0.01,2,chemotype | environments unseen,-4.520904565563487,1509
+remainder,informed,0.05,2,environment | chemotype held out,34.42707838284047,1509
+remainder,informed,0.05,2,environment | chemotype seen,33.94061710339471,7740
+remainder,informed,0.05,2,chemotype | environments seen,18.51247974465685,13953
+remainder,informed,0.05,2,chemotype | environments unseen,25.29892263076804,1509
+remainder,informed,0.1,2,environment | chemotype held out,6.458216849536447,1509
+remainder,informed,0.1,2,environment | chemotype seen,19.975873071348865,7740
+remainder,informed,0.1,2,chemotype | environments seen,14.549716721917344,13953
+remainder,informed,0.1,2,chemotype | environments unseen,-1.2591051118882286,1509
+remainder,informed,1.0,2,environment | chemotype held out,14.72704456459183,1509
+remainder,informed,1.0,2,environment | chemotype seen,30.05124583072636,7740
+remainder,informed,1.0,2,chemotype | environments seen,10.391144941887031,13953
+remainder,informed,1.0,2,chemotype | environments unseen,5.378674838061829,1509
+remainder,informed,0.01,20,environment | chemotype held out,12.330804105462654,6183
+remainder,informed,0.01,20,environment | chemotype seen,22.28029698329858,8684
+remainder,informed,0.01,20,chemotype | environments seen,12.915724363848316,15835
+remainder,informed,0.01,20,chemotype | environments unseen,15.872334141234392,6183
+remainder,informed,0.05,20,environment | chemotype held out,23.02399532948186,6183
+remainder,informed,0.05,20,environment | chemotype seen,28.526292746615596,8684
+remainder,informed,0.05,20,chemotype | environments seen,17.47609941748148,15835
+remainder,informed,0.05,20,chemotype | environments unseen,23.0154331353515,6183
+remainder,informed,0.1,20,environment | chemotype held out,21.960818823535664,6183
+remainder,informed,0.1,20,environment | chemotype seen,23.466250146248075,8684
+remainder,informed,0.1,20,chemotype | environments seen,17.958554595055492,15835
+remainder,informed,0.1,20,chemotype | environments unseen,29.044364349625905,6183
+remainder,informed,1.0,20,environment | chemotype held out,17.879890465216597,6183
+remainder,informed,1.0,20,environment | chemotype seen,20.488774628463332,8684
+remainder,informed,1.0,20,chemotype | environments seen,15.759657003045646,15835
+remainder,informed,1.0,20,chemotype | environments unseen,13.97865839641604,6183
+remainder,informed,0.01,21,environment | chemotype held out,-5.222285589061178,1238
+remainder,informed,0.01,21,environment | chemotype seen,-7.686283117007605,6639
+remainder,informed,0.01,21,chemotype | environments seen,-5.969590497910075,14105
+remainder,informed,0.01,21,chemotype | environments unseen,-15.93354721722552,1238
+remainder,informed,0.05,21,environment | chemotype held out,25.168045907950646,1238
+remainder,informed,0.05,21,environment | chemotype seen,19.343178352666026,6639
+remainder,informed,0.05,21,chemotype | environments seen,-1.3306619592916915,14105
+remainder,informed,0.05,21,chemotype | environments unseen,11.504264417470427,1238
+remainder,informed,0.1,21,environment | chemotype held out,12.897516185043877,1238
+remainder,informed,0.1,21,environment | chemotype seen,17.484934196981676,6639
+remainder,informed,0.1,21,chemotype | environments seen,-5.82745998150194,14105
+remainder,informed,0.1,21,chemotype | environments unseen,3.2797755171536624,1238
+remainder,informed,1.0,21,environment | chemotype held out,34.47555051639934,1238
+remainder,informed,1.0,21,environment | chemotype seen,35.12145136895712,6639
+remainder,informed,1.0,21,chemotype | environments seen,2.3142728074176646,14105
+remainder,informed,1.0,21,chemotype | environments unseen,6.741576770001548,1238
+remainder,informed,0.01,22,environment | chemotype held out,41.75719770660646,3066
+remainder,informed,0.01,22,environment | chemotype seen,30.147901462155684,8831
+remainder,informed,0.01,22,chemotype | environments seen,22.92361040262958,12396
+remainder,informed,0.01,22,chemotype | environments unseen,25.560257524882477,3066
+remainder,informed,0.05,22,environment | chemotype held out,1.1620378578024646,3066
+remainder,informed,0.05,22,environment | chemotype seen,2.801769099340614,8831
+remainder,informed,0.05,22,chemotype | environments seen,7.779036155760261,12396
+remainder,informed,0.05,22,chemotype | environments unseen,-10.163592559577872,3066
+remainder,informed,0.1,22,environment | chemotype held out,18.267876729783858,3066
+remainder,informed,0.1,22,environment | chemotype seen,22.991927787212234,8831
+remainder,informed,0.1,22,chemotype | environments seen,9.521438570486863,12396
+remainder,informed,0.1,22,chemotype | environments unseen,0.3686987406010245,3066
+remainder,informed,1.0,22,environment | chemotype held out,27.075923838124538,3066
+remainder,informed,1.0,22,environment | chemotype seen,27.751561359164285,8831
+remainder,informed,1.0,22,chemotype | environments seen,15.454753426112656,12396
+remainder,informed,1.0,22,chemotype | environments unseen,8.897091812186822,3066
+remainder,informed,0.01,23,environment | chemotype held out,23.60597602629921,472
+remainder,informed,0.01,23,environment | chemotype seen,12.535813792213562,8777
+remainder,informed,0.01,23,chemotype | environments seen,3.6865510252059357,25381
+remainder,informed,0.01,23,chemotype | environments unseen,25.730719424235446,472
+remainder,informed,0.05,23,environment | chemotype held out,6.32100398612401,472
+remainder,informed,0.05,23,environment | chemotype seen,12.806191002426116,8777
+remainder,informed,0.05,23,chemotype | environments seen,3.109548151353561,25381
+remainder,informed,0.05,23,chemotype | environments unseen,7.726675867025488,472
+remainder,informed,0.1,23,environment | chemotype held out,-18.306925410396616,472
+remainder,informed,0.1,23,environment | chemotype seen,2.1092292842985625,8777
+remainder,informed,0.1,23,chemotype | environments seen,3.4668182106379204,25381
+remainder,informed,0.1,23,chemotype | environments unseen,-9.130775734548095,472
+remainder,informed,1.0,23,environment | chemotype held out,-9.449865854172135,472
+remainder,informed,1.0,23,environment | chemotype seen,13.07726907511859,8777
+remainder,informed,1.0,23,chemotype | environments seen,-10.853198175625831,25381
+remainder,informed,1.0,23,chemotype | environments unseen,-20.305219504781554,472
+remainder,informed,0.01,24,environment | chemotype held out,4.574224926557347,2918
+remainder,informed,0.01,24,environment | chemotype seen,7.557653554159235,12210
+remainder,informed,0.01,24,chemotype | environments seen,6.3599580212839,12734
+remainder,informed,0.01,24,chemotype | environments unseen,5.2086994612079724,2918
+remainder,informed,0.05,24,environment | chemotype held out,-7.387172414922825,2918
+remainder,informed,0.05,24,environment | chemotype seen,5.039029827051603,12210
+remainder,informed,0.05,24,chemotype | environments seen,4.491182024112815,12734
+remainder,informed,0.05,24,chemotype | environments unseen,3.742078126374028,2918
+remainder,informed,0.1,24,environment | chemotype held out,-2.261978355529566,2918
+remainder,informed,0.1,24,environment | chemotype seen,1.7078901606700416,12210
+remainder,informed,0.1,24,chemotype | environments seen,-3.010865747869911,12734
+remainder,informed,0.1,24,chemotype | environments unseen,3.685151804846819,2918
+remainder,informed,1.0,24,environment | chemotype held out,6.299023168127483,2918
+remainder,informed,1.0,24,environment | chemotype seen,1.768528021081154,12210
+remainder,informed,1.0,24,chemotype | environments seen,2.2916106191469767,12734
+remainder,informed,1.0,24,chemotype | environments unseen,1.2493539079070022,2918
+remainder,informed,0.01,3,environment | chemotype held out,-7.166508125195569,5613
+remainder,informed,0.01,3,environment | chemotype seen,-5.417073769153328,9515
+remainder,informed,0.01,3,chemotype | environments seen,-4.39880272708381,20240
+remainder,informed,0.01,3,chemotype | environments unseen,-9.887837047147869,5613
+remainder,informed,0.05,3,environment | chemotype held out,-8.459837175609803,5613
+remainder,informed,0.05,3,environment | chemotype seen,2.6946018950343995,9515
+remainder,informed,0.05,3,chemotype | environments seen,-1.6141603623905816,20240
+remainder,informed,0.05,3,chemotype | environments unseen,10.172406837879695,5613
+remainder,informed,0.1,3,environment | chemotype held out,-12.509716214570393,5613
+remainder,informed,0.1,3,environment | chemotype seen,6.008110860427882,9515
+remainder,informed,0.1,3,chemotype | environments seen,12.630406343043049,20240
+remainder,informed,0.1,3,chemotype | environments unseen,7.570151384783563,5613
+remainder,informed,1.0,3,environment | chemotype held out,53.11538431843077,5613
+remainder,informed,1.0,3,environment | chemotype seen,28.260750131620174,9515
+remainder,informed,1.0,3,chemotype | environments seen,37.059577176492056,20240
+remainder,informed,1.0,3,chemotype | environments unseen,29.88270911428458,5613
+remainder,informed,0.01,4,environment | chemotype held out,4.480663795119808,3085
+remainder,informed,0.01,4,environment | chemotype seen,1.8923813384316535,11782
+remainder,informed,0.01,4,chemotype | environments seen,10.679823001466758,12567
+remainder,informed,0.01,4,chemotype | environments unseen,-7.059776003651317,3085
+remainder,informed,0.05,4,environment | chemotype held out,15.296616034971223,3085
+remainder,informed,0.05,4,environment | chemotype seen,12.759142330625364,11782
+remainder,informed,0.05,4,chemotype | environments seen,21.179183566802365,12567
+remainder,informed,0.05,4,chemotype | environments unseen,8.949481451306381,3085
+remainder,informed,0.1,4,environment | chemotype held out,10.323147617757996,3085
+remainder,informed,0.1,4,environment | chemotype seen,14.118819042162427,11782
+remainder,informed,0.1,4,chemotype | environments seen,10.626806091032492,12567
+remainder,informed,0.1,4,chemotype | environments unseen,3.002200609142889,3085
+remainder,informed,1.0,4,environment | chemotype held out,16.60925520013614,3085
+remainder,informed,1.0,4,environment | chemotype seen,24.104682401771427,11782
+remainder,informed,1.0,4,chemotype | environments seen,4.654996914914171,12567
+remainder,informed,1.0,4,chemotype | environments unseen,5.613187573710833,3085
+remainder,informed,0.01,5,environment | chemotype held out,7.968498862340386,2287
+remainder,informed,0.01,5,environment | chemotype seen,15.354037238060856,9610
+remainder,informed,0.01,5,chemotype | environments seen,5.51096285927418,19731
+remainder,informed,0.01,5,chemotype | environments unseen,2.564290758307439,2287
+remainder,informed,0.05,5,environment | chemotype held out,18.018631759095705,2287
+remainder,informed,0.05,5,environment | chemotype seen,20.207672736010352,9610
+remainder,informed,0.05,5,chemotype | environments seen,27.392055265528516,19731
+remainder,informed,0.05,5,chemotype | environments unseen,10.483225400465283,2287
+remainder,informed,0.1,5,environment | chemotype held out,31.878614985050667,2287
+remainder,informed,0.1,5,environment | chemotype seen,26.957904406837763,9610
+remainder,informed,0.1,5,chemotype | environments seen,29.334128995008264,19731
+remainder,informed,0.1,5,chemotype | environments unseen,18.64708106088443,2287
+remainder,informed,1.0,5,environment | chemotype held out,16.94902951920178,2287
+remainder,informed,1.0,5,environment | chemotype seen,24.1362591070046,9610
+remainder,informed,1.0,5,chemotype | environments seen,24.772520569190352,19731
+remainder,informed,1.0,5,chemotype | environments unseen,4.377394378143024,2287
+remainder,informed,0.01,6,environment | chemotype held out,-4.670297615260427,939
+remainder,informed,0.01,6,environment | chemotype seen,-12.053054925145371,8310
+remainder,informed,0.01,6,chemotype | environments seen,-2.6202143909082967,14404
+remainder,informed,0.01,6,chemotype | environments unseen,-10.237141957382585,939
+remainder,informed,0.05,6,environment | chemotype held out,13.890695835937082,939
+remainder,informed,0.05,6,environment | chemotype seen,24.499480194457924,8310
+remainder,informed,0.05,6,chemotype | environments seen,3.1295094005380215,14404
+remainder,informed,0.05,6,chemotype | environments unseen,1.8699068331234998,939
+remainder,informed,0.1,6,environment | chemotype held out,46.658766910182806,939
+remainder,informed,0.1,6,environment | chemotype seen,16.994531731204393,8310
+remainder,informed,0.1,6,chemotype | environments seen,21.07175108649272,14404
+remainder,informed,0.1,6,chemotype | environments unseen,26.17626768120967,939
+remainder,informed,1.0,6,environment | chemotype held out,17.83020056786546,939
+remainder,informed,1.0,6,environment | chemotype seen,30.66844403630866,8310
+remainder,informed,1.0,6,chemotype | environments seen,15.226974039705159,14404
+remainder,informed,1.0,6,chemotype | environments unseen,3.9003045434058734,939
+remainder,informed,0.01,7,environment | chemotype held out,-16.836742817922364,2737
+remainder,informed,0.01,7,environment | chemotype seen,-11.058750574835946,12391
+remainder,informed,0.01,7,chemotype | environments seen,-9.418228647402332,14532
+remainder,informed,0.01,7,chemotype | environments unseen,-18.31516549976799,2737
+remainder,informed,0.05,7,environment | chemotype held out,3.593945078793031,2737
+remainder,informed,0.05,7,environment | chemotype seen,-4.520245821944722,12391
+remainder,informed,0.05,7,chemotype | environments seen,-0.6914653424923798,14532
+remainder,informed,0.05,7,chemotype | environments unseen,1.9506735767382586,2737
+remainder,informed,0.1,7,environment | chemotype held out,2.7906164935473625,2737
+remainder,informed,0.1,7,environment | chemotype seen,2.7498107942267147,12391
+remainder,informed,0.1,7,chemotype | environments seen,0.3278447467429273,14532
+remainder,informed,0.1,7,chemotype | environments unseen,-0.8377334931466835,2737
+remainder,informed,1.0,7,environment | chemotype held out,14.430148083318242,2737
+remainder,informed,1.0,7,environment | chemotype seen,7.8534463754314165,12391
+remainder,informed,1.0,7,chemotype | environments seen,7.23695816072632,14532
+remainder,informed,1.0,7,chemotype | environments unseen,1.006241759418772,2737
+remainder,informed,0.01,8,environment | chemotype held out,12.372711819065225,1547
+remainder,informed,0.01,8,environment | chemotype seen,8.120812677129042,13320
+remainder,informed,0.01,8,chemotype | environments seen,10.380227052575249,22499
+remainder,informed,0.01,8,chemotype | environments unseen,3.807014451028726,1547
+remainder,informed,0.05,8,environment | chemotype held out,10.29607413525868,1547
+remainder,informed,0.05,8,environment | chemotype seen,9.722113353827094,13320
+remainder,informed,0.05,8,chemotype | environments seen,7.843863778861175,22499
+remainder,informed,0.05,8,chemotype | environments unseen,6.753157321696565,1547
+remainder,informed,0.1,8,environment | chemotype held out,22.166747506909317,1547
+remainder,informed,0.1,8,environment | chemotype seen,17.130847955374026,13320
+remainder,informed,0.1,8,chemotype | environments seen,58.29200804728734,22499
+remainder,informed,0.1,8,chemotype | environments unseen,42.46644149255566,1547
+remainder,informed,1.0,8,environment | chemotype held out,-14.47069220491879,1547
+remainder,informed,1.0,8,environment | chemotype seen,19.31014414942898,13320
+remainder,informed,1.0,8,chemotype | environments seen,-31.023232210082117,22499
+remainder,informed,1.0,8,chemotype | environments unseen,-24.56998119315448,1547
+remainder,informed,0.01,9,environment | chemotype held out,17.92693596083506,898
+remainder,informed,0.01,9,environment | chemotype seen,14.113317983657854,6979
+remainder,informed,0.01,9,chemotype | environments seen,12.60068088773436,14754
+remainder,informed,0.01,9,chemotype | environments unseen,14.01796034119808,898
+remainder,informed,0.05,9,environment | chemotype held out,16.308857943548006,898
+remainder,informed,0.05,9,environment | chemotype seen,23.990823862423277,6979
+remainder,informed,0.05,9,chemotype | environments seen,14.609998085559754,14754
+remainder,informed,0.05,9,chemotype | environments unseen,22.037940885518367,898
+remainder,informed,0.1,9,environment | chemotype held out,11.235247375607194,898
+remainder,informed,0.1,9,environment | chemotype seen,30.706680250352672,6979
+remainder,informed,0.1,9,chemotype | environments seen,6.809602876593607,14754
+remainder,informed,0.1,9,chemotype | environments unseen,8.689883914178507,898
+remainder,informed,1.0,9,environment | chemotype held out,17.520995042178864,898
+remainder,informed,1.0,9,environment | chemotype seen,30.195372916769145,6979
+remainder,informed,1.0,9,chemotype | environments seen,10.950697387419549,14754
+remainder,informed,1.0,9,chemotype | environments unseen,10.098105687248156,898

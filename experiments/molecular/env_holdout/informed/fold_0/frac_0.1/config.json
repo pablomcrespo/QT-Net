@@ -1,0 +1,146 @@
+{
+  "model_class": "GeoScalarGNNMolecular",
+  "variant": "informed",
+  "use_atom_features": true,
+  "repeat": 0,
+  "cv_fold": 0,
+  "fold": 0,
+  "fraction": 0.1,
+  "n_splits": 5,
+  "n_repeats": 5,
+  "base_seed": 42,
+  "val_fraction": 0.1,
+  "id_ref_frac": 0.03,
+  "pool_cap": "min",
+  "pool_size": 17855,
+  "group_col": "fp_cluster",
+  "heldout_chemotypes": [
+    "fp_11",
+    "fp_12",
+    "fp_15",
+    "fp_18",
+    "fp_19",
+    "fp_23",
+    "fp_45",
+    "fp_49",
+    "fp_5"
+  ],
+  "env_fold": 0,
+  "env_fold_seed": "N_65",
+  "env_fold_labels": [
+    "H_29",
+    "C_52",
+    "N_65",
+    "O_10"
+  ],
+  "panel_sizes": {
+    "A": 5256,
+    "B": 1032,
+    "C": 1621,
+    "D": 924
+  },
+  "model_kwargs": {
+    "embedding_dim": 32,
+    "hidden_dim": 24,
+    "num_complex_scalars": 16,
+    "num_edge_scalars": 8,
+    "num_layers": 4,
+    "num_node_scalars": 16
+  },
+  "learning_rate": 0.0010313839745344769,
+  "weight_decay": 3.5944754726680397e-06,
+  "hp_source": "Optuna search of the blind GeoScalarGNNMolecular on one Morgan-FP chemotype OOD fold of AIMEl, 3.5 Bohr / 4 NN graphs (TopoMole hpo.py); shared by the blind and informed variants so they differ only in their inputs. The small widths (8-32) and 4 layers are themselves capacity-limiting.",
+  "model_seed": 910002,
+  "rotation_seed": 710002,
+  "rotate_every": 1,
+  "augment": "SO(3) Haar, augment_molecular_batches",
+  "epochs": 2000,
+  "batch_size": 1024,
+  "eval_batch_size": 256,
+  "n_train": 1607,
+  "n_val": 1785,
+  "n_test": 8833,
+  "target_columns": [
+    "alpha",
+    "gap",
+    "U0",
+    "Cv"
+  ],
+  "complexes": "precomputed_geo_aimel.pkl",
+  "complexes_cutoff": 3.5,
+  "complexes_max_neighbors": 4,
+  "atom_feature_keys": [
+    "N",
+    "LI",
+    "Mu_X",
+    "Mu_Y",
+    "Mu_Z",
+    "Q_XY",
+    "Q_XZ",
+    "Q_YZ",
+    "Q_aniso",
+    "Q_ZZ"
+  ],
+  "norm_stats": {
+    "alpha": {
+      "mean": 75.05583696328563,
+      "std": 7.122192677187251
+    },
+    "gap": {
+      "mean": 0.2579806471686373,
+      "std": 0.04688455089591057
+    },
+    "U0": {
+      "mean": -405.50306265774736,
+      "std": 34.850758460864455
+    },
+    "Cv": {
+      "mean": 30.15020535158681,
+      "std": 3.4762172620772196
+    }
+  },
+  "atom_feature_norm_stats": {
+    "H": {
+      "N_mean": 0.965863234488674,
+      "N_std": 0.11416219773345093,
+      "LI_mean": 0.4240493153510502,
+      "LI_std": 0.07790393735465904,
+      "Mu_rms": 0.13141220971763176,
+      "Q_rms": 0.3846597314959977
+    },
+    "C": {
+      "N_mean": 5.699964406534446,
+      "N_std": 0.3883834704904781,
+      "LI_mean": 3.702900440046996,
+      "LI_std": 0.28571618121517994,
+      "Mu_rms": 0.14381844827803855,
+      "Q_rms": 1.6522698595138399
+    },
+    "N": {
+      "N_mean": 8.048276774851926,
+      "N_std": 0.22097733506000902,
+      "LI_mean": 6.506391474615263,
+      "LI_std": 0.37041107139530527,
+      "Mu_rms": 0.9641481512889092,
+      "Q_rms": 1.5753842262986757
+    },
+    "O": {
+      "N_mean": 9.057192810000378,
+      "N_std": 0.1078033015101898,
+      "LI_mean": 7.997589480987369,
+      "LI_std": 0.21264841139273077,
+      "Mu_rms": 1.0227607067321505,
+      "Q_rms": 0.9304487162388992
+    }
+  },
+  "code_commit": "3da716575a58bd32bf2e774024fef6d21d4a485b",
+  "results": {
+    "best_val_total": 0.14207702449389867,
+    "final_val_total": 0.14276015226330077,
+    "final_train_total": 0.07718420773744583,
+    "best_epoch": 1986,
+    "final_lr_scale": 0.03125,
+    "seconds": 2488.1,
+    "predicted_from": "best_checkpoint"
+  }
+}

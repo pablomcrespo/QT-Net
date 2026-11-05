@@ -1,0 +1,19 @@
+{
+  "model_class": "GeoScalarGNNMolecular",
+  "model_kwargs": {
+    "embedding_dim": 32,
+    "hidden_dim": 24,
+    "num_complex_scalars": 16,
+    "num_edge_scalars": 8,
+    "num_layers": 4,
+    "num_node_scalars": 16
+  },
+  "lr": 0.0010313839745344769,
+  "weight_decay": 3.5944754726680397e-06,
+  "graph": {
+    "cutoff_bohr": 3.5,
+    "max_neighbors": 4,
+    "max_dim": 1
+  },
+  "source": "Optuna search of the blind GeoScalarGNNMolecular on one Morgan-FP chemotype OOD fold of AIMEl, 3.5 Bohr / 4 NN graphs (TopoMole hpo.py); shared by the blind and informed variants so they differ only in their inputs. The small widths (8-32) and 4 layers are themselves capacity-limiting."
+}

@@ -28,7 +28,7 @@ REPO_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, '..', '..'))
 if REPO_ROOT not in os.sys.path:
     os.sys.path.insert(0, REPO_ROOT)
 
-from data_utils import *  # noqa: F401,F403
+from qtnet.data_utils import *  # noqa: F401,F403
 from qtnet.jax_models.representations import precompute_complexes, prepare_padded_batches
 from qtnet.jax_models.optuna_hpo import OptunaHPO, make_factories
 

@@ -277,3 +277,100 @@ def augment_batches_fast(
         batch.cochain_batches[0] = node_cb.replace(y=new_y)
 
     return batches
+
+
+# ============================================================================
+# Haar-uniform rotations (Arvo 1992, exact)
+# ============================================================================
+
+def random_rotation_matrix_haar(key: jnp.ndarray) -> jnp.ndarray:
+    """Sample an exactly Haar-uniform random 3×3 rotation matrix (Arvo 1992).
+
+    Arvo's construction needs the Householder vector
+    ``v = (cos φ·√u3, sin φ·√u3, √(1−u3))``.  ``random_rotation_matrix`` above
+    draws ``v`` uniformly on the upper hemisphere instead (``v_z = u3``), which is
+    NOT the distribution Arvo's product ``H @ Rz`` needs: its rotations are
+    biased (measured over 4·10⁵ draws: E[R e_z] = (0, 0, −1/3) and
+    E[(R e_z)_z²] = 0.466, against 0 and 1/3 for Haar).  This function is the
+    corrected sampler; the original is left unchanged so that previously
+    trained models remain reproducible.
+
+    Returns:
+        R: jnp.ndarray of shape (3, 3), det(R) = +1.
+    """
+    u = jax.random.uniform(key, shape=(3,))
+    u1, u2, u3 = u[0], u[1], u[2]
+
+    theta = 2.0 * jnp.pi * u1
+    ct, st = jnp.cos(theta), jnp.sin(theta)
+    Rz = jnp.array([[ct, st, 0.0],
+                     [-st, ct, 0.0],
+                     [0.0, 0.0, 1.0]])
+
+    phi = 2.0 * jnp.pi * u2
+    r = jnp.sqrt(u3)
+    v = jnp.array([jnp.cos(phi) * r, jnp.sin(phi) * r, jnp.sqrt(1.0 - u3)])
+
+    H = 2.0 * jnp.outer(v, v) - jnp.eye(3)
+    return H @ Rz
+
+
+# ============================================================================
+# Molecular augmentation: rotate geometry AND the atomic INPUT features
+# ============================================================================
+
+# Orientation-dependent per-atom inputs written by row_to_complex
+# (include_atom_features=True) into node_static.  The molecular targets are
+# rotation-invariant graph-level scalars and are not part of the batch.
+_MOL_MU_KEYS = ('Mu_X', 'Mu_Y', 'Mu_Z')                        # L=1
+_MOL_Q_KEYS = ('Q_XY', 'Q_XZ', 'Q_YZ', 'Q_aniso', 'Q_ZZ')      # L=2
+
+
+def augment_molecular_batches(batches: list, key: jnp.ndarray) -> list:
+    """SO(3) augmentation for MOLECULAR padded batches (``as_numpy=True``).
+
+    One independent Haar-uniform rotation R (and its L=2 Wigner-D matrix D2)
+    per batch, applied to
+
+    - ``node_static['pos']``          ← pos @ R^T
+    - ``edge_static['G']``            ← G  @ D2^T   (edge gyration tensor)
+    - ``node_static['Mu_*']``  (L=1)  ← Mu @ R^T    (informed variant only)
+    - ``node_static['Q_*']``   (L=2)  ← Q  @ D2^T   (informed variant only)
+
+    Invariant inputs (Z, N, LI, distances, G_norm) and all adjacency are left
+    untouched.  Both variants are augmented: the blind model carries no atomic
+    features but its geometry filters read the frame-dependent ``pos`` / ``G``.
+
+    The per-atom Mu components follow the AIMAll convention (an atom's
+    contribution to the molecular dipole, including its basin charge times its
+    position from the origin), so they rotate about the same origin as ``pos``.
+
+    The arrays are rotated IN PLACE, so repeated calls compound; call once per
+    epoch with a fresh key.  Returns the same (mutated) list.
+    """
+    import numpy as np
+
+    keys = jax.random.split(key, len(batches))
+    for batch, k in zip(batches, keys):
+        R = np.asarray(random_rotation_matrix_haar(k))      # (3, 3)
+        D2 = np.asarray(wigner_d_l2(jnp.asarray(R)))        # (5, 5)
+
+        node_static = batch.cochain_batches[0].static
+        node_static['pos'] = node_static['pos'] @ R.T
+
+        edge_static = batch.cochain_batches[1].static
+        if 'G' in edge_static and edge_static['G'].shape[0] > 0:
+            edge_static['G'] = edge_static['G'] @ D2.T
+
+        if 'Mu_X' in node_static:
+            mu = np.stack([node_static[c] for c in _MOL_MU_KEYS], axis=-1)
+            mu_rot = (mu @ R.T).astype(mu.dtype)
+            for i, c in enumerate(_MOL_MU_KEYS):
+                node_static[c] = mu_rot[:, i]
+        if 'Q_XY' in node_static:
+            q = np.stack([node_static[c] for c in _MOL_Q_KEYS], axis=-1)
+            q_rot = (q @ D2.T).astype(q.dtype)
+            for i, c in enumerate(_MOL_Q_KEYS):
+                node_static[c] = q_rot[:, i]
+
+    return batches

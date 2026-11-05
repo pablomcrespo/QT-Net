@@ -1,17 +1,18 @@
 """Analysis utilities for the molecular variant × training-fraction CV study.
 
-Reuses notebooks/atomic/result_analysis.py for all statistical functions.
+Reuses analysis/atomic/result_analysis.py for all statistical functions.
 The mol_metrics DataFrame carries a dummy ``panel='global'`` column so that
 ra.tukey_pvalue_matrix / ra.metric_summary_table work unchanged.
 
 Typical notebook usage:
     import importlib
-    import notebooks.molecular.analysis_molecular as mol
+    import analysis_molecular as mol
     importlib.reload(mol)
 """
 from __future__ import annotations
 
 import os
+import sys
 import warnings
 from collections import defaultdict
 from typing import Any
@@ -25,7 +26,11 @@ from matplotlib.lines import Line2D
 from matplotlib.ticker import FuncFormatter, LogFormatterMathtext, LogLocator
 from scipy.stats import f as f_dist, t as t_dist, ttest_rel, wilcoxon, shapiro
 
-import notebooks.atomic.result_analysis as ra
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = os.path.abspath(os.path.join(_HERE, '..', '..'))
+sys.path.insert(0, os.path.join(_REPO_ROOT, 'analysis', 'atomic'))
+
+import result_analysis as ra  # noqa: E402  (QT-Net: analysis/atomic/result_analysis.py)
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 

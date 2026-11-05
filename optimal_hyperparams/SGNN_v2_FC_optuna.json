@@ -1,0 +1,15 @@
+[
+  {
+    "params": {
+      "num_node_scalars": 32,
+      "num_edge_scalars": 32,
+      "embedding_dim": 32,
+      "hidden_dim": 64,
+      "geometric_filter_dim": 32,
+      "num_layers": 7,
+      "distance_encoder": "gaussian",
+      "lr": 0.0026938830192854116,
+      "weight_decay": 0.00016051911333587616
+    }
+  }
+]

@@ -20,7 +20,7 @@ Two analyses are supported:
 Typical notebook usage::
 
     import importlib
-    import notebooks.inference.analyse_inference as ai
+    import analyse_inference as ai
     importlib.reload(ai)
 
     df = ai.load_from_experiment_dir(EXP_DIR)
@@ -69,7 +69,11 @@ _REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, '..', '..'))
 if _REPO_ROOT not in sys.path:
     sys.path.insert(0, _REPO_ROOT)
 
-import notebooks.atomic.result_analysis as ra  # noqa: E402
+# result_analysis ships next door in analysis/atomic/
+_RA_DIR = os.path.join(_REPO_ROOT, 'analysis', 'atomic')
+if _RA_DIR not in sys.path:
+    sys.path.insert(0, _RA_DIR)
+import result_analysis as ra  # noqa: E402
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Constants
@@ -208,10 +212,9 @@ def load_dipole_preds(path: str) -> pd.DataFrame:
             "Run scripts/inference/molecule_dipoles_from_inferred.py first."
         )
     keep = [DIPOLE_COL] + pred_cols
-    if 'n_atoms' in full.columns:
-        keep.append('n_atoms')
-    if 'smiles' in full.columns:
-        keep.append('smiles')
+    for extra in ('n_atoms', 'smiles', 'index'):
+        if extra in full.columns:
+            keep.append(extra)
     out = full[keep].copy()
     if 'n_atoms' not in out.columns:
         for cand in ('elements', 'atom', 'element'):
